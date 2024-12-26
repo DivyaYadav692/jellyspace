@@ -5,14 +5,15 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
-      - echo Installing npm dependencies
-      - npm install
-
+      - echo Installing dependencies...
+      - cd jellyspace  # Navigate to the jellyspace directory
+      - npm install    # Run npm install inside jellyspace
   build:
     commands:
-      - echo Building the React app
-      - npm run build
+      - echo Building the application...
+      - cd jellyspace  # Ensure you're still in the jellyspace directory
+      - npm run build  # Run the build command inside jellyspace
 
 artifacts:
   files:
-    - build/**/*  # This will package everything inside the build directory created after the build
+    - jellyspace/build/**/*  # Assuming the build output is in the build folder inside jellyspace
