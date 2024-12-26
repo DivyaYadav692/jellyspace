@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Layout Containers */
+      .page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        width: 100%;
+        padding: 20px;
+        overflow: visible;
+        position: relative;
+      }
+
+      .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: clamp(5px, 0.5vw, 10px);
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0px;
+        min-width: 320px;
+      }
+
+      /* Header Styles */
+      .main-header {
+        text-align: center;
+        color: #1a1a1a;
+        font-size: 14px;
+        font-weight: 500;
+        position: absolute;
+        left: 50%;
+        font-family: 'Michroma', sans-serif;
+        transform: translateX(-50%);
+        margin-top: 570px;
+        max-width: 500px;
+        padding: 0 20px;
+        line-height: 1.3;
+        z-index: 3;
+        
+        /* Enhanced text rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        letter-spacing: 0.4px;
+        
+        /* Subtle text enhancement */
+        text-shadow: 0 0 0.5px rgba(0,0,0,0.1);
+        
+        /* Optional: Add very subtle gradient text effect */
+        background: linear-gradient(to bottom, #000000, #1a1a1a);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Ensure clarity on different backgrounds */
+      @media (prefers-color-scheme: dark) {
+        .main-header {
+          text-shadow: 0 0 1px rgba(255,255,255,0.1);
+        }
+      }
+
+      /* Panel Layouts */
+      .side-panel {
+        flex: 1;
+        min-width: min(380px, 90vw);
+        max-width: min(500px, 90vw);
+        height: fit-content;
+        padding: clamp(10px, 1vw, 15px);
+        position: relative;
+      }
+
+      .center-panel {
+        flex: 0 0 auto;
+        width: min(450px, 90vw);
+        aspect-ratio: 1;
+        position: relative;
+        margin-top: 100px;
+        z-index: 1;
+      }
+
+      /* Canvas Styles */
+      .canvas-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      /* Title Boxes */
+      .feature-box {
+        padding: 9px 12px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .scm-ai-box {
+        background-color: #1B3A4B;
+        width: 180px;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      .scm-ai-box:hover {
+        box-shadow: 0 0 20px rgba(27, 58, 75, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .digital-acquisitions-box {
+        background-color: #00B67A;
+        width: 180px;
+        margin: 0 auto 15px auto;
+        display: block;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      .digital-acquisitions-box:hover {
+        box-shadow: 0 0 20px rgba(0, 182, 122, 0.5);
+        transform: translateY(-2px);
+      }
+
+      /* Common Text Styles */
+      .section-title {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 15px !important;
+        display: block;
+        padding-bottom: 8px !important;
+      }
+
+      /* List Styles */
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 4px;
+        line-height: 1.2;
+        font-size: 12px;
+      }
+
+      /* Platform Description */
+      .platform-description {
+        font-family: 'Michroma', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        color: #333333;
+        margin: 20px 0;
+        padding: 0 15px;
+        line-height: 1.3;
+        text-align: left;
+        letter-spacing: 1px;
+        text-transform: none;
+      }
+
+      /* Common Box Styles */
+      .key-features-box,
+      .capabilities-box,
+      .benefits-box,
+      .feature-item-box {
+        width: 100%;
+        margin: 0 0 20px 0;
+        padding: 12px 25px;
+        background-color: #ffffff;
+        border: none;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+        z-index: 3;
+        font-size: 12px;
+        line-height: 1.2;
+        box-sizing: border-box;
+        text-align: justify;
+        text-justify: inter-word;
+        cursor: text;
+        pointer-events: auto;
+      }
+
+      .feature-item-box strong {
+        display: inline;
+        margin-right: 5px;
+      }
+
+      /* Hover Effects */
+      .key-features-box:hover,
+      .capabilities-box:hover,
+      .benefits-box:hover,
+      .feature-item-box:hover {
+        transform: translateY(-2px);
+        box-shadow: rgba(17, 17, 26, 0.3) 0px 4px 16px, 
+                    rgba(17, 17, 26, 0.2) 0px 8px 32px;
+        background-color: #ffffff;
+        cursor: text;
+      }
+
+      /* Text Justification */
+      .platform-description,
+      .key-features-box .feature-list li,
+      .capabilities-box .capabilities-list li,
+      .benefits-box .benefits-list li,
+      .feature-item-box {
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 1200px) {
+        .content-wrapper {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .side-panel {
+          width: 100%;
+          max-width: 600px;
+        }
+        
+        .center-panel {
+          width: 100%;
+          max-width: 600px;
+          margin: 30px 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-header {
+          position: relative;
+          margin-top: 20px;
+          margin-bottom: 30px;
+        }
+        
+        .side-panel {
+          flex: 0 1 100%;
+          max-width: 100%;
+        }
+        
+        .feature-box {
+          width: 100%;
+        }
+      }
+
+      /* Ensure text stays readable at all zoom levels */
+      @media screen and (max-width: 480px) {
+        .platform-description,
+        .feature-item-box,
+        .key-features-box li,
+        .capabilities-box li,
+        .benefits-box li {
+          font-size: max(12px, 0.8em);
+        }
+      }
+
+      .horizontal-line {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        width: 93%;
+        height: 1.5px;
+        background-color: #808080;
+        transform: translateX(-50%);
+      }
+
+      .highlight-ai  {
+        font-weight: 900;
+        color: #00FFFF !important;
+        -webkit-text-fill-color: #191970;
+      }
+
+      .highlight-supply {
+        font-weight: 900;
+        color: #FF4500 !important;
+        -webkit-text-fill-color: #FF4500;
+
+      }
+
+      .highlight-ledger {
+        font-weight: 900;
+        color: #00B67A !important;
+        -webkit-text-fill-color: #00B67A;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="horizontal-line"></div>
+      <div class="main-header">
+        Amp up your <span class="highlight-supply">SUPPLY CHAIN</span> with mind-blowing intelligence and bulletproof security powered by <span class="highlight-ai">Multi-Agent AI</span> systems and an ultra-secure <span class="highlight-ledger">Digital Ledger</span> ecosystem!
+      </div>
+
+      <div class="content-wrapper">
+        <!-- Left Panel -->
+        <div class="side-panel">
+          <div class="feature-box scm-ai-box" (click)="navigateToSCMAI()">SCM-AI</div>
+          <div class="platform-description">
+            Our Supply Chain Planning and Analytics Platform is an all-in-one solution designed to transform the supply chain ecosystem for industries such as aerospace, defense, satellite manufacturing, and more. This cutting-edge platform empowers businesses to seamlessly manage their entire supply chain, ensuring greater visibility, precision, and proactive management of risks and opportunities.
+          </div>
+
+          <div class="key-features-box">
+            <div class="section-title">Key Features</div>
+            <ul class="feature-list">
+              <li><strong>Comprehensive Risk Management</strong> Identify, assess, and mitigate risks while leveraging insights to turn potential threats into strategic opportunities.</li>
+              <li><strong>Advanced Sales and Demand Forecasting</strong> Utilize AI-driven predictive analytics to anticipate future demand, enabling better sales planning and reducing uncertainty.</li>
+              <li><strong>Enhanced Inventory Management</strong> Optimize inventory levels with real-time data analytics, ensuring efficient stock management to avoid shortages or overstocking.</li>
+              <li><strong>Streamlined Logistics and Operations</strong> Plan and execute logistics with accuracy, reducing lead times and operational inefficiencies.</li>
+              <li><strong>Predictive Maintenance & Asset Management</strong> Deploy predictive algorithms to maintain and manage assets proactively, reducing downtime and extending the life cycle of critical equipment.</li>
+            </ul>
+          </div>
+
+          <div class="capabilities-box">
+            <div class="section-title">Capabilities</div>
+            <ul class="capabilities-list">
+              <li><strong>Data Integration and Digitization</strong> Connect and extract data from multiple sources, converting it into digital formats using tools such as OCR (Optical Character Recognition).</li>
+              <li><strong>SCM Scenario & Workflow Generation</strong> Build detailed SCM workflows with predictive, diagnostic, prescriptive, descriptive, subscriptive, and generative analytics to address every aspect of the supply chain lifecycle.</li>
+              <li><strong>Supply Chain Planning with Blockchain Security</strong> Plan and monitor supply chain activities with the highest level of security using encrypted digital ledgers and blockchain technology.</li>
+            </ul>
+          </div>
+
+          <div class="benefits-box">
+            <div class="section-title">Benefits</div>
+            <ul class="benefits-list">
+              <li><strong>Increased Visibility and Control</strong> Real-time insights provide full visibility across the supply chain, facilitating faster and data-driven decision-making.</li>
+              <li><strong>Enhanced Efficiency</strong> Reduce operational inefficiencies and optimize resource allocation by automating workflows and generating insights.</li>
+              <li><strong>Improved Security and Compliance</strong> Safeguard sensitive data and transactions with blockchain-backed systems.</li>
+              <li><strong>Resilient and Transparent Operations</strong> Achieve operational resilience with blockchain-driven insights, enhancing supplier reliability and project accountability.</li>
+              <li><strong>Scalable and Adaptable Platform</strong> A versatile tool that adapts to different manufacturing scales, from small custom projects to extensive production lines.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Center Panel -->
+        <div class="center-panel">
+          <div class="canvas-container">
+            <canvas id="visoCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="side-panel">
+          <div class="feature-box digital-acquisitions-box" (click)="navigateToDigitalAcquisitions()">DIGITAL ACQUISITIONS</div>
+          
+          <div class="feature-item-box">
+            <strong>On-Demand Manufacturing Simplified</strong>Streamline your production processes with "Digital Acquisitions," designed to facilitate on-demand manufacturing for Tier-1 and below suppliers and manufacturers.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Secure Contract Management</strong>Utilize encrypted digital ledgers and blockchain technology to manage and secure contracts for your manufacturing projects with enhanced transparency.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>End-to-End Supply Chain Visibility</strong>Gain comprehensive oversight of your supply chain operations powered by AI and blockchain, ensuring accuracy and traceability throughout the process.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Dual-Use Applications</strong>Tailored for critical industries including aerospace, defense, satellite manufacturing, product design, and additive manufacturing, supporting both commercial and defense sector needs.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Enhanced Compliance and Security</strong>Ensure that all contracts and supply chain activities meet stringent industry standards with the reliability of blockchain-enabled data tracking.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Optimized for Critical Projects</strong>Ideal for complex and high-value projects where precision, trust, and on-demand scalability are essential.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Next-Gen Technology Integration</strong>Leverage state-of-the-art AI solutions integrated with blockchain to optimize supply chain decision-making and resource allocation.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Support for Strategic Industries</strong>Built with the specific needs of strategic industries in mind, facilitating projects from prototyping to large-scale manufacturing.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Resilient and Transparent Operations</strong>Achieve operational resilience with blockchain-driven insights, enhancing supplier reliability and project accountability.
+          </div>
+
+          <div class="feature-item-box">
+            <strong>Scalable and Adaptable Platform</strong>A versatile tool that adapts to different manufacturing scales, from small custom projects to extensive production lines.
+          </div>
+        </div>
+      </div> <!-- Closes content-wrapper -->
+    </div> <!-- Closes page-container -->
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="form-group">
+      <label for="fname">First Name:</label>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        required
+        [(ngModel)]="firstName"
+        placeholder="Enter your first name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name:</label>
+      <input
+        type="text"
+        id="lname"
+        name="lname"
+        required
+        [(ngModel)]="lastName"
+        placeholder="Enter your last name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="primary-email">Primary Email:</label>
+      <input
+        type="email"
+        id="primary-email"
+        name="primary-email"
+        required
+        [(ngModel)]="primaryEmail"
+        placeholder="Enter your primary email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="secondary-email">Secondary Email:</label>
+      <input
+        type="email"
+        id="secondary-email"
+        name="secondary-email"
+        [(ngModel)]="secondaryEmail"
+        placeholder="Enter your secondary email"
+      />
+    </div>
+    <div class="form-group phone">
+      <label for="phone">Phone Number:</label>
+      <!-- <ngx-intl-tel-input
+        [cssClass]="'form-control'"
+        [preferredCountries]="['us', 'gb']"
+        [enableAutoCountrySelect]="true"
+        [(ngModel)]="phone"
+        [onlyCountries]="['us', 'gb', 'fr', 'de']"
+        [numberFormat]="'national'"
+        [selectFirstCountry]="true"
+        [separateDialCode]="true"
+      ></ngx-intl-tel-input> -->
+    </div>
+    <div class="form-group">
+      <label for="current-employer">Current Employer:</label>
+      <input
+        type="text"
+        id="current-employer"
+        name="current-employer"
+        [(ngModel)]="currentEmployer"
+        placeholder="Enter your current employer"
+      />
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="title"
+        placeholder="Enter your title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="years">Years at Position:</label>
+      <input
+        type="number"
+        id="years"
+        name="years"
+        [(ngModel)]="yearsAtPosition"
+        placeholder="Enter years at position"
+      />
+    </div>
+    <div class="form-group">
+      <label for="sector">Sector:</label>
+      <input
+        type="text"
+        id="sector"
+        name="sector"
+        [(ngModel)]="sector"
+        placeholder="Enter your sector"
+      />
+    </div>
+    <div class="form-group">
+      <label for="business-type">Business Type:</label>
+      <input
+        type="text"
+        id="business-type"
+        name="business-type"
+        [(ngModel)]="businessType"
+        placeholder="Enter your business type"
+      />
+    </div>
+  </div>
+  <button type="submit" class="save-button">Save Personal Info</button>
+</form>

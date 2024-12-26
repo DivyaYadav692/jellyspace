@@ -1,0 +1,122 @@
+<!-- <section class="ftco-section">
+    <div class="container">
+            <div class="row w-100 m-0 p-0">
+            <div class="col-md-12 col-lg-12 m-0 p-0">
+                <div class="login-wrap d-md-flex">
+                    <div class="wrap p-4 p-md-5">
+                        <h4 class="font-style-family">Service Categories</h4>
+                            <div class="row m-0 p-0">
+                                <div class="col-lg-12 m-0 p-0">
+                                    <div class="card">
+                                        <div class="card-header font-style-family"><b>Select a category</b></div>
+                                        <ul class="list-group list-group-flush scrollable">
+                                            <li class="list-group-item ml-3" *ngFor="let item of serviceList">
+                                                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something">
+                                                <label class="skill-text pl-2 font-style-family">
+                                                    {{item.label}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="text-align: left;">
+                                    <button type="button" class="btn btn-dark" routerLink="/primary-business"
+                                    style="color: white !important;">Previous</button>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <button type="submit" class="btn btn-primary rounded-sm ms-3" (click)="goToCompanySize()">
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<section class="w-100 m-0 p-0">
+    <div class="w-100 m-0 p-0">
+      <div class="row" style="margin-top: 70px;">
+        <div class="col-md-2">
+          <div class="col" style="top:400px">
+            <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()"
+            style="color: white !important;">Previous</button>
+        </div>
+        </div>
+        <div class="col-md-8">
+          <div class="m-0 p-0" style="text-align: center;">
+            <h5 class="pl-2 font-style-family" style="font-weight: 600;">Service Categories:
+            </h5>
+          </div>
+          <div class="card">
+            <div class="card-header font-style-family"><b>Select a category</b></div>
+              <ul class="list-group list-group-flush scrollable">
+                <li class="list-group-item ml-3" *ngFor="let item of serviceList; let i = index;">
+                    <input class="form-check-input" (change)="selectValues(i)" type="checkbox" [checked]="item.isChecked" id="check1" name="option1">
+                    <label class="skill-text pl-2 font-style-family">
+                        {{item.label}}
+                    </label>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+          <div class="col" style="top:400px;">
+            <button type="submit" [disabled]="isdisable" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goToCompanySize()">
+                Next
+            </button>
+          </div>
+        </div>
+      </div>
+        <!-- <div class="row wrap m-0 p-0" style="height: 100vh;">
+            <div class="row m-0 p-0">
+                <div class="col-3 m-0 p-0">
+                    <p class="pl-2 font-style-family" style="font-weight: 600;">Service Categories:
+                    </p>
+                </div>
+                <div class="col-1 m-0 p-0"></div>
+            </div>
+            <div class="row mb-4 m-0 p-0">
+                <div class="col-lg-12 m-0 p-1">
+                    <div class="card">
+                        <div class="card-header font-style-family"><b>Select a category</b></div>
+                        <ul class="list-group list-group-flush scrollable">
+                            <li class="list-group-item ml-3" *ngFor="let item of serviceList; let i = index;">
+                                <input class="form-check-input" (change)="selectValues(i)" type="checkbox" [checked]="item.isChecked" id="check1" name="option1">
+                                <label class="skill-text pl-2 font-style-family">
+                                    {{item.label}}
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col" style="text-align: left;">
+                    <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()"
+                    style="color: white !important;">Previous</button>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <button type="submit" [disabled]="isdisable" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goToCompanySize()">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+
+
+            <!-- <div class="row" *ngFor="let data of businessList">
+                <div class="col-2"></div>
+                <div class="col-3"><p class="">{{data.label}}</p></div>
+                <div class="col-1">
+                    <input type="radio" (click)="goToServices(data.label)" class="form-check-input" id="radio1"
+                    name="optradio" value="option1">
+                </div>
+            </div> -->

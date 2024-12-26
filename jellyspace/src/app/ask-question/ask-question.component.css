@@ -1,0 +1,15 @@
+.content-editor {
+    height: 15rem;
+}
+
+.card-header {
+    font-family: "Open Sans", sans-serif;
+    color: #444444 !important;
+    font-size: smaller;
+}
+
+.card-text {
+    font-family: "Open Sans", sans-serif;
+    color: #444444 !important;
+    font-size: smaller;
+}

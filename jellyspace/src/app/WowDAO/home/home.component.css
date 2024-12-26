@@ -1,0 +1,358 @@
+/* Main navbar container */
+.navbar {
+  display: flex;
+  justify-content: flex-end; /* Align everything to the right */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+/* Navigation list */
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Navigation item */
+.nav-item {
+  margin-right: 0.5rem; /* Space between icons */
+}
+
+/* Navigation link with icon */
+.nav-link.icon-link {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  color: #6c757d;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+/* Icon styling */
+.nav-link.icon-link img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Hover effects */
+.nav-link.icon-link:hover {
+  color: #343a40;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  transform: scale(1.1);
+}
+
+/* Active state */
+.nav-link.icon-link.active {
+  color: #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-item {
+    margin-right: 0.5rem;
+  }
+  
+  .nav-link.icon-link {
+    padding: 0.2rem;
+  }
+  
+  .nav-link.icon-link img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.btn-custom {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  color: #212529;
+  margin-right: 9px; /* Adds space to the right of each button */
+  padding: 0.375rem 0.75rem; /* Ensure consistent padding */
+}
+
+.btn-custom:hover, .btn-custom.active {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  color: #212529;
+}
+
+.dropdown-menu {
+  width: 180px;
+  height: 260px;
+  border-radius: 15px;
+  border: 1px solid #8f8f8f;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  margin-top: 10px; /* Shift down */
+  margin-left: 10px; /* Shift right */
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.bi-chevron-right {
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.dropdown-item:hover {
+  background-color: #f0efef;
+  border-radius: 5px;
+}
+
+.dropdown-icon {
+  width: 23px;  /* Adjust this value as needed */
+  height: 23px; /* Adjust this value as needed */
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+/* Add this to your existing CSS */
+.btn-custom::after {
+  display: none;
+}
+
+.chart-options-panel {
+  position: fixed;
+  top: 60px; /* Adjust as needed */
+  left: 220px; /* Adjust as needed */
+  width: 300px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  z-index: 1050;
+}
+
+.chart-options-panel.show {
+  display: block;
+}
+
+/* Main dropdown positioning and animation */
+.dropdown-menu.submenu {
+  min-width: 420px;
+  height: 600px;
+  position: absolute;
+  left: 100%; /* Positions the submenu to the right of the Chart button */
+  top: 0;     /* Aligns with the top of the Chart button */
+  margin-left: 15px; /* Small gap between parent menu and submenu */
+  transform-origin: top left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Show state when dropdown is active */
+.dropdown-menu.submenu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Container styling */
+
+
+/* Animation for smooth appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation when showing */
+.dropdown-menu.submenu.show {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Ensure the parent dropdown stays open when submenu is active */
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Optional: Add backdrop when dropdown is open */
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+/* Update the CSS for proper visibility and transitions */
+.additional-charts {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.additional-charts.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Style for the view more button */
+.view-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #0066ff; /* Changed to blue */
+  font-size: 11px;
+  padding: 6px 16px;
+  min-height: 24px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+/* Optional: Hover state */
+.view-more:hover {
+  color: #0052cc; /* Slightly darker blue on hover */
+}
+
+/* Style for the additional chart items */
+.additional-charts .dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 420px;
+  margin-top: -570px;
+  border: none;
+  background: white;
+  width: 100%;
+  cursor: pointer;
+  gap: 20px;
+  min-height: 90px;
+}
+
+/* Additional Charts Dropdown Styles */
+.additional-submenu {
+  min-width: 500px;
+  height: 600px;
+  position: absolute;
+  left: calc(100% + 10px); /* Position it right of the first submenu */
+  top: 0;
+  background: white;
+  border: black 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+  z-index: 1001;
+  display: none;
+}
+
+/* Show state for additional submenu */
+.additional-submenu.show {
+  display: block;
+}
+
+/* Additional submenu item styles */
+.additional-submenu .dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  gap: 10px; /* Reduced gap between icon and content */
+  min-height: 30px; /* Reduced minimum height */
+}
+
+/* Icon styles for additional submenu */
+.additional-submenu .dropdown-icon {
+  font-size: 14px;
+  width: 16px;
+  margin-top: 2px;
+}
+
+/* Content container styles */
+.additional-submenu .dropdown-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Space between title and description */
+}
+
+/* Title styles */
+.additional-submenu .dropdown-content .title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap; /* Keep title in one line */
+}
+
+/* Description styles */
+.additional-submenu .dropdown-content .description {
+  display: block;
+  color: #6c757d;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 0;
+  white-space: normal; /* Allow text to wrap */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-width: 420px; /* Control width of description */
+}
+
+/* Hover effect */
+.additional-submenu .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Optional: Animation for smooth appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.additional-submenu.show {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Button container */
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 16px;
+  gap: 10px;
+  min-height: 48px; /* Adjust height to accommodate two lines */
+}
+
+/* Icon alignment */
+.dropdown-icon {
+  font-size: 14px;
+  width: 16px;
+  margin-top: 4px; /* Align with title */
+  flex-shrink: 0;
+}

@@ -1,0 +1,1414 @@
+<div id="wrapper" class="d-flex" [class.collapsed]="isSidebarCollapsed">
+  <!-- Sidebar -->
+  <nav id="sidebar" [class.collapsed]="isSidebarCollapsed" class="sidebar bg-gradient-primary text-white d-flex flex-column vh-100 p-3">
+    <a class="sidebar-brand d-flex align-items-center mb-4 text-white text-decoration-none" routerLink="/home">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-space-shuttle"></i>
+      </div>
+    </a>
+    <hr class="sidebar-divider my-2 text-white" [class.d-none]="isSidebarCollapsed" />
+    
+    <!-- Workflows Heading -->
+    <h5 class="text-black" [class.d-none]="isSidebarCollapsed">Workflows</h5>
+    
+    <!-- Dropdown Menu -->
+    <div [class.d-none]="isSidebarCollapsed">
+      <li class="nav-item dropdown">
+        <a class="nav-link text-black dropdown-toggle" 
+           href="#" 
+           role="button" 
+           data-bs-toggle="dropdown" 
+           aria-expanded="false">
+          Select Analytics
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">ROT - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">ROT - Experiments</a></li>
+          <li><a class="dropdown-item" href="#">Demand - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">Demand - Experiments</a></li>
+          <li><a class="dropdown-item" href="#">Sales - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">Sales - Experiments</a></li>
+          <li><a class="dropdown-item" href="#">Logistics & Optimization - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">Logistics & Optimization - Experiments</a></li>
+          <li><a class="dropdown-item" href="#">Predictive Maintenance - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">Predictive Maintenance - Experiments</a></li>
+          <li><a class="dropdown-item" href="#">Asset Management - Analytics</a></li>
+          <li><a class="dropdown-item" href="#">Asset Management - Experiments</a></li>
+        </ul>
+      </li>
+    </div>
+
+    <!-- Navigation Items -->
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/overview" routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'Overview'}" 
+           (click)="selectSection('overview')">
+          <i class="fas fa-tachometer-alt"></i>
+          <span [class.d-none]="isSidebarCollapsed">Overview</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" routerLink="/cohorts" routerLinkActive="active"
+           [ngClass]="{'active': currentSection === 'Cohorts'}" 
+           (click)="selectSection('cohorts')">
+          <i class="fas fa-users"></i>
+          <span [class.d-none]="isSidebarCollapsed">Cohorts</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           routerLink="/syncs" 
+           routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'Syncs'}" 
+           (click)="selectSection('syncs')">
+          <i class="fas fa-sync me-2"></i> Syncs
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           routerLink="/computations" 
+           routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'Computations'}" 
+           (click)="selectSection('computations')">
+          <i class="fas fa-calculator me-2"></i> Computations
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           routerLink="/predictions" 
+           routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'Predictions'}" 
+           (click)="selectSection('predictions')">
+          <i class="fas fa-chart-line me-2"></i> Predictions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           routerLink="/recommendations" 
+           routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'Recommendations'}" 
+           (click)="selectSection('recommendations')">
+          <i class="fas fa-thumbs-up me-2"></i> Recommendations
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           routerLink="/user-profile-api" 
+           routerLinkActive="active" 
+           [ngClass]="{'active': currentSection === 'User Profile API'}" 
+           (click)="selectSection('userProfileAPI')">
+          <i class="fas fa-user-cog me-2"></i> User Profile API
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- End of Sidebar -->
+
+  <!-- Move this outside the sidebar nav element -->
+  <button class="toggle-btn" [class.collapsed]="isSidebarCollapsed" (click)="toggleSidebar()">
+    <i class="fas" [class.fa-angle-right]="isSidebarCollapsed" [class.fa-angle-left]="!isSidebarCollapsed"></i>
+  </button>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" [class.expanded]="isSidebarCollapsed" class="flex-grow-1 d-flex flex-column">
+    <div class="p-4">
+      <div class="d-flex align-items-center">
+        <h2 class="mb-0" [ngClass]="{'widgets-heading': currentSection === 'Cohorts', 'smaller-heading': currentSection !== 'Cohorts'}">
+          {{ currentSection === 'Cohorts' ? 'Widgets & Nodes' : currentSection }}
+        </h2>
+        <div *ngIf="currentSection === 'Cohorts'" class="vertical-divider mx-3"></div>
+      </div>
+
+      <!-- Cohorts Section Content -->
+      <div *ngIf="currentSection === 'Cohorts'">
+        <!-- Widgets Grid -->
+        <div class="widgets-grid">
+          <div class="widget-item" 
+               *ngFor="let widget of widgets" 
+               draggable="true"
+               (dragstart)="onWidgetDragStart($event, widget)"
+               (dragend)="onWidgetDragEnd($event)"
+               (click)="onWidgetClick(widget)">
+            <div class="widget-icon">
+              <img [src]="widget.image" [alt]="widget.name">
+            </div>
+            <div class="widget-name">{{ widget.name }}</div>
+          </div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="menu-section">
+          <!-- Input Menu Item -->
+          <div class="menu-item" (click)="toggleInput()">
+            <div class="menu-icon">
+              <i class="fas fa-sign-in-alt"></i>
+            </div>
+            <div class="menu-name">Input</div>
+            <i class="fas fa-chevron-right" [class.rotated]="isInputExpanded"></i>
+          </div>
+
+          <!-- Input Items Submenu -->
+          <div class="submenu-items" [class.expanded]="isInputExpanded">
+            <div class="input-item" *ngFor="let item of inputItems" 
+                 draggable="true"
+                 (dragstart)="onNativeDragStart($event, item)"
+                 (dragend)="onNativeDragEnd($event, item)"
+                 (click)="onWidgetClick(item)">
+              <div class="item-border" [style.background-color]="item.borderColor"></div>
+              <div class="item-content">
+                <div class="item-info">
+                  <span class="item-name">{{ item.name }}</span>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Models, Tools, and API Builder menu items -->
+          <div class="menu-item" *ngFor="let menuItem of menuItems.slice(1, 4)" (click)="onMenuItemClick(menuItem)">
+            <div class="menu-icon">
+              <i [class]="menuItem.icon"></i>
+            </div>
+            <div class="menu-name">{{ menuItem.name }}</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+
+          <!-- Integration Menu Item -->
+          <div class="menu-item" (click)="toggleIntegration()">
+            <div class="menu-icon">
+              <i class="fas fa-plug"></i>
+            </div>
+            <div class="menu-name">Integration</div>
+            <i class="fas fa-chevron-right" [class.rotated]="isIntegrationExpanded"></i>
+          </div>
+
+          <!-- Integration Items Submenu -->
+          <div class="submenu-items" [class.expanded]="isIntegrationExpanded">
+            <div class="input-item" *ngFor="let item of integrationItems" 
+                 draggable="true"
+                 (dragstart)="onNativeDragStart($event, item)"
+                 (dragend)="onNativeDragEnd($event, item)"
+                 (click)="onWidgetClick(item)">
+              <div class="item-border" [style.background-color]="item.borderColor"></div>
+              <div class="item-content">
+                <div class="item-info">
+                  <span class="item-name">{{ item.name }}</span>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas-area" 
+             [class.collapsed]="isSidebarCollapsed"
+             (dragover)="onDragOver($event)"
+             (drop)="onDrop($event)">
+          
+          <!-- SVG Container for wires -->
+          <svg #svgContainer class="wire-container">
+            <g *ngFor="let wire of wireConnections">
+              <path [attr.d]="getWirePath(wire)" 
+                    class="wire-path">
+              </path>
+            </g>
+            
+            <!-- Temporary wire while dragging -->
+            <path *ngIf="isDraggingWire"
+                  class="wire-path temp-wire-path"
+                  [attr.d]="getTempWirePath()">
+            </path>
+          </svg>
+
+          <!-- Placed Widgets -->
+          <div *ngFor="let widget of placedWidgets; let i = index" 
+               class="placed-widget"
+               [attr.data-widget-id]="widget.id"
+               [style.left.px]="widget.position.x"
+               [style.top.px]="widget.position.y"
+               cdkDrag
+               [cdkDragData]="widget"
+               (cdkDragStarted)="onDragStarted($event)"
+               (cdkDragEnded)="onDragEnded($event, widget)"
+               (cdkDragMoved)="onDragMoved($event)">
+            
+            <!-- Widget Controls -->
+            <div class="widget-controls">
+              <button class="control-btn" (click)="runNode(widget)" data-tooltip="Run">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="control-btn" (click)="deactivateWidget(widget)" data-tooltip="Deactivate">
+                <i class="fas fa-power-off"></i>
+              </button>
+              <button class="control-btn" (click)="deleteWidget(widget)" data-tooltip="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+              <button class="control-btn" (click)="onMoreClick($event, widget)" data-tooltip="More">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+
+            <!-- Input Ports -->
+            <div class="ports ports-input">
+              <div *ngFor="let input of widget.inputs"
+                   class="port"
+                   [class.has-value]="input.value"
+                   [attr.data-port-id]="input.id"
+                   [attr.data-port-type]="'input'"
+                   (mousedown)="onPortMouseDown($event, widget.id, input, true)"
+                   (mouseup)="onPortMouseUp($event, widget.id, input, true)">
+                <div *ngIf="input.value" class="port-value input-value">
+                  {{ input.message }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget Content -->
+            <div class="widget-content">
+              <div class="widget-icon">
+                <img [src]="widget.image" [alt]="widget.name">
+              </div>
+              <div class="widget-name">{{ widget.name }}</div>
+            </div>
+
+            <!-- Output Ports -->
+            <div class="ports ports-output">
+              <div *ngFor="let output of widget.outputs"
+                   class="port"
+                   [class.has-value]="output.value"
+                   [attr.data-port-id]="output.id"
+                   [attr.data-port-type]="'output'"
+                   (mousedown)="onPortMouseDown($event, widget.id, output, false)"
+                   (mouseup)="onPortMouseUp($event, widget.id, output, false)">
+                <div *ngIf="output.value" class="port-value output-value">
+                  {{ output.message }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>{{ sectionContent }}</p>
+      </div>
+
+
+  <!-- End of Content Wrapper -->
+
+  <!-- Right Sidebar -->
+  <div id="right-sidebar" [class.expanded]="isRightSidebarExpanded" *ngIf="currentSection === 'Cohorts'">
+    <div class="sidebar-header">
+      <div class="tab-buttons">
+        <button [class.active]="activeTab === 'data'" (click)="setActiveTab('data')">
+          <i class="fas fa-database"></i> Data
+        </button>
+        <button [class.active]="activeTab === 'outputs'" (click)="setActiveTab('outputs')">
+          <i class="fas fa-sign-out-alt"></i> Outputs
+        </button>
+        <button [class.active]="activeTab === 'selected'" (click)="setActiveTab('selected')">
+          <i class="fas fa-check-square"></i> Selected
+        </button>
+        <button [class.active]="activeTab === 'api'" (click)="setActiveTab('api')">
+          <i class="fas fa-code"></i> API Builder
+        </button>
+      </div>
+    </div>
+    
+    <div class="sidebar-content">
+      <!-- Data Tab Content -->
+      <div *ngIf="activeTab === 'data'" class="tab-content">
+        <div class="search-container">
+          <input type="text" placeholder="Search nodes" class="search-input">
+          <div class="search-options">
+            <label>
+              <input type="checkbox" checked>
+              <span>Search in IDs</span>
+            </label>
+            <label>
+              <input type="checkbox" checked>
+              <span>Search in Output</span>
+            </label>
+            <label>
+              <input type="checkbox" checked>
+              <span>Search in Node Name</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outputs Tab Content -->
+      <div *ngIf="activeTab === 'outputs'" class="tab-content">
+        <div class="outputs-container">
+          <div *ngFor="let output of widgetOutputs" class="output-item">
+            <div class="output-header">
+              <span class="widget-name">{{ output.widgetName }}</span>
+              <span class="timestamp">{{ output.timestamp | date:'short' }}</span>
+            </div>
+            <div class="output-value">{{ output.value }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected Tab Content -->
+      <div *ngIf="activeTab === 'selected'" class="tab-content">
+        <div *ngIf="selectedWidgets.length > 0" class="selected-widgets-container">
+          <!-- Show count when multiple widgets are selected -->
+          <div *ngIf="isMultiSelect" class="selection-count">
+            {{ selectedWidgets.length }} widgets selected
+          </div>
+          
+          <!-- Show widget info for each selected widget -->
+          <div *ngFor="let widget of selectedWidgets" class="selected-widget-info">
+            <h4>{{ widget.name }}</h4>
+            <div class="widget-details">
+              <p>ID: {{ widget.id }}</p>
+              <p>Type: {{ widget.type }}</p>
+              <p>Status: {{ widget.isActive ? 'Active' : 'Inactive' }}</p>
+              <!-- Add more widget details as needed -->
+              <div *ngIf="(widget?.inputs ?? []).length > 0" class="port-details">
+                <p>Inputs:</p>
+                <ul>
+                  <li *ngFor="let input of widget.inputs">
+                    {{ input.name }}: {{ input.value || 'No value' }}
+                  </li>
+                </ul>
+              </div>
+              <div *ngIf="(widget?.outputs ?? []).length > 0" class="port-details">
+                <p>Outputs:</p>
+                <ul>
+                  <li *ngFor="let output of widget.outputs">
+                    {{ output.name }}: {{ output.value || 'No value' }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Show message when no widgets are selected -->
+        <div *ngIf="selectedWidgets.length === 0" class="no-selection-message">
+          <p>No widgets selected</p>
+          <p>Click on a widget to view its details</p>
+        </div>
+      </div>
+
+      <!-- API Builder Tab Content -->
+      <div *ngIf="activeTab === 'api'" class="tab-content">
+        <div class="api-builder">
+          <h4>API Configuration</h4>
+          <!-- Add your API builder content here -->
+        </div>
+      </div>
+    </div>
+
+    <button class="toggle-right-sidebar" (click)="toggleRightSidebar()">
+      <i class="fas" [class.fa-angle-double-left]="isRightSidebarExpanded" [class.fa-angle-double-right]="!isRightSidebarExpanded"></i>
+    </button>
+  </div>
+
+  <!-- Run Button -->
+  <button class="run-button" 
+          [class.sidebar-collapsed]="!isRightSidebarExpanded" 
+          *ngIf="currentSection === 'Cohorts'">
+    <i class="fas fa-play"></i>
+    Run All
+  </button>
+
+  <!-- Context Menu -->
+  <div class="context-menu" 
+       *ngIf="activeContextMenu !== null" 
+       [style.left.px]="contextMenuPosition.x" 
+       [style.top.px]="contextMenuPosition.y">
+    <div class="menu-item">
+      <span>Open...</span>
+      <span class="shortcut">↵</span>
+    </div>
+    <div class="menu-item">
+      <span>Test step</span>
+      <span class="shortcut">F2</span>
+    </div>
+    <div class="menu-item">
+      <span>Rename</span>
+      <span class="shortcut">D</span>
+    </div>
+    <div class="menu-item">
+      <span>Activate</span>
+      <span class="shortcut">Ctrl+A</span>
+    </div>
+    <div class="menu-item">
+      <span>Deactivate</span>
+      <span class="shortcut">Ctrl+D</span>
+    </div>
+    <div class="menu-item">
+      <span>Delete</span>
+      <span class="shortcut">Del</span>
+    </div>
+    <div class="menu-item">
+      <span>Select All</span>
+      <span class="shortcut">Ctrl+A</span>
+    </div>
+    <div class="menu-item">
+      <span>Clear Selection</span>
+      <span class="shortcut">Ctrl+Shift+A</span>
+    </div>
+  </div>
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+<style>
+/* Sidebar base styles */
+#sidebar {
+  min-width: 280px;          /* Increased width */
+  width: 280px;              /* Fixed width */
+  border-right: 1px solid #e0e0e0;  /* Light grey border */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);  /* Subtle shadow */
+  position: fixed;           /* Make sidebar fixed */
+  height: 100vh;            /* Full height */
+  overflow-y: auto;         /* Scrollable if content is too long */
+  z-index: 1000;           /* Ensure sidebar stays on top */
+  transition: all 0.3s ease;
+}
+
+#sidebar.collapsed {
+  min-width: 0;
+  width: 0;
+  transform: translateX(-280px);
+  visibility: hidden;
+}
+
+#sidebar.collapsed .nav-link span {
+  display: none;
+}
+
+#sidebar.collapsed .sidebar-brand-text {
+  display: none;
+}
+
+/* Content wrapper adjustment */
+#content-wrapper {
+  margin-left: 280px;      /* Match sidebar width */
+  min-height: 100vh;       /* Full height */
+  width: calc(100% - 280px);  /* Remaining width */
+  transition: all 0.3s ease;
+}
+
+#content-wrapper.expanded {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Existing dropdown styles with adjustments */
+.dropdown-menu {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 0.25rem;
+  width: 250px;           /* Slightly smaller than sidebar for padding */
+  padding: 0.5rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: black;
+  font-size: 0.9rem;
+  white-space: normal;
+  line-height: 1.2;
+  margin: 2px 0;
+}
+
+
+.sidebar h5 {
+  margin-top: -80px;
+  margin-bottom: -10px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  padding: 0 10px;
+}
+
+/* Adjust sidebar padding and spacing */
+
+.sidebar .nav-item {
+  margin-bottom: 5px; /* Space between menu items */
+  padding: 0 10px;
+  text-align: left;
+}
+
+.nav-link.active {
+  background-color: #e2e6ea;  /* Darker grey for active state */
+  color: #1a202c;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);  /* Subtle inset shadow */
+}
+
+.nav-link {
+  transition: all 0.2s ease;
+  padding: 10px 20px;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link i {
+  min-width: 20px;
+  text-align: center;
+}
+
+.nav-link:hover:not(.active) {
+  background-color: #f0f2f4;  /* Medium grey for hover */
+  border-radius: 6px;
+  cursor: pointer;
+  color: #2d3748;
+}
+
+.btn-black {
+  background-color: black; /* Set background color to black */
+  color: white; /* Set text color to white */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-black:hover {
+  background-color: #333; /* Darker shade on hover */
+  color: white; /* Ensure text color remains white on hover */
+}
+
+.dropdown-menu {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.dropdown-item {
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f2f4;  /* Match hover color */
+  color: #2d3748;
+}
+
+.dropdown-item.active {
+  background-color: #e2e6ea;  /* Match active color */
+  font-weight: 500;
+}
+
+.dropdown-toggle::after {
+  float: right;
+  margin-top: 8px;
+}
+
+/* Dropdown button styling */
+.nav-link.dropdown-toggle {
+  background-color: white;
+  border: 1px solid #dee2e6;    /* Light grey border */
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 3px 0;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 3%;
+  left: 280px;
+  transform: translateY(-50%);
+  background: #e2e6ea;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.toggle-btn.collapsed {
+  left: 0;
+}
+
+.toggle-btn:hover {
+  background: #d1d5d9;
+}
+
+.smaller-heading {
+  font-size: 1.5rem;  /* Makes the text smaller than default h2 size */
+  font-weight: 400;   /* Makes the font slightly less bold */
+  position: fixed;  /* Keep text in normal flow */
+  z-index: 1;  /* Ensure text stays above divider if they overlap */
+}
+
+.vertical-divider {
+  height: 1400px;
+  width: 1px;
+  background-color: #dee2e6;
+  display: inline-block;
+  position: absolute;
+  left: 480px; /* Default position when sidebar is expanded */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+
+/* Add this new class for collapsed state */
+#wrapper.collapsed .vertical-divider {
+  left: 200px; /* Adjusted position when sidebar is collapsed */
+}
+
+.d-flex.align-items-center {
+  position: relative;
+  min-height: 50px;
+}
+
+.widgets-heading {
+  font-size: 1.2rem;  /* Even smaller than the smaller-heading */
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  
+}
+
+.canvas-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 220px);
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-left: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.placed-widget {
+  position: absolute;
+  background-color: white;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: move;
+  user-select: none;
+  z-index: 1;
+  width: 60px;  /* Even smaller width */
+  height: 60px; /* Even smaller height */
+}
+
+.placed-widget:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.widget-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.placed-widget .widget-icon {
+  width: 30px;  /* Smaller icon */
+  height: 30px;
+}
+
+.placed-widget .widget-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.placed-widget .widget-name {
+  font-size: 10px;
+  color: #4a5568;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.widget-controls {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  background: white;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.placed-widget:hover .widget-controls {
+  opacity: 1;
+}
+
+.control-btn {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: #f8f9fa;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  font-size: 12px;
+  padding: 0;
+  transition: all 0.2s ease;
+  margin: 0 2px;
+}
+
+.control-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  margin-bottom: 5px;
+}
+
+.control-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.action-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add a small arrow to the tooltip */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Make widget icons smaller */
+.widget-icon {
+  width: 30px;
+}
+
+.context-menu {
+  position: fixed;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.menu-item {
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
+
+.menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.menu-item.disabled {
+  color: #999;
+  cursor: default;
+}
+
+.menu-item.disabled:hover {
+  background-color: transparent;
+}
+
+.menu-item.delete {
+  color: #dc3545;
+}
+
+.shortcut {
+  color: #666;
+  font-size: 11px;
+  margin-left: 20px;
+}
+
+.menu-divider {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.workflow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.wires-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wire {
+  fill: none;
+  stroke: #999;
+  stroke-width: 2px;
+  pointer-events: all;
+}
+
+.wire.active {
+  stroke: #4CAF50;
+  stroke-width: 3px;
+}
+
+.nodes-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.node {
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  min-width: 200px;
+  z-index: 3;
+}
+
+.ports {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.port {
+  width: 12px;
+  height: 12px;
+  background-color: #4a90e2;
+  border: 2px solid #2171cd;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+}
+
+.ports-input {
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ports-output {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wire-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.wire-path {
+  stroke: #4a90e2;
+  stroke-width: 2;
+  fill: none;
+}
+
+.temp-wire-path {
+  stroke-dasharray: 4;
+}
+
+/* Add after line 321 */
+#right-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100vh;
+  background: #1e1e1e;
+  color: white;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+}
+
+#right-sidebar.expanded {
+  right: 0;
+}
+
+.sidebar-header {
+  padding: 0 0 20px 0;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 15px;
+  overflow-x: visible;
+}
+
+.tab-buttons button {
+  flex: 1;
+  min-width: 80px;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.tab-buttons button i {
+  font-size: 14px;
+}
+
+.tab-buttons button.active {
+  color: #fff;
+  background: #333;
+  border-radius: 4px;
+}
+
+.tab-buttons button:hover:not(.active) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.search-container {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.search-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #888;
+  padding: 0 5px;
+}
+
+.search-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.search-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0078D4;
+}
+
+.toggle-right-sidebar {
+  position: absolute;
+  top: 50%;
+  left: -28px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 60px;
+  background: #1e1e1e;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  border: 1px solid #333;
+  border-right: none;
+}
+
+.toggle-right-sidebar:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.toggle-right-sidebar i {
+  font-size: 18px;
+  color: #888;
+}
+
+.toggle-right-sidebar:hover i {
+  color: #fff;
+}
+
+.run-button {
+  position: fixed;
+  top: 20px;
+  right: 420px; /* Position relative to right sidebar */
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease; /* Add transition for smooth movement */
+}
+
+.run-button.sidebar-collapsed {
+  right: 20px; /* Move to right when sidebar is collapsed */
+}
+
+.run-button:hover {
+  background: #1976D2;
+}
+
+.port-value {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  transform: translateY(-50%);
+}
+
+.input-value {
+  left: 20px;
+}
+
+.output-value {
+  right: 20px;
+}
+
+.port.has-value {
+  background-color: #4CAF50;
+  border-color: #388E3C;
+}
+
+.wire-path.has-value {
+  stroke: #4CAF50;
+  stroke-width: 3;
+}
+
+/* Add these new hover states */
+.control-btn:hover {
+  background: #e9ecef;
+}
+
+/* Run button hover */
+.control-btn:hover .fa-play {
+  color: #28a745;
+}
+
+/* Deactivate button hover */
+.control-btn:hover .fa-power-off {
+  color: #ffc107;
+}
+
+/* Delete button hover */
+.control-btn:hover .fa-trash {
+  color: #dc3545;
+}
+
+/* More options button hover */
+.control-btn:hover .fa-ellipsis-v {
+  color: #17a2b8;
+}
+
+/* Base icon colors */
+.control-btn i {
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.section-content {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  color: #333;
+  font-weight: 500;
+}
+
+.card-text {
+  color: #666;
+}
+
+.tab-content {
+  padding: 16px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.outputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.output-item {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.widget-name {
+  font-weight: 500;
+  color: #0078D4;
+}
+
+.output-value {
+  font-family: monospace;
+  color: #fff;
+  background: #1e1e1e;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.selected-widget-info {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.widget-details {
+  margin-top: 12px;
+  color: #888;
+  font-size: 13px;
+}
+
+.widget-details p {
+  margin: 4px 0;
+}
+
+.selected-widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.selection-count {
+  background: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.selected-widget-info {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 16px;
+  border-left: 3px solid #0078D4;
+}
+
+.port-details {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #444;
+}
+
+.port-details ul {
+  list-style: none;
+  padding-left: 16px;
+  margin: 4px 0;
+}
+
+.port-details li {
+  color: #bbb;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.no-selection-message {
+  text-align: center;
+  padding: 32px 16px;
+  color: #888;
+}
+
+.no-selection-message p:first-child {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.no-selection-message p:last-child {
+  font-size: 14px;
+  color: #666;
+}
+
+.submenu-items {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.submenu-items.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+.input-item {
+  padding: 8px 16px 8px 40px;
+  cursor: pointer;
+  position: relative;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  display: block;
+}
+
+.input-item:hover {
+  background-color: #f5f5f5;
+}
+
+.item-border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.fa-ellipsis-h {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.input-item:hover .fa-ellipsis-h {
+  opacity: 1;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

@@ -1,0 +1,143 @@
+<section class="w-100 m-0 p-0 font-style-family">
+  <div class="main" style="margin-top: 60px">
+    <div class="container">
+      <div class="row">
+        <!-- Registration Header -->
+        <div class="col-12 text-center mb-4">
+          <h4 class="user-head mb-4">New User Registration</h4>
+        </div>
+
+        <!-- Registration Options -->
+        <div class="col-md-12 text-center">
+          <div class="registration-options mb-4">
+            <!-- Option 1: Space -->
+            <div
+              class="option d-flex align-items-center mb-4 p-3 border rounded shadow-sm mx-auto"
+              style="max-width: 400px"
+            >
+              <img
+                src="../../assets/org-icon.png"
+                width="65"
+                alt="Space Icon"
+                class="me-3"
+              />
+              <div class="form-check">
+                <input
+                  type="radio"
+                  (change)="onChangeValue('space', $event)"
+                  [checked]="isSpace"
+                  class="form-check-input"
+                  id="radio1"
+                  name="optradio"
+                  value="space"
+                />
+                <label class="form-check-label" for="radio1">Space</label>
+              </div>
+            </div>
+
+            <!-- Option 2: Avionics -->
+            <div
+              class="option d-flex align-items-center mb-4 p-3 border rounded shadow-sm mx-auto"
+              style="max-width: 400px"
+            >
+              <img
+                src="../../assets/client-icon.png"
+                width="65"
+                alt="Avionics Icon"
+                class="me-3"
+              />
+              <div class="form-check">
+                <input
+                  type="radio"
+                  (change)="onChangeValue('avionics', $event)"
+                  [checked]="isAvionics"
+                  class="form-check-input"
+                  id="radio2"
+                  name="optradio"
+                  value="avionics"
+                />
+                <label class="form-check-label" for="radio2">Avionics</label>
+              </div>
+            </div>
+
+            <!-- Option 3: Others -->
+            <div
+              class="option d-flex align-items-center mb-4 p-3 border rounded shadow-sm mx-auto"
+              style="max-width: 400px"
+            >
+              <img
+                src="../../assets/freelancer-icon.png"
+                width="65"
+                alt="Others Icon"
+                class="me-3"
+              />
+              <div class="form-check">
+                <input
+                  type="radio"
+                  (change)="onChangeValue('others', $event)"
+                  [checked]="isOthers"
+                  class="form-check-input"
+                  id="radio3"
+                  name="optradio"
+                  value="others"
+                />
+                <label class="form-check-label" for="radio3">Others</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Registration Actions -->
+          <div class="form-group mb-4">
+            <button
+              type="button"
+              [disabled]="!radiocheck"
+              class="btn btn-secondary me-2"
+              (click)="startFreeTrial()"
+            >
+              Start Free Trial
+            </button>
+            <button
+              type="button"
+              [disabled]="!radiocheck"
+              class="btn btn-primary"
+              (click)="CompleteRegistration()"
+            >
+              Complete Registration
+            </button>
+          </div>
+
+          <!-- Sign-in Link -->
+          <div class="signin text-center mb-4">
+            <p class="font-style-family mb-0">
+              <span class="font-style-family">Already have an account?</span>
+              <a
+                class="font-style-family"
+                href="signin"
+                routerLink="/signin"
+                class="sign-in-link"
+              >
+                Sign In
+              </a>
+            </p>
+          </div>
+
+          <!-- Information Text -->
+          <div class="font-style-family info-text text-start mb-4">
+            <p class="font-style-family">
+              <strong>Start Free Trial:</strong> Try our platform with basic
+              features.
+            </p>
+            <p class="font-style-family">
+              <strong>Complete Registration:</strong> Get full access for 6
+              months, then switch to the free version or opt for a paid plan.
+            </p>
+            <p class="font-style-family">
+              Upgrade to the premium plan for €5 to enjoy complete AI features
+              for 12 months.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

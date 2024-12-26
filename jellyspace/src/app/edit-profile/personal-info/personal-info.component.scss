@@ -1,0 +1,77 @@
+/* Form Container */
+.form-container {
+  display: grid;
+  margin-top: 25px;
+  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+  gap: 20px; /* Spacing between fields */
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  input,
+  ngx-intl-tel-input {
+    width: 100%;
+    padding: 12px;
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid #d3d3d3; /* Only bottom border */
+    border-radius: 0 0 6px 6px; /* Rounded bottom corners */
+    color: #333;
+    background-color: #ffffff;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #888;
+    }
+  }
+
+  /* Ensure phone number input is styled properly */
+  ngx-intl-tel-input {
+    display: block;
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: none; /* Remove all borders */
+      border-bottom: 1px solid #d3d3d3; /* Only bottom border */
+      border-radius: 0 0 6px 6px; /* Rounded bottom corners */
+      color: #333;
+      background-color: #ffffff;
+      box-sizing: border-box;
+    }
+  }
+}
+
+/* Adjust grid layout for fields */
+.form-container {
+  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+
+  /* Phone Number should be on its own row */
+  .form-group.phone {
+    grid-column: span 2; /* Span both columns for phone number */
+  }
+
+  /* Title and Current Employer should be in the same row */
+  .form-group.current-employer,
+  .form-group.title {
+    grid-column: span 1; /* Each field spans one column */
+  }
+
+  /* Ensure Title and Current Employer are on the same row */
+  .form-group.title {
+    grid-column: span 1;
+  }
+
+  .form-group.current-employer {
+    grid-column: span 1;
+  }
+}

@@ -1,0 +1,231 @@
+<section class="w-100 m-0 p-0">
+  <div class="w-100 m-0 p-0">
+    <div class="row justify-content-center wrap m-0 p-0" style="height: 100vh">
+      <div class="row m-0 p-0">
+        <div class="col-4 m-0 p-0"></div>
+        <div class="col-7 m-0 p-0">
+          <div class="d-flex">
+            <div class="w-100 m-0 p-0">
+              <h4
+                class="mb-2 p-3 font-style-family"
+                style="
+                  cursor: pointer;
+                  color: #4caf50;
+                  font-weight: 600;
+                  font-size: 20px;
+                "
+              >
+                Company's Address Details
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 m-0 p-0"></div>
+      </div>
+      <div class="row m-0 p-0">
+        <form class="form-horizontal">
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Street<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="street"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Street Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >House Number <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="hNumber"
+                    class="form-control font-style-family"
+                    id="pwd"
+                    placeholder="Enter House Number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >City<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12 font-style-family">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="city"
+                    class="form-control"
+                    id="text"
+                    placeholder="Enter City"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Postal Code <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="postalCode"
+                    class="form-control font-style-family"
+                    id="pwd"
+                    placeholder="Postal Code"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Country <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="country"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Country"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Entity Fuctional Organization Chart(not Group)</label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="pwd"
+                    placeholder="Entity Fuctional Organization Chart"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Telephone</label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Telephone Number"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Fax</label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Fax Number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Email</label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="email"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Email"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Website</label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="text"
+                    placeholder="Enter Website"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row mb-3 m-0 p-0">
+        <div class="col" style="text-align: left">
+          <!-- Conditionally show the "Previous" button -->
+          <button
+            *ngIf="!isFreeTrial"
+            type="button"
+            class="btn btn-dark font-style-family"
+            (click)="previousRoute()"
+            style="color: white !important"
+          >
+            Previous
+          </button>
+        </div>
+        <div class="col" style="text-align: right">
+          <button
+            type="submit"
+            class="btn btn-primary rounded-sm ms-3 font-style-family"
+            [disabled]="
+              !this.street ||
+              !this.hNumber ||
+              !this.city ||
+              !this.postalCode ||
+              !this.country
+            "
+            (click)="nextRoute()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,115 @@
+
+<section class="w-100 m-0 p-0">
+    <div class="w-100 m-0 p-0">
+        <div class="row m-0 p-0 justify-content-center wrap" style="height: 100vh;">
+            <div class="row m-0 p-0">
+                <div class="col-2 m-0 p-0"></div>
+                <div class="col-10 m-0 p-0">
+                    <div class="d-flex m-0 p-0">
+                        <div class="w-100 m-0 p-0">
+                            <h4 class="mb-2 p-3 font-style-family" style="cursor: pointer; color: #4CAF50;font-weight: 600;">JELLYSPACE : Registration Identification</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-1 m-0 p-0"></div> -->
+            </div>
+            <div class="row m-0 p-0">
+                <form class="form-horizontal">
+                    <div class="row m-0 p-0">
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="text">Entity Name<sup class="mandatory-color">*</sup></label>
+                                <div class="col-sm-12">
+                                  <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="entityName" class="form-control font-style-family" id="entityname" name="entityname" placeholder="Enter Entity Name" required>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="pwd">Date Of Incorporation <sup class="mandatory-color">*</sup></label>
+                                <div class="col-sm-12">
+                                  <input type="date" [ngModelOptions]="{standalone: true}" [(ngModel)]="dateOfInCorporation" class="form-control font-style-family" id="dateofincorporation" name="dateofincorporation" placeholder="Date Of Incorporation" required>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="text">Country Of Registration<sup class="mandatory-color">*</sup></label>
+                                <div class="col-sm-12">
+                                  <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="countryofregistration" class="form-control font-style-family" id="countryofregistration" name="countryofregistration" placeholder="Country Of Registration" required>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="pwd">Other Recognized Registration </label>
+                                <div class="col-sm-12">
+                                  <input type="text" class="form-control font-style-family" id="pwd" placeholder="Other Recognized Registration">
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="text">VAT Number</label>
+                                <div class="col-sm-12">
+                                  <input type="text" class="form-control font-style-family" id="text" placeholder="Enter VAT Number">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="pwd">Business Registraion Number</label>
+                                <div class="col-sm-12">
+                                  <input type="text" class="form-control font-style-family" id="pwd" placeholder="Enter Business Registraion Number">
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="text">DUNS Number</label>
+                                <div class="col-sm-12">
+                                  <input type="text" class="form-control font-style-family" id="text" placeholder="Enter DUNS Number">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-6 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="pwd">Missing VAT Number Reason</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control font-style-family" placeholder="Missing VAT Number Reason" rows="1" id="comment"></textarea>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0">
+                            <div class="form-group">
+                                <label class="control-label pl-3 font-style-family" for="text">Any official Document showing the legal name,Adress and National Registraion Number</label>
+                                <div class="col-sm-12">
+                                    <input type="file" class="font-style-family" id="myFile" name="filename">
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="row mb-3">
+                <div class="col" style="text-align: left;">
+                    <button type="button" class="btn btn-dark font-style-family" (click)="prevoiusUrl()"
+                    style="color: white !important;">Previous</button>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <button type="submit" [disabled]="!this.entityName || !this.dateOfInCorporation || !this.countryofregistration" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="nextClick()">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

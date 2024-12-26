@@ -1,0 +1,172 @@
+// Base styles
+body {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fc;
+}
+
+// Sidebar
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #ffffff;
+  color: #333333;
+  overflow-y: auto;
+  border-right: 1px solid #e3e6f0;
+
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #333333;
+
+    .sidebar-brand-icon {
+      font-size: 1.5rem;
+      color: #333333;
+      margin-right: 10px;
+    }
+
+    .sidebar-brand-text {
+      font-weight: bold;
+      color: #333333;
+    }
+  }
+
+  .sidebar-divider {
+    border-color: #e3e6f0;
+  }
+
+  .nav-link {
+    color: #333333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: #f1f3f5;
+      color: #333333;
+    }
+
+    &.active {
+      background-color: #e9ecef;
+      color: #333333;
+      font-weight: bold;
+    }
+
+    i {
+      margin-right: 10px;
+    }
+  }
+}
+
+// Content Wrapper
+#content-wrapper {
+  margin-left: 250px;
+  padding-top: 130px; // Space for the topbars
+}
+
+// Topbars
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  background-color: #ffffff;
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 101;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-second {
+  position: fixed;
+  top: 70px; // Adjust based on the height of the first topbar
+  left: 250px;
+  width: calc(100% - 250px);
+  background-color: #f1f3f5;
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  align-items: center; // Center items vertically
+
+  > div {
+    flex: 1;
+    display: flex;
+    justify-content: space-around; // Add space between items
+  }
+
+  .tab-item {
+    margin: 0 15px; // Add margin to create space between tabs
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    color: #333333;
+
+    &:hover {
+      background-color: #e9ecef;
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: #ffffff;
+  position: relative;
+  bottom: 0;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  padding: 10px 20px;
+  border-top: 1px solid #e3e6f0;
+
+  .text-center {
+    color: #6c757d;
+  }
+}
+
+// Tab Content
+.tab-content {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+// Inner Sidebar
+.inner-sidebar {
+  width: 200px;
+  height: calc(100vh - 70px); // Adjust based on topbar height
+  background-color: #ffffff;
+  border-right: 1px solid #e3e6f0;
+  position: relative;
+  overflow-y: auto;
+
+  .nav-link {
+    cursor: pointer;
+  }
+}
+.tab {
+  padding: 10px;
+  cursor: pointer;
+  &.active {
+    border-bottom: 3px solid greenyellow; // Customize the width and color
+    color: black;
+    font-weight: bold;
+  }
+}
+
+// Content Area
+.content-area {
+  margin-left: 220px; // Adjust based on inner-sidebar width
+  padding: 20px;
+}

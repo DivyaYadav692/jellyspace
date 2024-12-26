@@ -1,0 +1,69 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="login-wrap d-md-flex">
+                    <div class="wrap p-4 p-md-5">
+                        <h4 class="font-style-family" style="font-size: 18px;">Tell us your top skills</h4>
+                        <p class="text-muted mb-4 font-style-family">This helps us recommend jobs for you.</p>
+                        <div class="card-body">
+                            <div class="input-group mb-4">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text bg-transparent border-right-0">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </span>
+                                <input class="form-control py-2 border-left-0 border font-style-family" type="search" placeholder="Search"
+                                    id="example-search-input">
+                            </div>
+                            <h5 class="text-center mb-4 font-style-family"><span>Or</span></h5>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header font-style-family"><b>Select a category</b></div>
+                                        <ul class="list-group list-group-flush scrollable">
+                                            <li class="list-group-item" (click)="selectedItems(item.label)"
+                                            *ngFor="let item of primarySkillSet">
+                                                <label class="skill-text font-style-family">
+                                                    {{item.label}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header font-style-family"><b>Category Selected</b></div>
+                                        <ul class="list-group list-group-flush scrollable">
+                                            <li class="list-group-item font-style-family">Select a category to start adding skills to your
+                                                profile.</li>
+                                                <li class="list-group-item" *ngFor="let data of selectItemsList;let i =index">
+
+                                                    <label class="skill-text font-style-family">
+                                                        {{data}}
+                                                        <!-- Websites, IT & Software -->
+                                                    </label>
+                                                    <i class="fa fa-times" (click)="close(i)"></i>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="text-align: left;">
+                                    <button type="button" class="btn btn-dark font-style-family" routerLink="/accounts-link"
+                                    style="color: white !important;">Previous</button>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <button type="submit" [disabled]="isDisabled" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="skillSelect()">
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

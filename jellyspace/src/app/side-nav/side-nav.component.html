@@ -1,0 +1,402 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<header>
+  <a href="javascript:void(0)" class="closebtn">&times;</a>
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <a class="navbar-brand logo" href="javascript:void(0)">
+      <img src="../../assets/logo2.png" alt="" />
+      <span *ngIf="sideButton"
+        ><img src="../../assets/letterLogo.png" alt=""
+      /></span>
+    </a>
+    <div
+      class="position-sticky scroll font-style-family"
+      style="font-size: 11px"
+    >
+      <div class="list-group list-group-flush mt-2">
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+            routerLink="/dashboard"
+            [ngClass]="{ active: navigationChange === '/dashboard' }"
+          >
+            <i class="fa fa-dashboard me-3"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Dashboard</span>
+          </a>
+        </div>
+      </div>
+      <div class="list-group list-group-flush mt-2">
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-inbox me-3"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Inbox</span>
+          </a>
+        </div>
+      </div>
+      <div
+        class="list-group list-group-flush mt-2"
+        *ngIf="accountType !== 'freelancer'"
+      >
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >PEOPLE</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-users me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Onboarding</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-calendar-times-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Time Off</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-heart-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Incentives</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-sticky-note me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Expenses</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-heart-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Compensation</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-star-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Requests</span>
+          </a>
+        </div>
+      </div>
+      <div
+        class="list-group list-group-flush mt-2"
+        *ngIf="accountType !== 'freelancer'"
+      >
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >Supply Chain</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+            routerLink="/projects"
+            [ngClass]="{ active: navigationChange === '/projects' }"
+          >
+            <i class="fa fa-plus-square-o me-4" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Current Project</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-edit me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Supplier Directory</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Inventory Management</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-connectdevelop me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Order Management</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-edit me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Chain Visibility</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Collaboration</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-connectdevelop me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Performance Monitoring</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-edit me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Supply Chain Analytics</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Compliance and Risk Management</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-connectdevelop me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Procurement Integration</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Contract Management</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-edit me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Mobile Accessibility</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >User Access Control</span
+            >
+          </a>
+        </div>
+      </div>
+      <div
+        class="list-group list-group-flush mt-2"
+        *ngIf="accountType === 'freelancer'"
+      >
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >PROJECTS</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+            routerLink="/projects"
+            [ngClass]="{ active: navigationChange === '/projects' }"
+          >
+            <i class="fa fa-plus-square-o me-4" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Current Project</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-edit me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >New Project Updates</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-newspaper-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">News Feed</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-connectdevelop me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Companies to contact</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-calendar-times-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Time Off</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-heart-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Incentives</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-sticky-note me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Expenses</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-heart-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Compensation</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-star-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Requests</span>
+          </a>
+        </div>
+      </div>
+      <!---  <div class="list-group list-group-flush mt-2">
+        <strong style="padding-left: 0.5rem; padding-bottom: 0.5rem;" *ngIf="sideButton">COMMUNITY</strong>
+        <div class="list-group list-group-flush" (click)="_openCommunityTab()">
+          <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" [ngClass]="{ 'active': (navigationChange === '/community')}">
+            <i class="fa fa-plus-square-o me-4" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Community</span>
+          </a>
+        </div>
+      </div> ---->
+      <div class="list-group list-group-flush mt-2">
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >Contracting</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-files-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Contract Creation and Management</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-comments-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Contractual Risk Management</span
+            >
+          </a>
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-files-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Contract Approval Workflows</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-comments-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Analytics and Reporting</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-comments-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >User Access Control</span
+            >
+          </a>
+        </div>
+      </div>
+      <div
+        class="list-group list-group-flush mt-2"
+        *ngIf="accountType !== 'freelancer'"
+      >
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >Procurement</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-home me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Procurement Integration</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-files-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Procurement Automation</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-indent me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Supplier Performance Monitoring</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-map-signs me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Spend Analysis</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-file-excel-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Custom Fields</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-calculator me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Cost Calculator</span
+            >
+          </a>
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            (click)="deleteUser()"
+          >
+            <i class="fa fa-trash me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Delete Account</span>
+          </a>
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            routerLink="/signin"
+          >
+            <i class="fa fa-sign-out me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">SignOut</span>
+          </a>
+        </div>
+      </div>
+      <div
+        class="list-group list-group-flush mt-2"
+        *ngIf="accountType !== 'freelancer'"
+      >
+        <strong
+          style="padding-left: 0.5rem; padding-bottom: 0.5rem"
+          *ngIf="sideButton"
+          >Profile</strong
+        >
+        <div class="list-group list-group-flush">
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+          >
+            <i class="fa fa-home me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton"
+              >Profile Settings</span
+            >
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-files-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Documents</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-indent me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Integrations</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-map-signs me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Marketplace</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-file-excel-o me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Sign out</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa fa-calculator me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Calendar</span>
+          </a>
+          <a
+            class="list-group-item list-group-item-action py-2 ripple"
+            (click)="deleteUser()"
+          >
+            <i class="fa fa-trash me-3" aria-hidden="true"></i>
+            <span class="side-nav-text" *ngIf="sideButton">Templates</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

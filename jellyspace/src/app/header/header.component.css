@@ -1,0 +1,49 @@
+.navbar {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 10px 0;
+}
+
+.logo {
+  line-height: 0;
+  padding-left: 2rem;
+}
+
+.logo img {
+  max-height: 30px;
+  max-width: 160px;
+  margin-right: 6px;
+}
+
+.logo span {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+  margin-top: 3px;
+}
+
+.rounded-circle {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.user-dd {
+  min-width: 300px;
+}
+
+.navbar-collapse {
+  position: relative;
+  padding: 0px 10px 0 0;
+}
+
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.nav-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease-in;
+}

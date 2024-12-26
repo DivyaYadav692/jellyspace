@@ -1,0 +1,95 @@
+<section class="w-100 m-0 p-0">
+    <div class="w-100 p-0" style="margin-top: 150px;">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="col" style="text-align: center; margin-top: 200px;">
+            <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()"
+            style="color: white !important;">Previous</button>
+          </div>
+        </div>
+        <div class="col-md-8" style="padding-left: 100px;">
+          <div class="row">
+            <div class="col-md-6">
+                  <div class="heading">
+                      <p class="pt-3 font-style font-style-family">How Old Is your Company</p>
+                  </div>
+                <div class="list"  style="margin: 30px;" *ngFor="let data of largeCompanyYearList">
+                  <div class="listitem"><p class="font-style-family">{{data.label}}</p></div>
+                  <div class="raido">
+                      <input type="radio" style="    margin-top: -35px;
+                      margin-left: 171px;" (change)="onChnageCompany(data.label, $event)" [checked]="yearsList==data.label" class="form-check-input" id="radio1"
+                      name="optradio" value="option1">
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="heading">
+                <p class="pt-3 font-style font-style-family">Size Of Your Company</p>
+              </div>
+              <div class="list" style="margin: 30px;" *ngFor="let data of largeCompanySizeList">
+                <div class="listitem"><p class="font-style-family">{{data.label}}</p></div>
+                <div class="radio">
+                    <input type="radio" style="    margin-top: -35px;
+                    margin-left: 210px;"  (change)="onChnageEmployee(data.label, $event)" [checked]="empList==data.label" class="form-check-input" id="radio"
+                    name="opt" value="option">
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="col" style="text-align: center; margin-top: 200px;">
+            <button type="submit"  [disabled]="!checkedValues"class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goNext()">
+                Next
+            </button>
+        </div>
+        </div>
+      </div>
+        <!-- <div class="row wrap m-0 p-0" style="height: 100vh;">
+            <div class="row m-0 p-0">
+                <div class="col-1 m-0 p-0"></div>
+                <div class="col-3 m-0 p-0">
+                    <p class="pt-3 font-style font-style-family">How Old Is your Company</p>
+                </div>
+                <div class="col-1 m-0 p-0"></div>
+            </div>
+            <div class="row m-0 p-0" *ngFor="let data of largeCompanyYearList">
+                <div class="col-2 m-0 p-0"></div>
+                <div class="col-2 m-0 p-0"><p class="font-style-family">{{data.label}}</p></div>
+                <div class="col-1 m-0 p-0">
+                    <input type="radio" (change)="onChnageCompany(data.label, $event)" [checked]="yearsList==data.label" class="form-check-input" id="radio1"
+                    name="optradio" value="option1">
+                </div>
+            </div>
+            <div class="row m-0 p-0">
+                <div class="col-1 m-0 p-0"></div>
+                <div class="col-3 m-0 p-0">
+                    <p class="pt-3 font-style font-style-family">Size Of Your Company</p>
+                </div>
+                <div class="col-1 m-0 p-0"></div>
+            </div>
+            <div class="row m-0 p-0" *ngFor="let data of largeCompanySizeList">
+                <div class="col-2 m-0 p-0"></div>
+                <div class="col-2 m-0 p-0"><p class="font-style-family">{{data.label}}</p></div>
+                <div class="col-1 m-0 p-0 ml-3">
+                    <input type="radio" (change)="onChnageEmployee(data.label, $event)" [checked]="empList==data.label" class="form-check-input" id="radio"
+                    name="opt" value="option">
+                </div>
+            </div>
+            <div class="row mb-3 m-0 p-0">
+                <div class="col" style="text-align: left;">
+                    <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()"
+                    style="color: white !important;">Previous</button>
+                    <button type="submit" class="btn btn-danger rounded-sm" routerLink="/service-category">
+                        Previous
+                    </button>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <button type="submit"  [disabled]="!checkedValues"class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goNext()">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>

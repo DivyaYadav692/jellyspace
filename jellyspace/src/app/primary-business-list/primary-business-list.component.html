@@ -1,0 +1,92 @@
+<section class="m-0 p-0">
+  <div class="m-0 p-0">
+    <div class="row" style="margin-top: 50px;">
+      <div class="col-md-2">
+        <div class="col" style="top:450px; margin-left: 25px;">
+          <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()" style="color: white !important;">Previous</button>
+        </div>
+      </div>
+      <div class="col-md-8 font-style-family" style="padding-left: 50px;">
+        <div class="heading">
+          <p class="pt-3 font-style-family" style="font-weight: 600;padding-left:25px ;">Name:</p>
+          <div class="form-group" style="position:relative; top: -45px;left: 80px;">
+            <input type="text" style="width:400px; margin-left:20px" class="form-control font-style-family" placeholder="Enter The Name Of Entity">
+          </div>
+          <p class="font-style-family" style="font-weight: 600; margin-top: -40px; padding-left: 25px;">Primary Business: </p>
+        </div>
+        <div class="card" style="margin: 20px 0 20px 0;width:100%;">
+          <div class="card-header font-style-family" style="padding-left: 25px;">
+            <p class=" font-style-family">Select a Category</p>
+          </div>
+          <div class="cotegorylist" style="padding-left:30px;">
+            <ul style="margin-top: 20px;" *ngFor="let item of businessList">
+              <li>
+                <input class="form-check-input" type="checkbox" [checked]="item.checked" (change)="selectchange(item)" id="check1" name="option1">
+                {{item.label}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="col" style="top:450px;">
+          <button type="submit" [disabled]="isdisable" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goToServiceCategory()">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- <div class="row wrap m-0 p-1" style="height: 100vh;">
+            <div class="row m-0 p-0">
+                <div class="col-3 m-0 p-0">
+
+                </div>
+                <div class="col-4 m-0 p-0 pt-2">
+                    <div class="form-group pl-2">
+                    <input type="text" class="form-control font-style-family" placeholder="Enter The Name Of Entity">
+                </div></div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row m-0 p-0">
+                <div class="col-3 m-0 p-0">
+                    <p class="pl-2 font-style-family" style="font-weight: 600;">Primary Business:
+                    </p>
+                </div>
+                <div class="col-1 m-0 p-0"></div>
+            </div>
+            <div class="row mb-4 m-0 p-0">
+                <div class="col-lg-12 m-0 p-1">
+
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col" style="text-align: left;">
+                    <button type="button" class="btn btn-dark font-style-family" (click)="goToPrevious()"
+                    style="color: white !important;">Previous</button>
+                </div>
+                <div class="col" style="text-align: right;">
+                    <button type="submit" [disabled]="isdisable" class="btn btn-primary rounded-sm ms-3 font-style-family" (click)="goToServiceCategory()">
+                        Next
+                    </button>
+                </div>
+            </div>
+            <div class="row" *ngFor="let data of businessList">
+                <div class="col-2"></div>
+                <div class="col-3"><p class="">{{data.label}}</p></div>
+                <div class="col-1">
+                    <input type="radio" (click)="goToServices(data.label)" class="form-check-input" id="radio1"
+                    name="optradio" value="option1">
+                </div>
+            </div>
+        </div> -->
+  </div>
+</section>

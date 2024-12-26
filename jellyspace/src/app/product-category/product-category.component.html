@@ -1,0 +1,72 @@
+<section class="w-100 m-0 p-0">
+  <div class="w-100 m-0 p-0">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="col" style="top:450px;">
+          <button type="submit" class="btn btn-dark font-style-family" (click)="goToPrevious()">
+            Previous
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8 mt-5">
+        <div class="card font-style-family">
+          <div class="card-header"><b>Select a categgory</b></div>
+          <ul class="list-group list-group-flush scrollable">
+            <li class="list-group-item ml-3" *ngFor="let item of prodductList">
+              <input type="radio" (change)="onChengecat(item.label,$event)" [checked]="companyName==item.label" class="form-check-input" id="radio1" name="optradio" value="option1">
+              <label class="skill-text">
+                {{item.label}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2 font-style-family">
+        <div class="col" style="top:450px;">
+          <button type="submit" [disabled]="!checkedValues" class="btn btn-primary rounded-sm ms-3" (click)="goToServiceCategory()">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row justify-content-center m-0 p-0">
+            <div class="col-md-12 col-lg-12">
+                <div class="login-wrap d-md-flex">
+                    <div class="wrap p-4 p-md-5">
+                        <h4>Product Categories</h4>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header"><b>Select a category</b></div>
+                                        <ul class="list-group list-group-flush scrollable">
+                                            <li class="list-group-item ml-3" *ngFor="let item of prodductList">
+                                                <input type="radio" (change)="onChengecat(item.label,$event)" [checked]="companyName==item.label" class="form-check-input" id="radio1"
+                                                name="optradio" value="option1">
+                                                <label class="skill-text">
+                                                    {{item.label}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="text-align: left;">
+                                    <button type="submit" class="btn btn-dark font-style-family" (click)="goToPrevious()">
+                                        Previous
+                                    </button>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <button type="submit" [disabled]="!checkedValues" class="btn btn-primary rounded-sm ms-3" (click)="goToServiceCategory()">
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+  </div>
+</section>

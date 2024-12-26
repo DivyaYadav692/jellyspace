@@ -1,0 +1,45 @@
+.ftco-section {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.w-100 {
+  text-align: center;
+}
+
+.email-icon-style {
+  width: 80px;
+  margin-bottom: 18px;
+}
+
+.login-wrap {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.wrap {
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-dark {
+  background-color: #343a40;
+}
+
+.btn-link {
+  text-decoration: none;
+  font-weight: bold;
+}

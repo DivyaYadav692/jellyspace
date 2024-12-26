@@ -1,0 +1,79 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-6">
+                <div class="login-wrap d-md-flex">
+                    <div class="wrap p-4 p-md-5">
+                        <div class="d-flex mb-5">
+                            <div class="w-100 text-center">
+                                <img src="../../assets/letterLogo.png" width="250px;">
+                            </div>
+                        </div>
+                        <div id="profile" class="mb-5"  >
+                            <div class="dashes" ></div>
+                            <label class="image-label font-style-family" *ngIf="imgShow" for="mediafile">Click to browse profile image here.</label>
+                            <img mt-4 src="{{url}}" *ngIf="!imgShow" alt="" width="200" height="194" style="border-radius: 100%;">
+                            <input type="file" id="mediaFile" title=""  (change)="selectFile($event)" />
+                            <!-- <button (click)="upload()">Upload</button> -->
+                        </div>
+
+                        <h4 class="font-style-family" style="font-size: 20px;">What is your name?</h4>
+                        <p class="card-text">
+                            <small class="text-muted font-style-family">
+                                (Please use your real name as this will be required for identity verification.)
+                            </small>
+                        </p>
+                        <form>
+                            <div class="card-body">
+                                <div class="form-group mb-2">
+                                    <label class="label font-style-family" for="fname">First Name</label><span style="color: red;">*</span>
+                                    <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="fName" class="form-control font-style-family" placeholder="First Name">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="label font-style-family" for="lname">Last Name</label><span style="color: red;">*</span>
+                                    <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="lName" class="form-control font-style-family" placeholder="Last Name">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="label font-style-family" for="email">Email Id</label><span style="color: red;">*</span>
+                                    <div class="input-group">
+                                        <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="eMail" class="form-control font-style-family" placeholder="Email Id">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label font-style-family" for="password">Password</label><span style="color: red;">*</span>
+                                    <div class="input-group">
+                                        <input [type]="fieldTextType ? 'text' : 'password'" [ngModelOptions]="{standalone: true}" class="form-control font-style-family" [(ngModel)]="pWord"
+                                            placeholder="Password">
+                                        <span class="input-group-text" id="basic-addon1" (click)="toggleFieldTextType()">
+                                            <i class="fa"
+                                                [ngClass]="{'fa-eye-slash': !fieldTextType, 'fa-eye': fieldTextType}"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col" style="text-align: left;">
+                                <button type="button" class="btn btn-dark" routerLink="/new-user-register"
+                                style="color: white !important;">Previous</button>
+                                <!-- <button type="submit" class="btn btn-danger rounded-sm" routerLink="/new-user-register">
+                                    Previous
+                                </button> -->
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <button type="submit" [disabled]="!fName || !lName || !eMail || !pWord" class="btn btn-primary rounded-sm ms-3 font-style-family"
+                                    (click)="getSignUp()">
+                                    <!-- routerLink="/accounts-link"> -->
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

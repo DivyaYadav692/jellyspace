@@ -1,0 +1,113 @@
+<app-community-header></app-community-header>
+<main style="margin-top: 10px; margin-left: 20px;">
+    <div class="page-breadcrumb">
+        <div class="d-md-flex align-items-center">
+            <h4 class="page-title">Ask a public question</h4>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group mb-2">
+                            <label class="label" for="title" style="display: block; margin-bottom: 0rem;">Title</label>
+                            <small class="text-muted me-2">Be specific and imagine you’re asking a question to another
+                                person</small>
+                            <input type="text" class="form-control"
+                                placeholder="What's your space exploration question? Be Specific">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="label" for="body" style="display: block; margin-bottom: 0rem;">Body</label>
+                            <small class="text-muted">Include all the information someone would need to answer your
+                                question</small>
+                            <quill-editor class="content-editor" placeholder="Ask Your Question..."></quill-editor>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label class="label" for="tag" style="display: block; margin-bottom: 0rem;">Tags</label>
+                            <small class="text-muted me-2">Add up to 5 tags to describe what your question is
+                                about</small>
+                            <i class="fa fa-info-circle" style="cursor: pointer;" aria-hidden="true" placement="top"
+                                [ngbPopover]="popContent" [popoverTitle]="popTitle"></i>
+                            <input type="text" class="form-control" autocomplete="off"
+                                placeholder="e.g. (orbital-mechanics engine-design artificial-satellite)">
+                        </div>
+                        <ng-template #popContent>
+                            Tags help the right people find and answer your question.<br>
+                            1. Identify your tags by completing the sentence, "My question is about…"<br>
+                            2. Include tags that are crucial to your question only<br>
+                            3. Use existing <code>popular tags</code><br>
+                            If you can’t find a tag:<br>
+                            Create new tags or post without it and ask the community to create one for you
+                        </ng-template>
+                        <ng-template #popTitle>How to <b>Tag!!</b></ng-template>
+                        <!-- <div class="row pt-3 mb-4">
+                            <h5>Sign In Or Log In</h5>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-light rounded" routerLink="/community">
+                                        Sign Up
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary rounded" routerLink="/community">
+                                        Sign up using facebook
+                                    </button>
+                                </div>
+                            </div>
+                            <h5>Sign In Or Log In</h5>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-light rounded" routerLink="/community">
+                                        Sign Up
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary rounded" routerLink="/community">
+                                        Sign up using facebook
+                                    </button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row" style="text-align: center;">
+                            <div class="col">
+                                <button type="submit" class="btn btn-danger rounded-sm" routerLink="/community">
+                                    Go Back
+                                </button>
+                            <!-- </div>
+                            <div class="col"> -->
+                                <button type="submit" class="btn btn-primary rounded-sm ms-3">
+                                    Review your question
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">Step 1: Draft your question</div>
+                    <div class="card-body">
+                        <p class="card-text">The JELLYSPACE community is here to help you with questions. Provide
+                            details and share research with your question..</p>
+                    </div>
+                </div>
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">Step 2: Review your question</div>
+                    <div class="card-body">
+                        <p class="card-text">Review your question before getting posted in JELLYSPACE community..</p>
+                    </div>
+                </div>
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">Helpful Links</div>
+                    <div class="card-body">
+                        <p class="card-text">Find more information about
+                            <a href="javascript:void(0)">how to ask a good question here</a>
+                        </p>
+                        <p class="card-text">Visit the <a href="javascript:void(0)">help center</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

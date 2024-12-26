@@ -1,0 +1,86 @@
+/* General styles */
+.user-head {
+  cursor: pointer;
+  color: #4caf50;
+  font-family: "Michroma", sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-check {
+  margin-left: 15px;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+.info-text p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Button styles */
+.btn-secondary,
+.btn-primary {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Sign-in link styling */
+.sign-in-link {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Scrollable styles */
+.scrollable {
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(200, 200, 200, 1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.7);
+}
