@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo Installing npm dependencies
+      - npm install
+
+  build:
+    commands:
+      - echo Building the React app
+      - npm run build
+
+artifacts:
+  files:
+    - build/**/*  # This will package everything inside the build directory created after the build
