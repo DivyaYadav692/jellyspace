@@ -12,21 +12,44 @@ jobs:
     steps:      
       - name: Checkout code        
         uses: actions/checkout@v3      
-        
-      - name: Set up SSH key        
-        uses: webfactory/ssh-agent@v0.7.0       
-        with:          
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}      
-          
+
+      - name: Decode and Set Up SSH Key        
+        run: |
+          echo "${{ secrets.EC2_PEM_KEY }}" | base64 -d > MyDefaultKey.pem
+          chmod 600 MyDefaultKey.pem
+
       - name: Build React app
         run: |
           cd frontend
           npm install
           npm run build
 
-      - name: Deploy to server        
+      - name: Deploy to EC2 instance        
+        env:
+          EC2_HOST: 23.20.181.117
+          EC2_USER: ubuntu
         run: |          
-          # Copy the build to the server
-          scp -r frontend/build/* ubuntu@test.skillnaav.com:/home/ubuntu/skillnaav-fullstack/frontend/build
-          
-          
+          # Copy the built frontend to the EC2 instance
+          scp -i MyDefaultKey.pem -r frontend/build/* $EC2_USER@$EC2_HOST:/home/$EC2_USER/skillnaav-fullstack/frontend/build
+
+      - name: Configure and restart services on EC2        
+        env:
+          EC2_HOST: 23.20.181.117
+          EC2_USER: ubuntu
+        run: |
+          ssh -i MyDefaultKey.pem $EC2_USER@$EC2_HOST << 'EOF'
+            # Navigate to the application directory
+            cd /home/$EC2_USER/skillnaav-fullstack
+
+            # Ensure permissions are correct
+            sudo chown -R $EC2_USER:$EC2_USER /home/$EC2_USER/skillnaav-fullstack
+
+            # Restart the Nginx service to serve the new build
+            sudo systemctl reload nginx
+
+            # Optional: Restart backend services if applicable
+            sudo systemctl restart frontend-service || echo "Frontend service not configured"
+            sudo systemctl restart backend-service || echo "Backend service not configured"
+
+            echo "Deployment completed successfully."
+          EOF
