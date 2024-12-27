@@ -21,6 +21,7 @@ jobs:
       - name: Build React app
         run: |
           cd jellyspace
+          npm cache clean --force
           npm install
           npm run build
 
