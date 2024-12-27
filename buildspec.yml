@@ -2,18 +2,17 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 14
     commands:
       - echo "Navigating to jellyspace directory..."
       - cd jellyspace
       - echo "Installing dependencies..."
       - npm install
+  pre_build:
+    commands:
+      - echo "Preparing build environment..."
+      - cd jellyspace  # Ensure you are in the correct directory
   build:
     commands:
       - echo "Building the application..."
-      - cd jellyspace
+      - cd jellyspace  # Ensure you are in the correct directory
       - npm run build
-artifacts:
-  files:
-    - jellyspace/dist/**/*  # Update this path if the build output location differs
