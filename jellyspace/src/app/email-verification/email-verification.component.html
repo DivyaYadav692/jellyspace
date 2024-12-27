@@ -1,0 +1,81 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-5">
+        <div class="login-wrap d-md-flex">
+          <div class="wrap p-4 p-md-5">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="w-100 text-center">
+                <img
+                  src="../../assets/letterLogo.png"
+                  width="250px;"
+                  alt="Logo"
+                />
+                <h4 class="mt-2">Email Verification</h4>
+                <img
+                  class="email-icon-style"
+                  src="../../assets/email-icon2.gif"
+                  alt="Email Icon"
+                />
+              </div>
+            </div>
+            <p>Almost there, ********* A code has been sent to your email.</p>
+            <p>
+              <b>{{ email }}</b>
+            </p>
+            <!-- Add (ngSubmit)="verifyOTP()" to form tag -->
+            <form (ngSubmit)="verifyOTP()">
+              <div class="form-group mb-2">
+                <label class="label" for="otp">Enter Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngModelOptions]="{ standalone: true }"
+                  [(ngModel)]="otpText"
+                  placeholder="Enter Code To Verify"
+                />
+              </div>
+              <div class="form-group mb-2">
+                Code expires in <b>{{ timeLeft }}</b> seconds
+              </div>
+              <div class="form-group text-center">
+                <button
+                  type="submit"
+                  [disabled]="!otpText"
+                  class="btn btn-primary rounded-sm mt-3"
+                >
+                  Register
+                </button>
+              </div>
+            </form>
+            <p class="text-center mt-4">
+              Didn't receive any code?
+              <button
+                data-toggle="tab"
+                [disabled]="timeLeft > 0"
+                (click)="reSendOTP()"
+                class="btn btn-link p-0"
+                style="color: #4caf50; cursor: pointer"
+              >
+                Resend Code
+              </button>
+            </p>
+            <hr />
+            <div class="row">
+              <div class="col text-left">
+                <button
+                  type="button"
+                  class="btn btn-dark"
+                  (click)="backNavigation()"
+                  style="color: white !important"
+                >
+                  Previous
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

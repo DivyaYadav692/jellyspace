@@ -1,0 +1,1037 @@
+.nav-link.active {
+  background-color: #e2e6ea;  /* Darker grey for active state */
+  color: #1a202c;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);  /* Subtle inset shadow for pressed effect */
+}
+
+.nav-link {
+  transition: all 0.2s ease;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  color: #4a5568;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-link:hover:not(.active) {
+  background-color: #f0f2f4;  /* Medium grey for hover */
+  border-radius: 6px;
+  cursor: pointer;
+  color: #2d3748;
+}
+
+/* For dropdown items */
+.dropdown-item {
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f2f4;  /* Match hover color */
+}
+
+.dropdown-item.active {
+  background-color: #e2e6ea;  /* Match active color */
+}
+
+.widget-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100px;  /* Fixed width */
+  height: 60px;  /* Fixed height for rectangular shape */
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.widget-item:active {
+  cursor: grabbing;
+}
+
+.widget-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.widget-item.dragging {
+  opacity: 0.4 !important;
+  cursor: grabbing !important;
+  transform: none !important;
+  width: 80px !important;
+  height: 50px !important;
+  padding: 12px !important;
+  border-radius: 20px !important;
+  background-color: white !important;
+  border: 1px solid #e0e0e0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.widget-icon {
+  width: 30px;  /* Smaller icon */
+  height: 30px;
+  flex-shrink: 0;  /* Prevent icon from shrinking */
+}
+
+.widget-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.widget-name {
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  max-width: 110px;  /* Ensure text stays within widget bounds */
+  font-weight: 500;
+  white-space: normal;  /* Allow text to wrap if needed */
+  min-height: 28px;  /* Ensure consistent height for text area */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 14px;
+}
+
+.workflow-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.widget-sidebar {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  background-color: #f5f5f5;
+}
+
+.canvas-area {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  width: calc(100% - 500px);
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-left: 1px solid #dee2e6;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#wrapper.collapsed .canvas-area {
+  left: 220px;
+  width: calc(100% - 220px);
+}
+
+.canvas-area.sidebar-collapsed {
+  width: calc(100% - 500px);
+}
+
+#wrapper.collapsed .canvas-area.sidebar-collapsed {
+  width: calc(100% - 220px);
+}
+
+.placed-widget {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 4px !important;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: move;
+  user-select: none;
+  width: 100px !important;
+  height: 70px !important;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+
+  transform: none !important;
+}
+
+/* Add styles for selected state */
+.placed-widget.selected {
+  border: 2px solid #2196F3;  /* Blue border */
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);  /* Blue glow effect */
+}
+
+/* Update hover effect */
+.placed-widget:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Ensure hover doesn't override selection glow */
+.placed-widget.selected:hover {
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
+}
+
+.placed-widget .widget-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+}
+
+.placed-widget .widget-icon {
+  width: 80px !important;
+  height: 60px !important;
+  margin-bottom: 0px;
+}
+
+.placed-widget .widget-icon img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+.placed-widget .widget-name {
+  font-size: 11px;
+  line-height: 12px;
+  min-height: 24px;
+  margin-top: 4px;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  max-width: 110px;
+  font-weight: 500;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cdk-drag-placeholder {
+  display: none;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.port {
+  width: 12px;
+  height: 12px;
+  background-color: #4a90e2;
+  border: 2px solid #2171cd;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 2;
+}
+
+.ports-input .port {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ports-output .port {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.port:hover {
+  transform: scale(1.2);
+  background-color: #2171cd;
+  transition: all 0.2s ease;
+}
+
+.connection-line {
+  stroke: #4a90e2;
+  stroke-width: 2;
+  fill: none;
+  pointer-events: none;
+}
+
+.port-value {
+  position: absolute;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  top: -20px;
+  white-space: nowrap;
+}
+
+.input .port-value {
+  left: 0;
+}
+
+.output .port-value {
+  right: 0;
+}
+
+.control-btn.activated {
+  background-color: #28a745;
+  color: white;
+}
+
+.control-btn.deactivated {
+  background-color: #dc3545;
+  color: white;
+}
+
+.control-btn {
+  position: relative;
+  cursor: pointer;
+}
+
+.control-btn:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 5px;
+}
+
+.context-menu {
+  position: fixed;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  min-width: 180px;
+  padding: 4px 0;
+  font-size: 13px;
+  z-index: 1000;
+}
+
+.menu-item {
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
+
+.menu-item:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.menu-item.disabled {
+  color: #999;
+  cursor: default;
+}
+
+.menu-item.disabled:hover {
+  background-color: transparent;
+}
+
+.menu-item.delete {
+  color: #dc3545;
+}
+
+.shortcut {
+  color: #666;
+  font-size: 11px;
+  margin-left: 20px;
+}
+
+#right-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: #1e1e1e;
+  color: white;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#right-sidebar.collapsed {
+  transform: translate(400px);
+}
+
+.sidebar-header {
+  padding: 0 0 20px 0;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+  padding: 15px 0;
+  overflow-x: visible;
+}
+
+.tab-buttons button {
+  flex: 1;
+  min-width: 90px;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 10px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+.tab-buttons button i {
+  font-size: 14px;
+  min-width: 16px;
+}
+
+.tab-buttons button.active {
+  color: #fff;
+  background: #333;
+  border-radius: 4px;
+}
+
+.tab-buttons button:hover:not(.active) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-container {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.search-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #888;
+  padding: 0 5px;
+}
+
+.search-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.search-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0078D4;
+}
+
+.toggle-right-sidebar {
+  position: absolute;
+  top: 50%;
+  left: -28px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 60px;
+  background: #1a1a1a;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  border: 1px solid #333;
+  border-right: none;
+}
+
+.toggle-right-sidebar:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.toggle-right-sidebar i {
+  font-size: 18px;
+  color: #888;
+}
+
+.toggle-right-sidebar:hover i {
+  color: #fff;
+}
+
+.run-button {
+  position: fixed;
+  top: 20px;
+  right: 420px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.run-button.sidebar-collapsed {
+  right: 20px;
+}
+
+.run-button:hover {
+  background: #1976D2;
+}
+
+.canvas-area {
+  width: calc(100% - 400px);
+  right: 400px;
+}
+
+.canvas-area.sidebar-collapsed {
+  width: 100%;
+  right: 0;
+}
+
+.menu-section {
+  margin-top: 20px;
+  padding: 0 10px;
+  position: fixed;
+  left: var(--grid-left-position, 290px);
+  width: 210px;
+  z-index: 1;
+  transition: all 0.3s ease;
+  top: 70px;
+  background-color: white;
+  max-height: 800px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+}
+
+.menu-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-section::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.7);
+  border-radius: 3px;
+  border: transparent;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+
+.menu-section.expanded {
+  display: block;
+}
+
+.menu-section.collapsed {
+  display: none;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: white;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.menu-item:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.menu-icon {
+  width: 20px;
+  margin-right: 12px;
+  color: #666;
+  transition: none;
+}
+
+.fa-chevron-right {
+  color: #666;
+  transition: none;
+}
+
+.fa-chevron-right.rotated {
+  transform: rotate(90deg);
+}
+
+#wrapper.collapsed .menu-section {
+  --grid-left-position: 0px;
+}
+
+/* Input menu specific styles */
+.sidebar-menu .submenu-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #3f3e3e;
+}
+
+.sidebar-menu .submenu-container.expanded {
+  max-height: 500px;
+}
+
+.sidebar-menu .input-item {
+  padding: 8px 16px 8px 40px;
+  cursor: pointer;
+  position: relative;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  display: block;
+  border: none !important; /* Ensure no borders */
+  background-color: white; /* Ensure background is set */
+}
+
+.sidebar-menu .input-item:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.sidebar-menu .item-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.sidebar-menu .item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: -23px;
+  transition: none;
+}
+
+.sidebar-menu .fa-chevron-right.rotated {
+  transform: rotate(90deg);
+}
+
+.sidebar-menu .input-item:hover .fa-ellipsis-h {
+  opacity: 1;
+}
+
+/* Context menu specific styles */
+.context-menu .menu-item {
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
+
+.context-menu .menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.sidebar-content {
+  background-color: #1e1e1e;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list {
+  margin-top: 8px;
+}
+
+.menu-item:hover {
+  background-color: #2d2d2d;
+}
+
+
+.input-item {
+  cursor: grab;
+  padding: 8px;
+  margin: 4px 0;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-item:active {
+  cursor: grabbing;
+}
+
+.input-item.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.canvas-area {
+  position: relative;
+  background: #f8f9fa;
+  border: 1px dashed #dee2e6;
+}
+
+.canvas-area.drag-over {
+  background: #e9ecef;
+  border-color: #6c757d;
+}
+
+.item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #000000;
+}
+
+.item-name {
+  color:rgb(100, 100, 100);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.fa-ellipsis-h {
+  color: #666;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.input-item:hover .fa-ellipsis-h {
+  opacity: 1;
+}
+.item-border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.cdk-drag-preview {
+  width: 100px !important;
+  height: 70px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: white !important;
+  padding: 4px !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+  transform: none !important;
+}
+
+/* Update wrapper and content styles */
+#wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* Prevent scrolling on the body and html */
+body, html {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure content wrapper doesn't scroll */
+#content-wrapper {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.tab-content {
+  padding: 16px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.outputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.output-item {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.widget-name {
+  font-weight: 500;
+  color: #0078D4;
+}
+
+.output-value {
+  font-family: monospace;
+  color: #fff;
+  background: #1e1e1e;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.selected-widget-info {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.selected-widget-info h4 {
+  color: #ffffff;  /* Make the widget name white */
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.widget-details {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.widget-details p {
+  margin: 4px 0;
+  color: #ffffff !important;  /* Make all details text white */
+}
+
+/* Additional override to ensure text stays white */
+#right-sidebar .tab-content .selected-widget-info p {
+  color: #ffffff !important;
+}
+
+#right-sidebar .tab-content .no-selection-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff !important;
+}
+
+#right-sidebar .tab-content .no-selection-message p {
+  margin: 4px 0;
+  color: #ffffff !important;
+}
+
+/* Additional override for any potential text color inheritance */
+#right-sidebar .tab-content[ng-reflect-ng-if="true"] .no-selection-message p {
+  color: #ffffff !important;
+}
+
+/* Update the API Builder tab content styles */
+.api-builder {
+  background: #2d2d2d;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.api-builder h4 {
+  color: #ffffff;  /* Make the API Configuration text white */
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Additional override to ensure text stays white */
+#right-sidebar .tab-content .api-builder h4 {
+  color: #ffffff !important;
+}
+
+/* Add ghost widget styles */
+.widget-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.6;
+  transform: translate(-50%, -50%);
+}
+
+.widget-ghost .widget-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.widget-ghost img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.widget-ghost span {
+  font-size: 12px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Update dragging styles */
+.dragging {
+  opacity: 0.4 !important;
+  cursor: grabbing !important;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Add styles for the widget being dragged */
+.widget-item {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.widget-item:active {
+  cursor: grabbing;
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+/* Update ghost styles */
+.cdk-drag-preview {
+  opacity: 0.6 !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Ensure the item-border is not visible */
+.item-border {
+  display: none !important;
+}
+
+/* Check for any other potential border styles */
+.submenu-items .input-item {
+  border-left: none !important;
+  border: none !important;
+  box-shadow: none !important; /* Remove any shadows */
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;  /* Space between image and text */
+}
+
+.item-icon {
+  width: 20px;  /* Small icon size */
+  height: 20px;
+  object-fit: contain;
+}
+
+.wire-delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.wire-delete-btn.visible {
+  opacity: 1;
+}
+
+.wire-delete-btn:hover circle {
+  fill: #ffeeee;
+}
+
+.wire-path {
+  pointer-events: all;
+  stroke: #4a90e2;
+  stroke-width: 2;
+  fill: none;
+}
+
+.port-symbol {
+  font-size: 16px; /* Adjust size as needed */
+  color: #4a90e2; /* Match the color of the original port */
+  position: absolute;
+  font-weight: bolder;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.ports-input .port-symbol {
+  left: 4; /* Adjust position if needed */
+}
+
+

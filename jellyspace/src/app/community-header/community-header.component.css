@@ -1,0 +1,26 @@
+.logo img {
+    max-height: 30px;
+    max-width: 160px;
+    margin-right: 6px;
+}
+
+.logo span {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #012970;
+    font-family: "Nunito", sans-serif;
+    margin-top: 3px;
+}
+
+.navbar {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nav-item {
+    width: 50rem;
+}
+
+.bg-light {
+    background-color: #fff !important;
+}

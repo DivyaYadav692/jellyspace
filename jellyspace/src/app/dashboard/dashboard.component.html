@@ -1,0 +1,2704 @@
+<div class="w-100 m-0 p-0">
+  <app-side-nav
+    [sideButton]="sideButton"
+    [accountType]="accountType"
+  ></app-side-nav>
+</div>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+    </div>
+</div>
+<label class="m-0 p-0 pl-3 pt-2" for=""><i class="fa fa-bars menu-icon" (click)="menuIcon()" aria-hidden="true"></i></label> -->
+<!-- <main style="margin-top: 10px; margin-left: 250px;" *ngIf="sideNavBar"> -->
+<main
+  [ngClass]="sideButton ? 'cardWidth' : 'sidecardWidth'"
+  style="margin-top: -20px !important; margin-left: 325px"
+>
+  <div *ngIf="sideButton">
+    <label class="m-0 p-0 pl-3 pt-2 icon-toggle" for=""
+      ><i
+        class="fa fa-chevron-left menu-icon"
+        (click)="menuIcon()"
+        aria-hidden="true"
+      ></i
+    ></label>
+  </div>
+  <div *ngIf="!sideButton">
+    <label class="m-0 p-0 pl-3 pt-2 icon-toggle1" for=""
+      ><i
+        class="fa fa-chevron-right menu-icon"
+        (click)="menuIcon()"
+        aria-hidden="true"
+      ></i
+    ></label>
+  </div>
+
+  <div class="w-100 m-0 p-0">
+    <div class="row m-0 p-0">
+      <div class="col-12 m-0 p-0">
+        <div class="card text-center" style="height: 100vh">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <ul
+              class="nav nav-pills"
+              id="pills-tab"
+              role="tablist"
+              style="margin: 0"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="pills-home-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                >
+                  Post a Project
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="pills-profile-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-profile"
+                  aria-selected="false"
+                >
+                  Find a Project
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="pills-contact-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-contact"
+                  aria-selected="false"
+                >
+                  Funding
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="community-panel-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#community-panel"
+                  type="button"
+                  role="tab"
+                  (click)="_openCommunityTab()"
+                  aria-controls="community-panel"
+                  aria-selected="false"
+                >
+                  Community
+                </button>
+              </li>
+              <li
+                class="nav-item"
+                role="presentation pt-1"
+                style="margin-top: -20px !important"
+              >
+                <i
+                  class="fa fa-search icon-style1"
+                  *ngIf="searchIcon"
+                  (click)="openSearchBar()"
+                ></i>
+                <i class="fa fa-search icon-style" *ngIf="searchFlag"></i>
+                <input
+                  type="search"
+                  placeholder="Search"
+                  *ngIf="searchFlag"
+                  aria-describedby="button-addon8"
+                  class="form-control search-bar pl-4 ml-2"
+                  style="padding-left: 1.5rem; margin-left: 0.5rem"
+                />
+                <div
+                  *ngIf="searchFlag"
+                  class="form-group search"
+                  style="margin-top: -34px !important; margin-left: 67%"
+                >
+                  <select
+                    class="selectpicker dropdown-select"
+                    data-live-search="true"
+                    style="margin-top: -34px; margin-left: 67%"
+                  >
+                    <option class="text-muted" value="">Talent</option>
+                    <option class="text-muted" value="">Choose</option>
+                    <option class="text-muted" value="">Choose</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+            <div
+              class="profile-card"
+              style="margin-left: auto; display: flex; align-items: center"
+            >
+              <img
+                (error)="setDefault()"
+               [src]="image"
+                alt="user"
+                class="rounded-circle"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  margin-right: 10px;
+                  cursor: pointer;
+                "
+                (click)="viewProfile()"
+              />
+              <div
+                style="display: flex; flex-direction: column; cursor: pointer"
+                (click)="viewProfile()"
+              >
+                <!-- <span
+                  class="font-medium mb-0"
+                  style="font-size: 14px; font-weight: bold"
+                  >{{ fname }} {{ lname }}</span
+                >
+                <span class="text-muted fs-6" style="font-size: 12px">{{
+                  email
+                }}</span> -->
+              </div>
+
+              <button
+                class="nav-link active"
+                style="
+                  margin-left: 10px;
+                  cursor: pointer;
+                  text-decoration: none;
+                  color: white;
+                  border: none;
+                  padding: 0.375rem 0.75rem;
+                  font-size: 1rem;
+                  border-radius: 0.25rem;
+                "
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+                (click)="viewProfile1()"
+              >
+                View Company Profile
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body scroll">
+            <div class="tab-content" id="pills-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="pills-home"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab"
+              >
+                <div class="row m-0 p-0" *ngIf="postingFlag">
+                  <h4 class="text-center p-4">
+                    How-To guide for posting a Project?
+                  </h4>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      1) Give your Project a clear and descriptive title for
+                      understandability.
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      2) Describe your Project Requirements and be as detailed
+                      as possible .
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      3) Optionally you can upload files (ex: PDFs, Images, or
+                      Word Documents for Architecture, Design, Development, Test
+                      etc.)
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      4) Add up to five skills that are necessary to complete
+                      the undertaken Project. These will help our AI Recommender
+                      System Engine to reach-out and match-make relevant
+                      talented personnel for your assignment.
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      5) Select the Project payment category type (ex:
+                      Fixed-Pricing, Hourly, or budget based etc.)
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10 text-muted">
+                      6) Add optional Project categories (ex: Featured, Urgent,
+                      Private i.e. Selected Individuals only, Sealed i.e.
+                      bidding is not disclosed to others, Non-Disclosure
+                      Agreement - NDA, Intellectual Property - IP Agreement,
+                      Full-time)
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <!-- <p class="text-center text-muted">
+                                    1) Give your Project a clear and descriptive title for understandability.
+                                    2) Describe your Project Requirements and be as detailed as possible .
+                                    3) Optionally you can upload files (ex: PDFs, Images, or Word Documents for Architecture, Design, Development, Test etc.)
+                                    4) Add up to five skills that are necessary to complete the undertaken Project. These will help our AI Recommender System Engine to reach-out and match-make relevant talented personnel for your assignment.
+                                    5) Select the Project payment category type (ex: Fixed-Pricing, Hourly, or budget based etc.)
+                                    Add optional Project categories (ex: Featured, Urgent, Private i.e. Selected Individuals only, Sealed i.e. bidding is not disclosed to others, Non-Disclosure Agreement - NDA, Intellectual Property - IP Agreement, Full-time) -->
+
+                  <!-- Millions of talented freelancers are ready to help you do amazing things. -->
+                  <!-- </p> -->
+                  <div class="col pt-3" style="text-align: center">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="openLg(content)"
+                    >
+                      <!-- Post a Project -->
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="card-body m-0 p-0"
+                  style="background: #fff"
+                  *ngIf="projectFlag"
+                >
+                  <div class="row m-0 p-0">
+                    <h4 class="text-center p-4">Project Details</h4>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="title" style="padding-right: 390px">
+                          Choose a name for your project
+                        </label>
+                        <input
+                          type="text"
+                          [(ngModel)]="projectName"
+                          class="form-control"
+                          id="title"
+                          placeholder="Eg: Build me a website"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="desceiption" style="padding-right: 390px">
+                          Tell us more about your proect
+                        </label>
+                        <textarea
+                          class="form-control"
+                          id="description"
+                          [(ngModel)]="projectDescription"
+                          rows="3"
+                          placeholder="Describe your project here..."
+                        ></textarea>
+                      </div>
+                    </div>
+                    <small class="text-muted text-end"
+                      >5000 characters remaining.</small
+                    >
+                  </div>
+                  <div class="row">
+                    <div class="w-100" style="border: 1px dashed #ddd3d3">
+                      <div class="form-group mt-2 mb-2">
+                        <!-- <label class="control-label pl-3" for="text">Any official Document showing the legal name,Adress and National Registraion Number</label> -->
+                        <div class="col-sm-12" style="text-align: left">
+                          <input type="file" id="myFile" name="filename" />
+                          <!-- <input type="text" class="form-control" id="text" placeholder="Enter DUNS Number"> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-1" *ngIf="nextButton">
+                    <div class="col" style="text-align: left">
+                      <button
+                        type="submit"
+                        (click)="nextForward()"
+                        class="btn btn-primary rounded-sm ms-3 font-style-family"
+                        style="font-size: 12px !important"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="skillFlag">
+                    <label
+                      for="desceiption"
+                      class="control-label col-form-label"
+                    >
+                      What skills are required?
+                    </label>
+                    <p class="w-100" style="font-size: 13px">
+                      Enter up to 5 skills that best describe your project.
+                      Freelancers will use these skills to find projects they
+                      are most interested and experienced in.
+                    </p>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="skillFlag">
+                    <div
+                      class="col-4 m-0 p-0 pt-1"
+                      *ngFor="let data of selectItemsList; let i = index"
+                    >
+                      <label
+                        class="m-0 p-1 pl-2"
+                        style="
+                          border: 1px solid #e1d4d4 !important;
+                          border-radius: 20px;
+                        "
+                        >{{ data
+                        }}<span (click)="close(i)" class="close"
+                          >&times;</span
+                        ></label
+                      >
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="skillFlag">
+                    <div class="col-5 m-0 p-0">
+                      <div class="form-group search">
+                        <label class="text-muted"> Suggested Skills:</label>
+                        <select
+                          class="selectpicker select-box-style"
+                          [(ngModel)]="suggestSkillId"
+                          (change)="selectedItems($event)"
+                          data-live-search="true"
+                          style="border: 1px solid #e1d4d4 !important"
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of primarySkillSet"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-1 m-0 p-0" *ngIf="nextButton1">
+                    <div class="col" style="text-align: left">
+                      <button
+                        type="submit"
+                        (click)="nextForward1()"
+                        class="btn btn-primary rounded-sm ms-3 font-style-family"
+                        style="font-size: 12px !important"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag">
+                    <label
+                      for="desceiption"
+                      class="control-label col-form-label"
+                    >
+                      How would you like to get it done?
+                    </label>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag">
+                    <div
+                      *ngFor="let item of payHoursList; let i = index"
+                      class="col-6 m-0 p-0 pl-2"
+                      (click)="selectPayHour(item, i)"
+                    >
+                      <div
+                        class="row m-0 p-0 pay-style1"
+                        [ngClass]="{ highlight: selectedIndex === i }"
+                      >
+                        <div class="col-2 pt-2">
+                          <img
+                            src="../../assets/{{ item.icon }}"
+                            width="50px;"
+                          />
+                        </div>
+                        <div class="col-10">
+                          <a>{{ item.title }}</a>
+                          <div class="row">
+                            <div class="col-12">
+                              <p class="w-100" style="font-size: 13px">
+                                {{ item.description }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag">
+                    <label
+                      for="desceiption"
+                      class="control-label col-form-label"
+                    >
+                      What Is Your Budget?
+                    </label>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag">
+                    <div class="col-2">
+                      <div class="form-group search">
+                        <select
+                          class="selectpicker select-box-style"
+                          [(ngModel)]="rupeesId"
+                          (change)="changeAmount($event)"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <!-- <option class="text-muted" value=""> Choose a Supplier Company</option> -->
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of rupeesList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-5" *ngIf="payComboFlag">
+                      <div class="form-group search">
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="usdFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of usdList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="nzdFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of nzdList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="audFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of audList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="gbpFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of gbpList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="hkdFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of hkdList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="sgdFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of sgdList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="eurFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of eurList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="cadFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of cadList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnagePay($event)"
+                          *ngIf="indFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of amountList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-5" *ngIf="fixedComboFlag">
+                      <div class="form-group search">
+                        <select
+                          class="selectpicker select-box-style"
+                          (change)="onChnageFixed($event)"
+                          *ngIf="usdFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of usdFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="nzdFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of nzdFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="audFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of audFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="gbpFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of gbpFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="hkdFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of hkdFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="sgdFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of sgdFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="eurFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of eurFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="cadFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of cadFixedList"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                        <select
+                          class="selectpicker select-box-style"
+                          *ngIf="indFixedFlag"
+                          data-live-search="true"
+                          style="
+                            border: 1px solid #e1d4d4 !important;
+                            width: 100%;
+                          "
+                        >
+                          <option
+                            class="text-muted"
+                            *ngFor="let item of amountList1"
+                          >
+                            {{ item.label }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-100 m-0 p-0" *ngIf="forwardFlag">
+                    <div class="row m-0 p-0" *ngIf="minimumFlag">
+                      <div class="form-group">
+                        <label for="title" class="control-label col-form-label">
+                          Minimum Budjet
+                        </label>
+                        <input
+                          type="text"
+                          [(ngModel)]="minimumAmount"
+                          class="form-control"
+                          id="title"
+                          style="width: 40%"
+                          placeholder="$: Enter The Amount"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-0 p-0" *ngIf="maximumFlag">
+                      <div class="form-group">
+                        <label for="title" class="control-label col-form-label">
+                          Maximum Budget
+                        </label>
+                        <input
+                          type="text"
+                          [(ngModel)]="maxAmount"
+                          class="form-control"
+                          id="title"
+                          style="width: 40%"
+                          placeholder="$: Enter The Amount"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-1" *ngIf="nextButton2">
+                    <div class="col" style="text-align: left">
+                      <button
+                        type="submit"
+                        (click)="nextForward2()"
+                        class="btn btn-primary rounded-sm ms-3 font-style-family"
+                        style="font-size: 12px !important"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag1">
+                    <label
+                      for="desceiption"
+                      class="control-label col-form-label"
+                    >
+                      What Type of Project Are you Posting
+                    </label>
+                  </div>
+
+                  <div class="row m-0 p-0" *ngIf="forwardFlag1">
+                    <div
+                      *ngFor="let item of postingList; let i = index"
+                      class="col-4 m-0 p-0 pl-2 mt-1"
+                      (click)="selectPostings(item, i)"
+                    >
+                      <div
+                        class="row m-0 p-0"
+                        [ngClass]="
+                          item.isChecked ? 'pay-style-bg' : 'pay-style'
+                        "
+                      >
+                        <div class="col-2 pt-2">
+                          <img
+                            src="../../assets/{{ item.icon }}"
+                            width="50px;"
+                          />
+                        </div>
+                        <div class="col-10">
+                          <a>{{ item.title }}</a>
+                          <div class="row">
+                            <div class="col-12">
+                              <p class="w-100" style="font-size: 13px">
+                                {{ item.description }}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row m-0 p-0 mt-2" *ngIf="forwardFlag1">
+                                        <div class="col-4 m-0 p-0 pl-2" (click)="featured('featured')">
+                                            <div class="row m-0 p-0 pay-style">
+                                                <div class="col-2 pt-2">
+                                                    <img src="../../assets/featured-icon.png" width="50px;">
+                                                </div>
+                                                <div class="col-10">
+                                                    <a>Featured</a>
+                                                    <input class="ml-3" (change)="featureChange($event)" [(ngModel)]="featureCheck"
+                                                        type="checkbox" value="">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="w-100" style="font-size: 13px;">
+                                                                Choose this when you want to mark
+                                                                your Project as Featured to attract
+                                                                more Quality Bids and get search
+                                                                engine optimized for display &
+                                                                attention.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 m-0 p-0 pl-2" (click)="urgent('urgent')">
+                                            <div class="row m-0 p-0 pay-style">
+                                                <div class="col-2 pt-2">
+                                                    <img src="../../assets/urgent-icon.png" width="50px;">
+                                                </div>
+                                                <div class="col-10">
+                                                    <a>Urgent</a>
+                                                    <input class="ml-3" (change)="urgentChange($event)" [(ngModel)]="urgentCheck"
+                                                        type="checkbox" value="">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="w-100" style="font-size: 13px;">
+                                                                Choose this when you want to attract
+                                                                bidders who are ready to kick-off the
+                                                                Project and can be onboarded right
+                                                                now. The bidding remains open for
+                                                                only 24hrs.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 m-0 p-0 pl-2" (click)="private('private')">
+                                            <div class="row m-0 p-0 pay-style">
+                                                <div class="col-2 pt-2">
+                                                    <img src="../../assets/privte-icon.png" width="50px;">
+                                                </div>
+                                                <div class="col-10">
+                                                    <a>Private Project</a>
+                                                    <input class="ml-3" (change)="privateChange($event)" [(ngModel)]="privateCheck"
+                                                        type="checkbox" value="">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="w-100" style="font-size: 13px;">
+                                                                Your Project will not be visible in
+                                                                any search engine. Only logged in users
+                                                                at JELLYSPACE will be able to view it.
+                                                                You can even restrict the Project to your
+                                                                Favorite individuals.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                  <!-- <div class="row m-0 p-0 mt-2" *ngIf="forwardFlag1">
+                                        <div class="col-4 m-0 p-0 pl-2" (click)="sealed('sealed')">
+                                            <div class="row m-0 p-0 pay-style">
+                                                <div class="col-2 pt-2">
+                                                    <img src="../../assets/sealed-icon.png" width="50px;">
+                                                </div>
+                                                <div class="col-10">
+                                                    <a>Sealed Project</a>
+                                                    <input class="ml-3" (change)="sealedChange($event)" [(ngModel)]="sealedeCheck"
+                                                        type="checkbox" value="">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="w-100" style="font-size: 13px;">
+                                                                The bids on the Project will not be
+                                                                visible openly. This way you get to
+                                                                select the best bid.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 m-0 p-0 pl-2" (click)="fulltime('fulltime')">
+                                            <div class="row m-0 p-0 pay-style">
+                                                <div class="col-2 pt-2">
+                                                    <img src="../../assets/fulltime-icon.png" width="50px;">
+                                                </div>
+                                                <div class="col-10">
+                                                    <a>Full Time</a>
+                                                    <input class="ml-3" (change)="fullTimeChange($event)"
+                                                        [(ngModel)]="fulltimeCheck" type="checkbox" value="">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <p class="w-100" style="font-size: 13px;">
+                                                                Choose this option when you have a
+                                                                Project that is long-term or needs
+                                                                extended support from the hired
+                                                                personnels.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                  <div class="row m-0 p-0" *ngIf="forwardFlag1">
+                    <div class="col-4"></div>
+                    <div class="col-6">
+                      <label
+                        for="desceiption"
+                        class="control-label col-form-label"
+                      >
+                        Summary Of Your Project Details
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag1">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                      <div
+                        class="row m-0 p-0"
+                        style="border: 1px solid #bfbbbb; border-radius: 5px"
+                      >
+                        <div
+                          class="col-3"
+                          style="
+                            border-right: 1px solid #bfbbbb;
+                            border-radius: 10px;
+                          "
+                        >
+                          <img
+                            class="pt-3"
+                            src="../../assets/project-icon.png"
+                            width="100px;"
+                          />
+                          <p
+                            class="w-100 text-muted m-0 p-0 pl-4 pt-2"
+                            style="font-size: 14px"
+                          >
+                            PROJECT
+                          </p>
+                          <p
+                            class="w-100 m-0 p-0 pb-2 pt-1"
+                            style="font-size: 14px; font-weight: bold"
+                          >
+                            {{ usdAmountDisplay }}
+                          </p>
+                        </div>
+                        <div class="col-9">
+                          <p
+                            class="w-100 m-0 p-0"
+                            style="font-size: 14px; font-weight: bold"
+                          >
+                            {{ projectName }}
+                          </p>
+                          <p class="w-100" style="font-size: 13px">
+                            {{ projectDescription }}
+                          </p>
+                          <div class="row m-0 p-0">
+                            <div
+                              class="col m-0 p-0 pl-1 pr-1"
+                              *ngFor="
+                                let data of selectItemsList;
+                                let i = index
+                              "
+                            >
+                              <label
+                                for=""
+                                class="m-0 p-0 pl-2"
+                                style="
+                                  border: 1px solid #bfbbbb;
+                                  border-radius: 10px;
+                                  font-size: 12px;
+                                "
+                                >{{ data }}</label
+                              >
+                            </div>
+                          </div>
+                          <div class="row pt-2 m-0 p-0">
+                            <button
+                              type="button"
+                              *ngIf="standardFlag"
+                              class="btn btn-danger pt-0 ml-1 mr-1 mt-2"
+                              style="height: 25px; width: 90px"
+                            >
+                              Standard
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="ndaFlag"
+                              class="btn btn-success pt-0 ml-1 mr-1 mt-2"
+                              style="height: 25px; width: 60px"
+                            >
+                              NDA
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="ipFlag"
+                              class="btn btn-info pt-0 ml-1 mr-1 mt-2"
+                              style="height: 25px; width: 90px"
+                            >
+                              IP
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="featuredFlag"
+                              class="btn btn-warning pt-0 ml-1 mr-1 mt-2"
+                              style="height: 25px; width: 90px"
+                            >
+                              Featured
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="urgentFlag"
+                              class="btn btn-warning pt-0 ml-1 mr-1 mt-2"
+                              style="
+                                height: 25px;
+                                width: 90px;
+                                background: #d58ccf;
+                                color: #fff;
+                                border: none;
+                              "
+                            >
+                              Urgent
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="privateFlag"
+                              class="btn btn-warning pt-0 ml-1 mr-1 mt-2"
+                              style="
+                                height: 25px;
+                                width: 90px;
+                                background: #c95326;
+                                border: none;
+                                color: #fff;
+                              "
+                            >
+                              Private
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="sealedFlag"
+                              class="btn btn-warning pt-0 ml-1 mr-1 mt-2"
+                              style="
+                                height: 25px;
+                                width: 90px;
+                                background: #6679d5;
+                                border: none;
+                                color: #fff;
+                              "
+                            >
+                              Sealed
+                            </button>
+                            <button
+                              type="button"
+                              *ngIf="fulltimeFlag"
+                              class="btn btn-warning pt-0 ml-1 mr-1 mt-2"
+                              style="
+                                height: 25px;
+                                width: 90px;
+                                background: #212529;
+                                border: none;
+                                color: #fff;
+                              "
+                            >
+                              FullTime
+                            </button>
+                            <!-- <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="standardFlag" class="btn btn-danger pt-0" style="height: 25px;">Standard</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="ndaFlag" class="btn btn-success pt-0" style="height: 25px;">NDA</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="ipFlag" class="btn btn-info pt-0" style="height: 25px;">IP</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="featuredFlag" class="btn btn-warning pt-0" style="height: 25px;">Featured</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="urgentFlag" class="btn btn-warning pt-0" style="height: 25px;">Urgent</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="privateFlag" class="btn btn-warning pt-0" style="height: 25px;">Private</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="sealedFlag" class="btn btn-warning pt-0" style="height: 25px;">Sealed</button>
+                                                </div>
+                                                <div class="col m-0 p-0">
+                                                    <button type="button" *ngIf="fulltimeFlag" class="btn btn-warning pt-0" style="height: 25px;">FullTime</button>
+                                                </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1"></div>
+                  </div>
+                  <div class="row m-0 p-0" *ngIf="forwardFlag1">
+                    <div class="col-3"></div>
+                    <div class="col-8 m-0 p-0 pt-3">
+                      <label
+                        for="desceiption"
+                        class="control-label col-form-label pl-2"
+                        style="border: 1px solid #bdb7b7; border-radius: 10px"
+                      >
+                        <i
+                          class="fa fa-info-circle"
+                          aria-hidden="true"
+                          style="font-size: 20px"
+                        ></i>
+                        Your Project will be sent live immediately, but you will
+                        not be charged yet.
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    class="row m-0 p-0 mt-3 float-right"
+                    *ngIf="forwardFlag1"
+                  >
+                    <button
+                      type="submit"
+                      (click)="savePostProject()"
+                      class="btn btn-primary ml-1 mr-1 pt-1"
+                      style="width: 190px; height: 32px"
+                    >
+                      Post My Project Now
+                    </button>
+                    <button
+                      type="submit"
+                      (click)="resetData()"
+                      class="btn btn-info ml-1 mr-1 pt-1"
+                      style="width: 80px; height: 32px"
+                    >
+                      Reset
+                    </button>
+                    <button
+                      type="submit"
+                      (click)="cancelForm()"
+                      class="btn btn-danger ml-1 mr-1 pt-1"
+                      style="width: 80px; height: 32px"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pills-profile"
+                role="tabpanel"
+                aria-labelledby="pills-profile-tab"
+              >
+                <div class="w-100 m-0 p-0" *ngIf="!findProjectDeatilsFlag">
+                  <div class="row m-0 p-0">
+                    <div
+                      class="col-4 m-0 p-0"
+                      style="background: #fff; text-align: left"
+                    >
+                      <div class="row m-0 p-0">
+                        <label
+                          class="w-100 m-0 p-0"
+                          for=""
+                          style="font-size: 15px; font-weight: 600"
+                          >Filters</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0 pt-3">
+                        <label
+                          class="m-0 p-0 col-10"
+                          for=""
+                          style="font-size: 15px; font-weight: 600"
+                          >Project Types</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label class="form-check-label">Fixed price</label>
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label class="form-check-label">Hourly Rate</label>
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Fixed Price</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <label class="m-0 p-0">Min</label>
+                          <input
+                            type="text"
+                            [(ngModel)]="minAmount"
+                            class="form-control"
+                            id="title"
+                            placeholder="0"
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <label class="m-0 p-0">Max</label>
+                          <input
+                            type="text"
+                            [(ngModel)]="maxAmountVal"
+                            class="form-control"
+                            id="title"
+                            placeholder="0"
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Hourly Rate</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <label class="m-0 p-0">Min</label>
+                          <input
+                            type="text"
+                            [(ngModel)]="minAmount"
+                            class="form-control"
+                            id="title"
+                            placeholder="0"
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <label class="m-0 p-0">Max</label>
+                          <input
+                            type="text"
+                            [(ngModel)]="maxAmountVal"
+                            class="form-control"
+                            id="title"
+                            placeholder="0"
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Skills</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            [(ngModel)]="findSkillId"
+                            class="form-control"
+                            id="title"
+                            placeholder="Search Skills"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="row m-0 p-0 pt-1"
+                        *ngFor="let item of primarySkillSet1"
+                      >
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >{{ item.label }}</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Listing Type</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >Featured</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >Sealed</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >NDA</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >Urgent</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >Recruiter</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >IP Agreement</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Project Location</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            [(ngModel)]="findSkillId"
+                            class="form-control"
+                            id="title"
+                            placeholder="Enter Location "
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Client's Countries</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            [(ngModel)]="findSkillId"
+                            class="form-control"
+                            id="title"
+                            placeholder="SearchnCountries"
+                          />
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <label
+                          class="m-0 p-0 col-10 text-bold"
+                          for=""
+                          style="font-size: 14px; font-weight: 600"
+                          >Languages</label
+                        >
+                        <label
+                          class="m-0 p-0 col-2"
+                          for=""
+                          style="font-size: 13px; color: blue"
+                          >Clear</label
+                        >
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                            checked
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >German</label
+                          >
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0 pt-1">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="check1"
+                            name="option1"
+                            value="something"
+                            checked
+                          />
+                          <label
+                            class="form-check-label"
+                            style="font-size: 14px"
+                            >English</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-8 m-0 p-0">
+                      <div
+                        class="w-100 m-0 p-0 hover-style"
+                        style="background: #fff"
+                      >
+                        <div
+                          class="w-100 m-0 p-0 mt-1 card1"
+                          (click)="openFindProjectDetails(findProject, el)"
+                          style="
+                            height: 220px;
+                            border-bottom: 1px solid #d7cfcf;
+                          "
+                          *ngFor="
+                            let el of projectDataList.reverse();
+                            let i = index
+                          "
+                        >
+                          <div class="row m-0 p-0">
+                            <label
+                              class="col-7 m-0 p-0 pl-2 font-style-family"
+                              for=""
+                              style="
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: #67af50;
+                              "
+                              >{{ el.projectName }}</label
+                            >
+                            <label
+                              class="col-5 m-0 p-0 font-style-family"
+                              for=""
+                              style="font-weight: 600; font-size: 10.5px"
+                              >{{ el.budget }}</label
+                            >
+                          </div>
+                          <!-- <div class="row m-0 p-0">
+                                                        <label class="col-6 m-0 p-0 pl-2 font-style-family" for="" style="font-size: 12px;
+                                                        color: gray;">{{el.budget}}</label>
+                                                    </div> -->
+                          <!-- <div class="row m-0 p-0 pl-2">
+                                                        <p class="m-0 p-0 font-style-family pt-3" style="font-size: 11px;">{{el.projectDescription}} </p>
+                                                    </div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-100 m-0 p-0" *ngIf="findProjectDeatilsFlag">
+                  <div class="row m-0 p-0 mt-2" style="background: #fff">
+                    <div class="col-9 m-0 p-0 pr-1">
+                      <div
+                        class="w-100 m-0 p-0"
+                        style="
+                          border: 1px solid rgb(241 234 234);
+                          height: 340px;
+                          border-radius: 10px;
+                        "
+                      >
+                        <div
+                          class="row m-0 p-0"
+                          style="
+                            border-bottom: 1px solid rgb(241 234 234);
+                            height: 45px;
+                          "
+                        >
+                          <div class="col-6 m-0 p-0">
+                            <label for="" class="m-0 p-0 pl-3 pt-3"
+                              >Project Details</label
+                            >
+                          </div>
+                          <div class="col-6 m-0 p-0">
+                            <label
+                              for=""
+                              class="w-100 m-0 p-0 pl-5 pt-3"
+                              style="font-size: 14px; font-weight: 600"
+                              >$ {{ modalBudget }}</label
+                            >
+                            <!-- <label for="" class="w-100 m-0 p-0 pl-5" style="font-size: 13px;">Biding Ends In 6 Days
+                                                            23 Hours</label> -->
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <label
+                            class="m-0 p-0 text-center pt-3"
+                            style="font-size: 16px; font-weight: 600"
+                            >Summary Of The Project</label
+                          >
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-12">
+                            <label
+                              class=""
+                              style="font-weight: 600; color: #1f2ee1"
+                              for=""
+                              >{{ modalHeaderName }}</label
+                            >
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-12">
+                            <label class="" style="font-size: 15px" for="">{{
+                              modalDescription
+                            }}</label>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <label
+                            class="m-0 p-0 pl-3"
+                            style="font-size: 15px; font-weight: 700"
+                            for=""
+                            >Skills Required</label
+                          >
+                          <div class="m-0 p-0 pl-2">
+                            <label
+                              class="m-0 p-0 m-0 p-0 pl-2 pr-2 ml-1 mr-2"
+                              *ngFor="let item of modalSkills"
+                              style="
+                                font-size: 13px;
+                                border: 1px solid #b3c3e9;
+                                color: #1b1bbf;
+                                border-radius: 10px;
+                              "
+                              for=""
+                              >{{ item }}</label
+                            >
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-3" *ngIf="writeBidBtnFlag">
+                          <div class="col pt-3" style="text-align: center">
+                            <button
+                              type="submit"
+                              (click)="writeBid()"
+                              class="btn btn-primary p-0 pl-2 pr-2"
+                              style="height: 30px"
+                            >
+                              <!-- Post a Project -->
+                              Write a Bid
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="writeBidFlag"
+                        class="w-100 m-0 p-0 mt-1"
+                        style="
+                          border: 1px solid rgb(241 234 234);
+                          height: 340px;
+                          border-radius: 10px;
+                        "
+                      >
+                        <div
+                          class="row m-0 p-0"
+                          style="
+                            border-bottom: 1px solid rgb(241 234 234);
+                            height: 45px;
+                          "
+                        >
+                          <div class="col-12 m-0 p-0">
+                            <label
+                              for=""
+                              class="m-0 p-0 pl-3 pt-3"
+                              style="font-weight: 800"
+                              >Write a Bid On the Project Details</label
+                            >
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-2">
+                          <label
+                            class="m-0 p-0 pl-4"
+                            style="font-size: 14px"
+                            for=""
+                            >You will be able to edit your bid until the project
+                            is awarded to someone.</label
+                          >
+                          <div class="row m-0 p-0 pl-2">
+                            <div class="col-2">
+                              <div class="form-group search">
+                                <select
+                                  class="selectpicker select-box-style"
+                                  [(ngModel)]="findRupeesId"
+                                  data-live-search="true"
+                                  style="border: 1px solid #e1d4d4 !important"
+                                >
+                                  <option
+                                    class="text-muted"
+                                    *ngFor="let item of findRupeesList"
+                                  >
+                                    {{ item.label }}
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-6 form-group">
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="title"
+                                [(ngModel)]="findAmount"
+                                placeholder="0.00"
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label
+                                for="desceiption"
+                                style="font-size: 14px; font-weight: 700"
+                                class="control-label col-form-label"
+                              >
+                                Describe your proposal
+                              </label>
+                              <textarea
+                                class="form-control"
+                                id="description"
+                                [(ngModel)]="writeBidDescription"
+                                rows="3"
+                                placeholder="What makes you the best candidate for this project?"
+                              ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0 float-right">
+                          <div class="m-0 p-0">
+                            <button
+                              type="submit"
+                              (click)="closeBid()"
+                              class="btn btn-danger pl-2 pr-2 ml-1 p-0"
+                              style="
+                                height: 30px;
+                                width: 70px;
+                                color: #fff !important;
+                              "
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="submit"
+                              (click)="clearBid()"
+                              class="btn pl-2 pr-2 ml-1 p-0"
+                              style="
+                                height: 30px;
+                                width: 70px;
+                                background: #100101;
+                                color: #fff !important;
+                              "
+                            >
+                              Clear
+                            </button>
+                            <button
+                              type="submit"
+                              (click)="postBid()"
+                              class="btn btn-primary p-0 pl-2 pr-2 ml-1 mr-2"
+                              style="height: 30px; width: 80px"
+                            >
+                              Post bid
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-3 m-0 p-0">
+                      <div
+                        class="w-100 m-0 p-0"
+                        style="
+                          border: 1px solid rgb(241 234 234);
+                          border-radius: 10px;
+                        "
+                      >
+                        <div
+                          class="row m-0 p-0 pl-2"
+                          style="border-bottom: 1px solid #e1d9d9"
+                        >
+                          <label class="m-0 p-0" for=""></label>
+                          About the Client
+                        </div>
+                        <div class="row m-0 p-1 pl-2 pt-3">
+                          <label class="m-0 p-0" for=""
+                            ><img
+                              src="../../assets/us.png"
+                              width="25px;"
+                            /><span class="pl-2">United States</span></label
+                          >
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-1 m-0 p-0 pl-2">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-1 m-0 p-0 pl-1">
+                            <span class="fa fa-star checked"></span>
+                          </div>
+                          <div class="col-1 m-0 p-0 pl-1">
+                            <span class="fa fa-star checked"></span>
+                          </div>
+                          <div class="col-1 m-0 p-0 pl-1">
+                            <span class="fa fa-star checked"></span>
+                          </div>
+                          <div class="col-1 m-0 p-0 pl-1">
+                            <span class="fa fa-star checked"></span>
+                          </div>
+                          <div class="col-1 m-0 p-0 pl-1">
+                            <span class="fa fa-star checked"></span>
+                          </div>
+                          <div class="col-2 m-0 p-0 pl-1">
+                            <span class="">0.0</span>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0 pl-2">
+                          <label class="m-0 p-0" for="">
+                            <i
+                              class="fa fa-clock-o pl-2"
+                              aria-hidden="true"
+                            ></i>
+                            <span class="m-0 p-0 pl-2" style="font-size: 14px"
+                              >Member since Dec 5, 2022</span
+                            >
+                          </label>
+                        </div>
+                        <div class="row m-0 p-0 pl-2 mt-2">
+                          <label
+                            class="m-0 p-0 pl-2"
+                            style="font-size: 14px; font-weight: 600"
+                            for=""
+                            >Client Engagement</label
+                          >
+                        </div>
+                        <div class="row m-0 p-0 pl-2">
+                          <label class="m-0 p-0 pl-2" for="">
+                            <i
+                              class="fa fa-exclamation-circle"
+                              style="color: #ff00e0"
+                              aria-hidden="true"
+                            ></i>
+                            <span
+                              class="m-0 p-0 pl-2"
+                              style="
+                                font-size: 12px;
+                                font-weight: 600;
+                                color: #1f2ee1;
+                              "
+                              >Upgrade Your Membership to see client
+                              engagement</span
+                            ></label
+                          >
+                        </div>
+                        <div class="row m-0 p-0 pl-2 mt-2">
+                          <label
+                            class="m-0 p-0 pl-2"
+                            style="font-size: 14px; font-weight: 700"
+                            for=""
+                            >Client Verification</label
+                          >
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="m-0 p-0">
+                            <label class="m-0 p-0" for=""
+                              ><i
+                                class="fa fa-id-card-o pl-2"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="pl-2" style="font-size: 14px">
+                                Identity verified</span
+                              ></label
+                            >
+                          </div>
+                          <div class="m-0 p-0">
+                            <label class="m-0 p-0" for=""
+                              ><i
+                                class="fa fa-money pl-2"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="pl-2" style="font-size: 14px"
+                                >Payment verified</span
+                              ></label
+                            >
+                          </div>
+                          <div class="m-0 p-0">
+                            <label class="m-0 p-0" for=""
+                              ><i
+                                class="fa fa-credit-card pl-2"
+                                aria-hidden="true"
+                              ></i
+                              ><span class="pl-2" style="font-size: 14px"
+                                >Deposit made</span
+                              ></label
+                            >
+                          </div>
+                          <div class="m-0 p-0">
+                            <label class="m-0 p-0" for=""
+                              ><i
+                                class="fa fa-envelope pl-2"
+                                style="color: #ef1edf"
+                                aria-hidden="true"
+                              ></i>
+                              <span class="pl-2" style="font-size: 14px"
+                                >Email verified</span
+                              ></label
+                            >
+                          </div>
+                          <div class="m-0 p-0">
+                            <label class="m-0 p-0" for="">
+                              <i class="fa fa-user pl-2" aria-hidden="true"></i
+                              ><span class="pl-2" style="font-size: 14px"
+                                >Profile completed</span
+                              ></label
+                            >
+                          </div>
+                          <div class="m-0 p-0 pb-3">
+                            <label class="m-0 p-0" for=""
+                              ><i
+                                class="fa fa-phone pl-2"
+                                aria-hidden="true"
+                              ></i>
+                              <span class="pl-2" style="font-size: 14px"
+                                >Phone verified</span
+                              ></label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="w-100 m-0 p-0 mt-1"
+                        style="
+                          border: 1px solid rgb(241 234 234);
+                          border-radius: 10px;
+                        "
+                      >
+                        <div
+                          class="row m-0 p-0 pl-2"
+                          style="
+                            border-bottom: 1px solid #e1d9d9;
+                            height: 40px;
+                            font-size: 15px;
+                            font-weight: 800;
+                          "
+                        >
+                          <label class="m-0 p-0" for=""></label>
+                          How to write a winning bid
+                        </div>
+                        <div class="row m-0 p-0 pl-2">
+                          <label class="m-0 p-0 pt-2 pb-2 pt-2 text-center"
+                            ><img src="../../assets/bid.svg" width="75px;"
+                          /></label>
+                          <label
+                            class="m-0 p-0 pl-4"
+                            for=""
+                            style="font-size: 14px; color: #100101"
+                          >
+                            Your best chance of winning this project is writing
+                            a great bid proposal here!</label
+                          >
+                          <label
+                            class="m-0 p-0 pl-4 pt-2"
+                            for=""
+                            style="font-size: 14px; color: #100101"
+                            >Great bids are ones that:</label
+                          >
+                          <div class="m-0 p-0">
+                            <ul>
+                              <li
+                                class="m-0 p-0"
+                                style="font-size: 14px; color: #100101"
+                              >
+                                Are engaging and well written without spelling
+                                or grammatical errors
+                              </li>
+                              <li
+                                class="m-0 p-0"
+                                style="font-size: 14px; color: #100101"
+                              >
+                                Show a clear understanding of what is required
+                                for this specific project - personalize your
+                                response!
+                              </li>
+                              <li
+                                class="m-0 p-0"
+                                style="font-size: 14px; color: #100101"
+                              >
+                                Explain how your skills & experience relate to
+                                the project and your approach to working on it
+                              </li>
+                              <li
+                                class="m-0 p-0"
+                                style="font-size: 14px; color: #100101"
+                              >
+                                Ask questions to clarify any unclear details
+                              </li>
+                            </ul>
+                          </div>
+                          <label
+                            class="m-0 p-0 pl-4 pt-2 pb-2"
+                            for=""
+                            style="font-size: 14px; color: #100101"
+                            >Most of all - don't spam or post cut-and-paste
+                            bids. You will be penalized or banned if you do
+                            so.</label
+                          >
+                          <button
+                            class="m-0 p-0 text-center"
+                            style="border: blue 1px solid"
+                          >
+                            Learnmore
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pills-contact"
+                role="tabpanel"
+                aria-labelledby="pills-contact-tab"
+              >
+                <ul class="list-group">
+                  <li
+                    class="list-group-item list-group-item-light"
+                    *ngFor="let fund of fundingArray"
+                    (click)="openLg(content)"
+                  >
+                    {{ fund }}
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="community-panel"
+                role="tabpanel"
+                aria-labelledby="pills-profile-tab"
+              >
+                Community
+                <!-- <main>
+                                    <div class="page-breadcrumb">
+                                        <div class="d-md-flex align-items-center">
+                                            <h4 class="page-title">Community Q <i class="fa fa-bars" aria-hidden="true"> A</i></h4>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row" style="padding-top: 20px;">
+                                            <div class="col-8">
+                                                <div class="row">
+                                                    <div class="col" style="text-align: left;">
+                                                        <h5>Explore Our Questions</h5>
+                                                    </div>
+                                                    <div class="col" style="text-align: right;">
+                                                        <button type="submit" class="btn btn-primary rounded-sm ms-3" routerLink="/ask-question">
+                                                            Ask a question
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <h5>Hot Network Questions</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </main> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="open-button" (click)="openForm()">Chat</button>
+
+  <div class="chat-popup" [style.display]="chatbox === true ? 'block' : 'none'">
+    <form class="form-container">
+      <h1>Chat</h1>
+
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+
+      <button type="submit" class="btn">Send</button>
+      <button type="button" class="btn cancel" (click)="closeForm()">
+        Close
+      </button>
+    </form>
+  </div>
+</main>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Project Title</h4>
+  </div>
+  <div class="modal-body scroll">
+    <div>
+      <div class="row">
+        <div class="col-8">
+          <div class="col-sm-12">
+            <label for="summary" class="control-label col-form-label">
+              Project Summary
+            </label>
+            <p class="p-2">
+              This is a long paragraph written to show how the line-height of an
+              element is affected by our utilities. Classes are applied to the
+              element itself or sometimes the parent element.
+            </p>
+          </div>
+          <div class="col-sm-12">
+            <label for="description" class="control-label col-form-label">
+              Project Description
+            </label>
+            <p class="p-2">
+              This is a long paragraph written to show how the line-height of an
+              element is affected by our utilities. Classes are applied to the
+              element itself or sometimes the parent element. These classes can
+              be customized as needed with our utility API.', 'This is a long
+              paragraph written to show how the line-height of an element is
+              affected by our utilities. Classes are applied to the element
+              itself or sometimes the parent element. These classes can be
+              customized as needed with our utility API.', 'This is a long
+              paragraph written to show how the line-height of an element is
+              affected by our utilities. Classes are applied to the element
+              itself or sometimes the parent element. These classes can be
+              customized as needed with our utility API.
+            </p>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="col-sm-12" style="margin-top: 3rem">
+            <div class="row">
+              <div class="text-center">
+                <div class="logo">
+                  <img src="../../assets/logo2.png" alt="" />
+                  <span><img src="../../assets/letterLogo.png" alt="" /></span>
+                </div>
+                <br /><br />
+                <img
+                  src="../../assets/user4.jpg"
+                  class="rounded-circle border p-1"
+                  width="80"
+                />
+                <h4 class="card-title mt-3 mb-0">Full Name</h4>
+                <small class="text-muted">Web Designer</small>
+                <div class="mt-3 pt-2 text-muted">
+                  795 Folsom Ave, Suite 600 San Francisco, CADGE 94107
+                  <br />
+                  <br />
+                  <i class="fa fa-mobile me-2"></i>1234567890
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-light"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="modal.close('Close click')"
+    >
+      Submit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #findProject let-modal>
+  <div class="modal-header" style="height: 45px">
+    <h4 class="modal-title" style="font-size: 16px">Project Details</h4>
+    <button
+      type="button"
+      class="btn btn-primary p-0 m-0 pl-2 pr-2"
+      style="height: 25px"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+  </div>
+  <div class="modal-body" style="height: 520px; overflow: auto">
+    <div class="card-body m-0 p-0">
+      <div class="row m-0 p-0 mt-2" style="background: #fff">
+        <div class="col-9 m-0 p-0 pr-1">
+          <div
+            class="w-100 m-0 p-0"
+            style="
+              border: 1px solid rgb(241 234 234);
+              height: 340px;
+              border-radius: 10px;
+            "
+          >
+            <div
+              class="row m-0 p-0"
+              style="border-bottom: 1px solid rgb(241 234 234); height: 45px"
+            >
+              <div class="col-6 m-0 p-0">
+                <label for="" class="m-0 p-0 pl-3 pt-3">Project Details</label>
+              </div>
+              <div class="col-6 m-0 p-0">
+                <label
+                  for=""
+                  class="w-100 m-0 p-0 pl-5 pt-3"
+                  style="font-size: 14px; font-weight: 600"
+                  >$ {{ modalBudget }}</label
+                >
+                <!-- <label for="" class="w-100 m-0 p-0 pl-5" style="font-size: 13px;">Biding Ends In 6 Days
+                                    23 Hours</label> -->
+              </div>
+            </div>
+            <div class="row m-0 p-0">
+              <label
+                class="m-0 p-0 text-center pt-3"
+                style="font-size: 16px; font-weight: 600"
+                >Summary Of The Project</label
+              >
+            </div>
+            <div class="row m-0 p-0">
+              <div class="col-12">
+                <label
+                  class=""
+                  style="font-weight: 600; color: #1f2ee1"
+                  for=""
+                  >{{ modalHeaderName }}</label
+                >
+              </div>
+            </div>
+            <div class="row m-0 p-0">
+              <div class="col-12">
+                <label class="" style="font-size: 15px" for="">{{
+                  modalDescription
+                }}</label>
+              </div>
+            </div>
+            <div class="row m-0 p-0">
+              <label
+                class="m-0 p-0 pl-3"
+                style="font-size: 15px; font-weight: 700"
+                for=""
+                >Skills Required</label
+              >
+              <div class="m-0 p-0 pl-2">
+                <label
+                  class="m-0 p-0 m-0 p-0 pl-2 pr-2 ml-1 mr-2"
+                  *ngFor="let item of modalSkills"
+                  style="
+                    font-size: 13px;
+                    border: 1px solid #b3c3e9;
+                    color: #1b1bbf;
+                    border-radius: 10px;
+                  "
+                  for=""
+                  >{{ item }}</label
+                >
+              </div>
+            </div>
+            <div class="row m-0 p-0 mt-3" *ngIf="writeBidBtnFlag">
+              <div class="col pt-3" style="text-align: center">
+                <button
+                  type="submit"
+                  (click)="writeBid()"
+                  class="btn btn-primary p-0 pl-2 pr-2"
+                  style="height: 30px"
+                >
+                  <!-- Post a Project -->
+                  Write a Bid
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="writeBidFlag"
+            class="w-100 m-0 p-0 mt-1"
+            style="
+              border: 1px solid rgb(241 234 234);
+              height: 340px;
+              border-radius: 10px;
+            "
+          >
+            <div
+              class="row m-0 p-0"
+              style="border-bottom: 1px solid rgb(241 234 234); height: 45px"
+            >
+              <div class="col-12 m-0 p-0">
+                <label for="" class="m-0 p-0 pl-3 pt-3" style="font-weight: 800"
+                  >Write a Bid On the Project Details</label
+                >
+              </div>
+            </div>
+            <div class="row m-0 p-0 mt-2">
+              <label class="m-0 p-0 pl-4" style="font-size: 14px" for=""
+                >You will be able to edit your bid until the project is awarded
+                to someone.</label
+              >
+              <div class="row m-0 p-0 pl-2">
+                <div class="col-2">
+                  <div class="form-group search">
+                    <select
+                      class="selectpicker select-box-style"
+                      [(ngModel)]="findRupeesId"
+                      data-live-search="true"
+                      style="border: 1px solid #e1d4d4 !important"
+                    >
+                      <option
+                        class="text-muted"
+                        *ngFor="let item of findRupeesList"
+                      >
+                        {{ item.label }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6 form-group">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="title"
+                    [(ngModel)]="findAmount"
+                    placeholder="0.00"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="desceiption"
+                    style="font-size: 14px; font-weight: 700"
+                    class="control-label col-form-label"
+                  >
+                    Describe your proposal
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="writeBidDescription"
+                    rows="3"
+                    placeholder="What makes you the best candidate for this project?"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row m-0 p-0 float-right">
+              <div class="m-0 p-0">
+                <button
+                  type="submit"
+                  (click)="closeBid()"
+                  class="btn btn-danger pl-2 pr-2 ml-1 p-0"
+                  style="height: 30px; width: 70px; color: #fff !important"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  (click)="clearBid()"
+                  class="btn pl-2 pr-2 ml-1 p-0"
+                  style="
+                    height: 30px;
+                    width: 70px;
+                    background: #100101;
+                    color: #fff !important;
+                  "
+                >
+                  Clear
+                </button>
+                <button
+                  type="submit"
+                  (click)="postBid()"
+                  class="btn btn-primary p-0 pl-2 pr-2 ml-1 mr-2"
+                  style="height: 30px; width: 80px"
+                >
+                  Post bid
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 m-0 p-0">
+          <div
+            class="w-100 m-0 p-0"
+            style="border: 1px solid rgb(241 234 234); border-radius: 10px"
+          >
+            <div
+              class="row m-0 p-0 pl-2"
+              style="border-bottom: 1px solid #e1d9d9"
+            >
+              <label class="m-0 p-0" for=""></label>
+              About the Client
+            </div>
+            <div class="row m-0 p-1 pl-2 pt-3">
+              <label class="m-0 p-0" for=""
+                ><img src="../../assets/us.png" width="25px;" /><span
+                  class="pl-2"
+                  >United States</span
+                ></label
+              >
+            </div>
+            <div class="row m-0 p-0">
+              <div class="col-1">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </div>
+              <div class="col-1">
+                <span class="fa fa-star checked"></span>
+              </div>
+              <div class="col-1">
+                <span class="fa fa-star checked"></span>
+              </div>
+              <div class="col-1">
+                <span class="fa fa-star checked"></span>
+              </div>
+              <div class="col-1">
+                <span class="fa fa-star checked"></span>
+              </div>
+              <div class="col-1">
+                <span class="fa fa-star checked"></span>
+              </div>
+              <div class="col-1">
+                <span class="">0.0</span>
+              </div>
+            </div>
+            <div class="row m-0 p-0 pl-2">
+              <label class="m-0 p-0" for="">
+                <i class="fa fa-clock-o pl-2" aria-hidden="true"></i>
+                <span class="m-0 p-0 pl-2" style="font-size: 14px"
+                  >Member since Dec 5, 2022</span
+                >
+              </label>
+            </div>
+            <div class="row m-0 p-0 pl-2 mt-2">
+              <label
+                class="m-0 p-0 pl-2"
+                style="font-size: 14px; font-weight: 600"
+                for=""
+                >Client Engagement</label
+              >
+            </div>
+            <div class="row m-0 p-0 pl-2">
+              <label class="m-0 p-0 pl-2" for="">
+                <i
+                  class="fa fa-exclamation-circle"
+                  style="color: #ff00e0"
+                  aria-hidden="true"
+                ></i>
+                <span
+                  class="m-0 p-0 pl-2"
+                  style="font-size: 12px; font-weight: 600; color: #1f2ee1"
+                  >Upgrade Your Membership to see client engagement</span
+                ></label
+              >
+            </div>
+            <div class="row m-0 p-0 pl-2 mt-2">
+              <label
+                class="m-0 p-0 pl-2"
+                style="font-size: 14px; font-weight: 700"
+                for=""
+                >Client Verification</label
+              >
+            </div>
+            <div class="row m-0 p-0">
+              <div class="m-0 p-0">
+                <label class="m-0 p-0" for=""
+                  ><i class="fa fa-id-card-o pl-2" aria-hidden="true"></i
+                  ><span class="pl-2" style="font-size: 14px">
+                    Identity verified</span
+                  ></label
+                >
+              </div>
+              <div class="m-0 p-0">
+                <label class="m-0 p-0" for=""
+                  ><i class="fa fa-money pl-2" aria-hidden="true"></i
+                  ><span class="pl-2" style="font-size: 14px"
+                    >Payment verified</span
+                  ></label
+                >
+              </div>
+              <div class="m-0 p-0">
+                <label class="m-0 p-0" for=""
+                  ><i class="fa fa-credit-card pl-2" aria-hidden="true"></i
+                  ><span class="pl-2" style="font-size: 14px"
+                    >Deposit made</span
+                  ></label
+                >
+              </div>
+              <div class="m-0 p-0">
+                <label class="m-0 p-0" for=""
+                  ><i
+                    class="fa fa-envelope pl-2"
+                    style="color: #ef1edf"
+                    aria-hidden="true"
+                  ></i>
+                  <span class="pl-2" style="font-size: 14px"
+                    >Email verified</span
+                  ></label
+                >
+              </div>
+              <div class="m-0 p-0">
+                <label class="m-0 p-0" for="">
+                  <i class="fa fa-user pl-2" aria-hidden="true"></i
+                  ><span class="pl-2" style="font-size: 14px"
+                    >Profile completed</span
+                  ></label
+                >
+              </div>
+              <div class="m-0 p-0 pb-3">
+                <label class="m-0 p-0" for=""
+                  ><i class="fa fa-phone pl-2" aria-hidden="true"></i>
+                  <span class="pl-2" style="font-size: 14px"
+                    >Phone verified</span
+                  ></label
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="w-100 m-0 p-0 mt-1"
+            style="border: 1px solid rgb(241 234 234); border-radius: 10px"
+          >
+            <div
+              class="row m-0 p-0 pl-2"
+              style="
+                border-bottom: 1px solid #e1d9d9;
+                height: 40px;
+                font-size: 15px;
+                font-weight: 800;
+              "
+            >
+              <label class="m-0 p-0" for=""></label>
+              How to write a winning bid
+            </div>
+            <div class="row m-0 p-0 pl-2">
+              <label class="m-0 p-0 pt-2 pb-2 pt-2 text-center"
+                ><img src="../../assets/bid.svg" width="75px;"
+              /></label>
+              <label
+                class="m-0 p-0 pl-4"
+                for=""
+                style="font-size: 14px; color: #100101"
+              >
+                Your best chance of winning this project is writing a great bid
+                proposal here!</label
+              >
+              <label
+                class="m-0 p-0 pl-4 pt-2"
+                for=""
+                style="font-size: 14px; color: #100101"
+                >Great bids are ones that:</label
+              >
+              <div class="m-0 p-0">
+                <ul>
+                  <li class="m-0 p-0" style="font-size: 14px; color: #100101">
+                    Are engaging and well written without spelling or
+                    grammatical errors
+                  </li>
+                  <li class="m-0 p-0" style="font-size: 14px; color: #100101">
+                    Show a clear understanding of what is required for this
+                    specific project - personalize your response!
+                  </li>
+                  <li class="m-0 p-0" style="font-size: 14px; color: #100101">
+                    Explain how your skills & experience relate to the project
+                    and your approach to working on it
+                  </li>
+                  <li class="m-0 p-0" style="font-size: 14px; color: #100101">
+                    Ask questions to clarify any unclear details
+                  </li>
+                </ul>
+              </div>
+              <label
+                class="m-0 p-0 pl-4 pt-2 pb-2"
+                for=""
+                style="font-size: 14px; color: #100101"
+                >Most of all - don't spam or post cut-and-paste bids. You will
+                be penalized or banned if you do so.</label
+              >
+              <button
+                class="m-0 p-0 text-center"
+                style="border: blue 1px solid"
+              >
+                Learnmore
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Close</button>
+    </div> -->
+</ng-template>

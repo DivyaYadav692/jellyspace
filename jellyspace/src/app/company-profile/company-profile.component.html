@@ -1,0 +1,42 @@
+<div class="company-profile">
+  <div class="row align-items-center mb-3">
+    <div class="col-lg-2 col-md-3 col-12 text-center">
+      <img
+        class="company-logo"
+        (error)="setDefault()"
+        [src]="image"
+        alt="Company Logo"
+      />
+    </div>
+    <div class="col-lg-8 col-md-6 col-12">
+      <h2 class="company-name">SpaceX</h2>
+    </div>
+    <div class="col-lg-2 col-md-3 col-12 text-end">
+      <a *ngIf="!isEditing" class="btn btn-primary me-2" (click)="editProfile()"
+        >Edit</a
+      >
+      <a *ngIf="isEditing" class="btn btn-success me-2" (click)="editProfile()"
+        >Save</a
+      >
+      <a class="btn btn-secondary" (click)="close()">Close</a>
+    </div>
+  </div>
+
+  <div *ngFor="let section of companySections" class="row mb-3">
+    <div class="col-lg-3 col-md-4 col-12">
+      <label class="section-title">{{ section.title }}</label>
+    </div>
+    <div class="col-lg-9 col-md-8 col-12">
+      <ng-container *ngIf="isEditing; else viewMode">
+        <input
+          [(ngModel)]="section.data"
+          class="form-control"
+          [placeholder]="section.title"
+        />
+      </ng-container>
+      <ng-template #viewMode>
+        <p class="section-content">{{ section.data }}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

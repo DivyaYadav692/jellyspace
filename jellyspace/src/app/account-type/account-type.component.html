@@ -1,0 +1,52 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-6">
+                <div class="login-wrap d-md-flex">
+                    <div class="wrap p-4 p-md-5">
+                        <div class="d-flex mb-5">
+                            <div class="w-100 text-center">
+                                <img src="../../assets/letterLogo.png" width="250px;">
+                            </div>
+                        </div>
+                        <h4 class="text-center">Select Account Type</h4>
+                        <p class="card-text mb-5 text-center">
+                            <small class="text-muted">
+                                Don't worry, this can be changed later.
+                            </small>
+                        </p>
+                        <div class="card mb-3" style="cursor: pointer;" id="card-shadow"
+                            [ngClass]="{ 'active' : isValue == 1 }" (click)="toggle(1)">
+                            <div class="card-body">
+                                <img src="https://img.icons8.com/external-filled-outline-perfect-kalash/64/000000/external-work-coronavirus-protective-filled-outline-perfect-kalash-2.png"
+                                    class="img-fluid rounded-start me-3" />
+                                I want to work
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="cursor: pointer;" id="card-shadow"
+                            [ngClass]="{ 'active' : isValue == 2 }" (click)="toggle(2)">
+                            <div class="card-body">
+                                <img src="https://img.icons8.com/office/64/000000/new-company.png"
+                                    class="img-fluid rounded-start me-3" />
+                                I am company
+                            </div>
+                        </div>
+                        <div class="card mb-4" style="cursor: pointer; white-space: nowrap;" id="card-shadow"
+                            [ngClass]="{ 'active' : isValue == 3 }" (click)="toggle(3)">
+                            <div class="card-body">
+                                <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-government-politics-flaticons-lineal-color-flat-icons-2.png"
+                                    class="img-fluid rounded-start me-3" />
+                                I am Government Organisation
+                            </div>
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            <button type="submit" class="btn btn-primary rounded" routerLink="/accounts-link">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

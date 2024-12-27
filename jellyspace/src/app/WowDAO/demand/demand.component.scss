@@ -1,0 +1,111 @@
+/* Ensure body uses Nunito font */
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #343a40;
+  color: white;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+/* Content wrapper adjustment for sidebar */
+#content-wrapper {
+  margin-left: 250px;
+  margin-top: 56px;
+  padding: 20px;
+}
+
+/* Topbar styling */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 101;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #f8f9fc;
+  position: relative;
+  bottom: 0;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+}
+
+/* Footer text styling */
+.footer .text-muted {
+  color: #6c757d;
+}
+
+.footer a {
+  color: #6c757d;
+}
+
+.footer a:hover {
+  color: #343a40;
+}
+
+/* Sidebar nav-link active styling */
+.sidebar .nav-link.active {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+/* Tab styling */
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f8f9fc;
+  color: #343a40;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  display: inline-flex; /* Use inline-flex for proper spacing */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  margin-right: 5px; /* Add spacing between tabs */
+  position: relative;
+}
+
+/* Hover state for tabs */
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+/* Active tab styling */
+.tab.active {
+  color: #007bff;
+  border-bottom: 3px solid #007bff; /* Add border bottom for active tab */
+}
+
+/* Tab content styling */
+.tab-content {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+/* Options slide styling */
+#options-slide {
+  position: fixed;
+  top: 56px;
+  left: 250px;
+  width: calc(100% - 250px);
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 102;
+  padding: 10px;
+  display: flex; /* Use flex for proper alignment of tabs */
+  gap: 10px; /* Add spacing between tabs */
+}

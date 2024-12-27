@@ -1,0 +1,119 @@
+/* Ensure body uses Nunito font */
+body {
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #343a40;
+  color: white;
+  overflow-y: auto;
+  z-index: 100;
+}
+.container {
+  margin-top: 100px;
+}
+/* Content wrapper adjustment for sidebar */
+#content-wrapper {
+  margin-left: 250px;
+  margin-top: 56px; /* Adjust based on the topbar height */
+  padding: 20px;
+  flex: 1; /* Allows content wrapper to grow and push footer to the bottom */
+}
+
+/* Topbar styling */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 101;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #f8f9fc;
+  position: relative;
+  bottom: 0;
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  padding: 10px 20px;
+  border-top: 1px solid #e3e6f0;
+}
+
+/* Footer text styling */
+.footer .text-muted {
+  color: #6c757d;
+}
+
+.footer a {
+  color: #6c757d;
+}
+
+.footer a:hover {
+  color: #343a40;
+}
+
+/* Sidebar nav-link active styling */
+.sidebar .nav-link.active {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+/* Tab styling */
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f8f9fc;
+  color: #343a40;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  position: relative;
+}
+
+/* Hover state for tabs */
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+/* Active tab styling */
+.tab.active {
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+}
+
+/* Tab content styling */
+.tab-content {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+/* Options slide styling */
+#options-slide {
+  position: fixed;
+  top: 56px;
+  left: 250px;
+  width: calc(100% - 250px);
+  border-bottom: 1px solid #e3e6f0;
+  z-index: 102;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}

@@ -1,0 +1,349 @@
+<div id="wrapper" class="d-flex">
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar bg-gradient-primary text-white d-flex flex-column vh-100 p-3">
+    <a class="sidebar-brand d-flex align-items-center mb-4 text-white text-decoration-none" routerLink="/home">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-space-shuttle"></i>
+      </div>
+    </a>
+    <hr class="sidebar-divider my-2 text-white" />
+    
+    <!-- Experiments Heading -->
+    <h5 class="text-black">Experiments</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Home'}" 
+           (click)="selectSection('home')">
+           Home
+          </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Experiment'}" 
+           (click)="selectSection('experiment')">
+          Experiment
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Feature Flags'}" 
+           (click)="selectSection('featureFlags')">
+          Feature Flags
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Deployments'}" 
+           (click)="selectSection('deployments')">
+          Deployments
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Management API'}" 
+           (click)="selectSection('managementAPI')">
+          Management API
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Permissions'}" 
+           (click)="selectSection('permissions')">
+          Permissions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-black" 
+           [ngClass]="{'active': currentSection === 'Resources'}" 
+           (click)="selectSection('resources')">
+          Resources
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+    <div class="p-4">
+      <div class="d-flex align-items-center mb-4">
+        <h2>{{ currentSection }}</h2>
+        <div class="analytics-dropdown ms-4" 
+             *ngIf="currentSection === 'Experiment' || currentSection === 'Feature Flags'"
+             #dropdownRef
+             (click)="$event.stopPropagation()">
+          <button class="dropdown-button" (click)="showAnalyticsDropdown = !showAnalyticsDropdown">
+            {{ selectedAnalytics }}
+            <i class="fas fa-chevron-down ms-2"></i>
+          </button>
+          <div class="dropdown-menu" [class.show]="showAnalyticsDropdown">
+            <div class="dropdown-items">
+              <a class="dropdown-item" 
+                 *ngFor="let option of analyticsOptions"
+                 [class.selected]="selectedAnalytics === option"
+                 (click)="selectAnalytics(option)">
+                {{ option }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="currentSection === 'Home'" class="content-grid">
+        <section class="recent-activity">
+          <h4>Recent Activity</h4>
+          <p>{{ recentActivity }}</p>
+        </section>
+        <section class="announcements">
+          <h4>Announcements</h4>
+          <p>{{ announcements }}</p>
+        </section>
+        <section class="resources">
+          <h4>Resources</h4>
+          <p>{{ resources }}</p>
+        </section>
+      </div>
+      <div *ngIf="currentSection === 'Experiment'" class="experiments-page">
+        <div class="content-wrapper">
+          <nav>
+            <ul>
+              <li><a (click)="navigateTo('Experiments')" [class.active]="currentPage === 'Experiments'">Experiments</a></li>
+              <li><a (click)="navigateTo('MutEx and Holdouts')" [class.active]="currentPage === 'MutEx and Holdouts'">MutEx and Holdouts</a></li>
+              <li><a (click)="navigateTo('Templates')" [class.active]="currentPage === 'Templates'">Templates</a></li>
+            </ul>
+          </nav>
+          <main>
+            <div [ngSwitch]="currentPage">
+              <div *ngSwitchCase="'Experiments'">
+                <p>Experiments content goes here</p>
+              </div>
+              <div *ngSwitchCase="'MutEx and Holdouts'">
+                <p>MutEx and Holdouts content goes here</p>
+              </div>
+              <div *ngSwitchCase="'Templates'">
+                <div class="templates-container">
+                  <h2>Start with templates</h2>
+                  <p>Experiment templates help teams scale experimentation by getting started faster and ensuring high quality results every time.</p>
+                  <ul>
+                    <li>Easier & faster setup with auto-populated configuration</li>
+                    <li>Ensure improved quality control for each test</li>
+                    <li>Guide teammates to the right setup and define test parameters for them</li>
+                    <li>Go to templates you'll impact already created experiments</li>
+                  </ul>
+                  <div class="button-container">
+                    <button class="create-template">Create Template</button>
+                    <button class="templates-guide">Templates Guide</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div *ngIf="currentSection !== 'Home' && currentSection !== 'Experiment' && currentSection !== 'Management API' && currentSection !== 'Permissions'">
+        <p>{{ sectionContent }}</p>
+      </div>
+      <div *ngIf="currentSection === 'Management API'" class="management-api-container">
+        <p>Create and manage keys for the experiment management API. See management API docs.</p>
+        <div class="api-content">
+          <div class="api-image">
+            <img src="https://dfdnews.com/uploads/210804-revelio.png" alt="API Code Example">
+          </div>
+          <div class="api-text">
+            <h2>Create an API key</h2>
+            <p>Create an API key to get started programmatically managing your experiments.</p>
+            <button class="create-api-key">Create API Key</button>
+            <a href="#" class="learn-more">Learn more</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="currentSection === 'Permissions'" class="permissions-container">
+        <h1></h1>
+        <div class="tabs">
+          <button [class.active]="activeTab === 'joined'" (click)="setActiveTab('joined')">Joined Users</button>
+          <button [class.active]="activeTab === 'pending'" (click)="setActiveTab('pending')">Pending Users</button>
+        </div>
+        <div class="search-filter">
+          <input type="text" placeholder="Search users or email" [(ngModel)]="searchTerm" (input)="filterUsers()">
+          <select [(ngModel)]="filterCriteria" (change)="filterUsers()">
+            <option value="">Filter by </option>
+            <option value="role">Role</option>
+            <option value="team">Team</option>
+          </select>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th><input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()"></th>
+              <th>NAME</th>
+              <th>ROLE</th>
+              <th>TEAM</th>
+              <th>EMAIL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of filteredUsers">
+              <td><input type="checkbox" [(ngModel)]="user.selected"></td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.team }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="currentSection === 'Resources'" class="resources-container">
+        <h1></h1>
+        <ul class="resource-list">
+          <li *ngFor="let resource of resourceLinks">
+            <a [href]="resource.url" target="_blank">
+              {{ resource.name }}
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="currentSection !== 'Home' && currentSection !== 'Experiment' && currentSection !== 'Management API' && currentSection !== 'Permissions' && currentSection !== 'Resources'">
+        <p>{{ sectionContent }}</p>
+      </div>
+      <div *ngIf="currentSection === 'Deployments'" class="deployments-container">
+        <h1></h1>
+        <p>Create and manage your deployments. By default, you can use the Project API key.</p>
+        <div class="group-buttons">
+          <button [class.active]="groupBy === 'project'" (click)="setGroupBy('project')">Group by project</button>
+          <button [class.active]="groupBy === 'deployment'" (click)="setGroupBy('deployment')">Group by deployment</button>
+        </div>
+        <div class="project-list">
+          <div class="project-select">
+            <select [(ngModel)]="selectedProject" (change)="filterProjects()">
+              <option value="">Select Project</option>
+              <option *ngFor="let project of projects" [value]="project.name">{{ project.name }}</option>
+            </select>
+          </div>
+          <ng-container *ngIf="groupBy === 'project'">
+            <div *ngFor="let project of filteredProjects" class="project-item">
+              <div class="project-header">
+                <span class="project-name">{{ project.name }}</span>
+                <div class="project-actions">
+                  <a href="#" class="settings-link">Go to Settings for Project API Key</a>
+                  <button class="add-deployment">Add deployment for project</button>
+                </div>
+              </div>
+              <div *ngFor="let deployment of project.deployments" class="deployment-item">
+                <span class="deployment-name">{{ deployment.name }}</span>
+                <div class="deployment-actions">
+                  <span class="deployment-key">key: {{ deployment.key }}</span>
+                  <button class="copy-key" (click)="copyKey(deployment.key)">Copy</button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="groupBy === 'deployment'">
+            <div class="deployment-list">
+              <div *ngFor="let deployment of getAllDeployments()" class="deployment-item">
+                <span class="deployment-name">{{ deployment.name }}</span>
+                <div class="deployment-actions">
+                  <span class="deployment-project">{{ deployment.project }}</span>
+                  <span class="deployment-key">key: {{ deployment.key }}</span>
+                  <button class="copy-key" (click)="copyKey(deployment.key)">Copy</button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Content Wrapper -->
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+
+.analytics-dropdown {
+  position: relative;
+  width: 350px;
+}
+
+.dropdown-button {
+  width: 100%;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.dropdown-button:hover {
+  border-color: #adb5bd;
+  background-color: #f8f9fa;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 350px;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-items {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item.selected {
+  background-color: #e9ecef;
+}
+
+/* Custom scrollbar */
+.dropdown-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dropdown-items::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.dropdown-items::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>

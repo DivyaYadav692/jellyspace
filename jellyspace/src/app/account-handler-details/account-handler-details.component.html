@@ -1,0 +1,626 @@
+<section class="w-100 m-0 p-0">
+  <div class="w-100 m-0">
+    <div
+      class="row m-0 p-0 justify-content-center wrap"
+      style="height: 100vh; overflow: auto"
+    >
+      <div class="row m-0 p-0">
+        <div class="col-3 m-0 p-0"></div>
+        <div class="col-7 m-0 p-0">
+          <div class="d-flex">
+            <div class="w-100 m-0 p-0">
+              <h4
+                class="mb-2 p-3 font-style-family"
+                style="
+                  cursor: pointer;
+                  color: #4caf50;
+                  font-size: 20px;
+                  font-weight: 600;
+                "
+              >
+                JELLYSPACE : Account Handler Details
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 m-0 p-0"></div>
+      </div>
+      <div class="row m-0 p-0">
+        <form class="form-horizontal">
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Title<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="title"
+                    class="form-control font-style-family"
+                    placeholder="Title"
+                    id="text3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >First Name <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="fName"
+                    class="form-control font-style-family"
+                    id="pwd4"
+                    placeholder="Enter First Name"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Last Name<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="lName"
+                    class="form-control font-style-family"
+                    id="text4"
+                    placeholder="Enter Last Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Telephone <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="mobileNo"
+                    class="form-control font-style-family"
+                    id="pwd1"
+                    placeholder="Enter Telephone Number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="email">
+                  Email <sup class="mandatory-color">*</sup>
+                </label>
+                <div class="col-sm-12">
+                  <input
+                    type="email"
+                    class="form-control font-style-family"
+                    id="email"
+                    placeholder="Enter Email"
+                    (input)="onEmailChange($event)"
+                    [value]="eMail"
+                  />
+                  <div *ngIf="emailError" class="text-danger font-style-family">
+                    {{ emailError }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <label class="control-label pl-3 font-style-family" for="file">
+                Upload Company Image / Profile Image
+              </label>
+              <span style="color: red">*</span>
+              <div class="input-group col-sm-12">
+                <input
+                  type="file"
+                  (change)="selectImage($event)"
+                  class="form-control font-style-family"
+                  placeholder="Upload File Here"
+                />
+              </div>
+              <!-- Loader icon -->
+              <div *ngIf="uploading" class="spinner-border" role="status">
+                <span class="sr-only">Uploading...</span>
+              </div>
+            </div>
+            <div class="break1">
+              <div class="col-6 m-0 p-0">
+                <label
+                  class="control-label pl-3 font-style-family"
+                  for="password"
+                  >Password</label
+                >
+                <span style="color: red">*</span>
+                <div class="input-group">
+                  <input
+                    [type]="fieldTextType1 ? 'text' : 'password'"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control font-style-family"
+                    [(ngModel)]="pWord"
+                    placeholder="Password"
+                  />
+                  <span
+                    class="input-group-text"
+                    id="basic-addon1"
+                    (click)="toggleFieldTextType1()"
+                  >
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType1,
+                        'fa-eye': fieldTextType1
+                      }"
+                    ></i>
+                  </span>
+                </div>
+
+                <!-- Warning message for password length -->
+                <div
+                  class="font-style-family"
+                  *ngIf="pWord && pWord.length < 8"
+                  style="color: red; font-size: 12px; margin-top: 5px"
+                >
+                  Password should consist of at least 8 characters.
+                </div>
+              </div>
+            </div>
+            <div class="break2">
+              <div class="col-6 m-0 p-0">
+                <label
+                  class="control-label pl-3 font-style-family"
+                  for="confirmPassword"
+                  >Confirm Password</label
+                >
+                <span style="color: red">*</span>
+                <div class="input-group">
+                  <input
+                    [type]="fieldTextType2 ? 'text' : 'password'"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control font-style-family"
+                    [(ngModel)]="confirmPWord"
+                    placeholder="Confirm Password"
+                  />
+                  <span
+                    class="input-group-text"
+                    id="basic-addon1"
+                    (click)="toggleFieldTextType2()"
+                  >
+                    <i
+                      class="fa"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType2,
+                        'fa-eye': fieldTextType2
+                      }"
+                    ></i>
+                  </span>
+                </div>
+
+                <!-- Warning message for password mismatch -->
+                <div
+                  class="font-style-family"
+                  *ngIf="confirmPWord && pWord !== confirmPWord"
+                  style="color: red; font-size: 12px; margin-top: 5px"
+                >
+                  Password and Confirm Password do not match.
+                </div>
+              </div>
+            </div>
+            <div class="col-6 mt-4 p-0">
+              <label class="control-label pl-3 font-style-family"
+                >Is Bid Manager</label
+              >
+              <div
+                class="input-group font-style-family"
+                style="
+                  display: flex;
+                  position: relative;
+                  top: 6px;
+                  left: -220px;
+                  flex-direction: row;
+                  flex-wrap: nowrap;
+                  justify-content: center;
+                  align-items: flex-start;
+                "
+                *ngFor="let data of managerList"
+              >
+                <input
+                  style="display: inline-block"
+                  type="radio"
+                  (click)="selectBidManager(data.label)"
+                  class="font-style-family"
+                  name="optradio"
+                  value="option2"
+                />
+                <p class="pl-2 font-style-family" style="margin-top: -6px">
+                  {{ data.label }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row m-0 p-0">
+                        <div class="col-3 m-0 p-0">
+                            <p class="pt-3 pl-3 font-style-family">Is Bid Manager</p>
+                        </div>
+                        <div class="col-1 m-0 p-0"></div>
+                    </div>
+                    <div class="row m-0 p-0" >
+                        <div class="col-1 m-0 p-0"></div>
+                        <div class="col-3 m-0 p-0">
+                           </div>
+                        <div class="col-1 m-0 p-0">
+                        </div>
+                    </div> -->
+          <div class="row m-0 p-0">
+            <div class="col-5 pl-4">
+              <p class="pt-3 font-style-family">
+                Do You Want to Add a Collaborator:
+              </p>
+              <!-- <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something"> -->
+            </div>
+            <div class="col-1 pt-3 m-0 p-0">
+              <input
+                class="form-check-input"
+                (change)="onChangeCollabrator($event)"
+                type="checkbox"
+                id="check1"
+                name="option1"
+                value="something"
+              />
+            </div>
+            <div class="col-1 m-0 p-0"></div>
+          </div>
+
+          <div class="row m-0 p-0">
+            <div class="col-5 pl-4">
+              <p
+                class="pt-3 font-style-family"
+                style="color: red; font-weight: bold; font-size: small"
+              >
+                Become Paid Member to Unlock AI Features:
+              </p>
+            </div>
+            <div class="col-1 pt-3 m-0 p-0">
+              <input
+                class="form-check-input"
+                (change)="onChangeSubscription($event)"
+                type="checkbox"
+                id="check2"
+                name="option2"
+                value="something"
+                [(ngModel)]="isPaidMember"
+              />
+            </div>
+            <div class="col-1 m-0 p-0"></div>
+          </div>
+
+          <!-- Displaying pricing section only when 'sub' is true -->
+          <div class="pricing-container" *ngIf="sub">
+            <div
+              class="pricing-box"
+              [class.hover]="hoveredBox === 'freemium'"
+              (mouseenter)="hoveredBox = 'freemium'"
+              (mouseleave)="hoveredBox = null"
+            >
+              <h2>$0</h2>
+              <h3>FREEMIUM</h3>
+              <ul>
+                <li>Free access to JELLYSPACE</li>
+                <li>Collaboration Playground with non-AI features</li>
+                <li>Unlock AI Tokens for most detailed profile (GAMIFIED)</li>
+              </ul>
+              <div class="col">
+                <button
+                  type="submit"
+                  [disabled]="
+                    !fName ||
+                    !lName ||
+                    !eMail ||
+                    !mobileNo ||
+                    !title ||
+                    !pWord ||
+                    pWord !== confirmPWord ||
+                    !uploadSuccess ||
+                    !!emailError
+                  "
+                  class="btn btn-primary rounded-sm ms-3 font-style-family"
+                  style="margin-top: 21vh; margin-left: 0vw !important"
+                  (click)="openPreemium()"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="pricing-box"
+              [class.hover]="hoveredBox === 'plus'"
+              (mouseenter)="hoveredBox = 'plus'"
+              (mouseleave)="hoveredBox = null"
+            >
+              <h2>$49</h2>
+              <h3>PLUS</h3>
+              <ul>
+                <li>Basic Supply Chain Management (SCM) tool-set</li>
+                <li>Access to GPT/ML Models framework and platform</li>
+                <li>Basic Marketplace Access</li>
+                <li>Generative AI based Matchmaking enabled for Profile</li>
+                <li>Limited features on GPTs/LLM prompt</li>
+                <li>Limited DLT based Features</li>
+              </ul>
+              <div class="col" style="text-align: center">
+                <button
+                  type="submit"
+                  [disabled]="
+                    !fName ||
+                    !lName ||
+                    !eMail ||
+                    !mobileNo ||
+                    !title ||
+                    !pWord ||
+                    pWord !== confirmPWord ||
+                    !uploadSuccess ||
+                    !!emailError
+                  "
+                  class="btn btn-primary rounded-sm ms-3 font-style-family"
+                  style="margin-top: 5vh; margin-left: 0vw !important"
+                  (click)="openPlus()"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="pricing-box"
+              [class.hover]="hoveredBox === 'professional'"
+              (mouseenter)="hoveredBox = 'professional'"
+              (mouseleave)="hoveredBox = null"
+            >
+              <h2>$499</h2>
+              <h3>PROFESSIONAL</h3>
+              <ul>
+                <li>
+                  Project + Supply Chain Management Tools (Both Cloud and DLT
+                  based + AI enabled)
+                </li>
+                <li>Multiple customizable ML Models for major SCM scenarios</li>
+                <li>Metrics/Dashboards</li>
+                <li>Advanced GPT features</li>
+                <li>
+                  Create custom GPT+ Advanced AI enabled workflows, experiments
+                </li>
+              </ul>
+              <div class="col" style="text-align: center">
+                <button
+                  type="submit"
+                  [disabled]="
+                    !fName ||
+                    !lName ||
+                    !eMail ||
+                    !mobileNo ||
+                    !title ||
+                    !pWord ||
+                    pWord !== confirmPWord ||
+                    !uploadSuccess ||
+                    !!emailError
+                  "
+                  class="btn btn-primary rounded-sm ms-3 font-style-family"
+                  style="margin-top: 10vh; margin-left: 0vw !important"
+                  (click)="openProfessional()"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="pricing-box"
+              [class.hover]="hoveredBox === 'premium'"
+              (mouseenter)="hoveredBox = 'premium'"
+              (mouseleave)="hoveredBox = null"
+            >
+              <h2>$Custom</h2>
+              <h3>PREMIUM</h3>
+              <ul>
+                <li>Advanced Supply Chain + Project Management Tools</li>
+                <li>Continuous support from JELLYSPACE</li>
+                <li>
+                  GPT Models as a Service APIs, Frameworks with DLT combined
+                </li>
+                <li>
+                  Custom Private, Permissioned, NIST & DISA STIG compliant DLT
+                  Nodes
+                </li>
+              </ul>
+              <div class="col" style="text-align: center">
+                <button
+                  type="submit"
+                  [disabled]="
+                    !fName ||
+                    !lName ||
+                    !eMail ||
+                    !mobileNo ||
+                    !title ||
+                    !pWord ||
+                    pWord !== confirmPWord ||
+                    !uploadSuccess ||
+                    !!emailError
+                  "
+                  class="btn btn-primary rounded-sm ms-3 font-style-family"
+                  style="
+                    margin-top: 10vh;
+                    margin-left: -1.25vw !important;
+                    white-space: nowrap;
+                  "
+                  (click)="openCustom()"
+                >
+                  Contact Sales
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row m-0 p-0" *ngIf="bidFlag">
+        <form class="form-horizontal">
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Title<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    placeholder="Title"
+                    id="text1"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >First Name <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="pwd2"
+                    placeholder="Enter First Name"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="text"
+                  >Last Name<sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="tex2"
+                    placeholder="Enter Last Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="pwd"
+                  >Telephone <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="text"
+                    class="form-control font-style-family"
+                    id="pwd3"
+                    placeholder="Enter Telephone Number"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0 p-0">
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label class="control-label pl-3 font-style-family" for="email">
+                  Email <sup class="mandatory-color">*</sup>
+                </label>
+                <div class="col-sm-12">
+                  <input
+                    type="email"
+                    class="form-control font-style-family"
+                    id="email"
+                    placeholder="Enter Email"
+                    (input)="onEmailChange($event)"
+                    [value]="eMail"
+                  />
+                  <!-- Display email error message -->
+                  <div
+                    *ngIf="emailError"
+                    style="color: red; font-size: 0.875rem"
+                  >
+                  
+                    {{ emailError }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 m-0 p-0">
+              <div class="form-group">
+                <label
+                  class="control-label pl-3 font-style-family"
+                  for="password"
+                  >Password <sup class="mandatory-color">*</sup></label
+                >
+                <div class="col-sm-12">
+                  <input
+                    type="password"
+                    class="form-control font-style-family"
+                    id="password"
+                    placeholder="Enter password"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row mb-3 m-0 p-0">
+        <div class="col" style="text-align: left">
+          <button
+            *ngIf="!isFreeTrial"
+            type="button"
+            class="btn btn-dark font-style-family"
+            style="color: white !important"
+          >
+            Previous
+          </button>
+        </div>
+        <div  style="text-align: right" *ngIf = "!sub">
+          <button
+            type="submit"
+            [disabled]="
+              !fName ||
+              !lName ||
+              !eMail ||
+              !mobileNo ||
+              !title ||
+              !pWord ||
+              pWord !== confirmPWord ||
+              !uploadSuccess ||
+              !!emailError
+            "
+            class="btn btn-primary rounded-sm ms-3 font-style-family"
+            (click)="nextClick()"
+          >
+            Register
+          </button>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</section>

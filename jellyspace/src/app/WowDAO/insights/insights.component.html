@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>JELLYSPACE 2 - Home</title>
+    <!-- Custom fonts and Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="insights.component.scss" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper" class="d-flex">
+      <!-- Sidebar -->
+      <nav
+        id="sidebar"
+        class="sidebar bg-gradient-primary text-white d-flex flex-column vh-100 p-3"
+      >
+        <a
+          class="sidebar-brand d-flex align-items-center mb-4 text-white text-decoration-none"
+          href="home"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-space-shuttle"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">JELLYSPACE</div>
+        </a>
+        <hr class="sidebar-divider my-2 text-white" />
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-black" href="home">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="inventory">
+              <i class="fas fa-box"></i> Inventory
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="demand">
+              <i class="fas fa-chart-line"></i> Demand
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black active" href="insights">
+              <i class="fas fa-chart-bar"></i> ROT-Insights
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="forecasting">
+              <i class="fas fa-chart-pie"></i> Forecasting
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="management">
+              <i class="fas fa-cogs"></i> Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="quality">
+              <i class="fas fa-tachometer-alt"></i> Quality
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="logistics">
+              <i class="fas fa-truck"></i> Logistics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="maintenance">
+              <i class="fas fa-tools"></i> Maintenance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="reports">
+              <i class="fas fa-file-alt"></i> Reports
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar border-bottom">
+          <button class="btn btn-primary d-md-none" id="sidebarToggleTop">
+            <i class="fas fa-bars"></i>
+          </button>
+          <form class="d-flex ms-auto me-3 my-2 my-md-0">
+            <input
+              type="text"
+              class="form-control me-2"
+              placeholder="Search for..."
+            />
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <div
+                class="profile-card d-flex align-items-center"
+                style="margin-left: auto"
+              >
+                <img
+                  [src]="image"
+                  (error)="setDefault()"
+                  alt="user"
+                  class="rounded-circle"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                  "
+                  (click)="viewProfileSCM()"
+                />
+                <div
+                  class="d-flex flex-column"
+                  style="cursor: pointer"
+                  (click)="viewProfileSCM()"
+                >
+                  <span
+                    class="font-medium mb-0"
+                    style="font-size: 14px; font-weight: bold"
+                    >{{ fname }} {{ lname }}</span
+                  >
+                  <span class="text-muted fs-6" style="font-size: 12px">{{
+                    email
+                  }}</span>
+                </div>
+              </div>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="userDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- New Topbar -->
+        <nav class="topbar-second">
+          <div>
+            <div class="tab-container">
+              <div class="tab" [class.active]="activateTab === 'tab1'" (click)="setActiveTab('tab1')">
+                Dashboard
+              </div>
+              <button class="expand-btn">...</button>
+              <button class="add-btn">+</button>
+            </div>
+
+            <div class="tab-container">
+              <div class="tab" [class.active]="activateTab === 'tab2'" (click)="setActiveTab('tab2')">
+                Integration
+              </div>
+              <button class="expand-btn" (click)="handleExpand('tab2')">...</button>
+              <button class="add-btn" (click)="handleAdd('tab2')">+</button>
+            </div>
+
+            <div class="tab-container">
+              <div class="tab" [class.active]="activateTab === 'tab3'" (click)="setActiveTab('tab3')">
+                Current AI-Workflow
+              </div>
+              <button class="expand-btn" (click)="handleExpand('tab3')">...</button>
+              <button class="add-btn" (click)="handleAdd('tab3')">+</button>
+            </div>
+
+            <div class="tab-container">
+              <div class="tab" [class.active]="activateTab === 'tab4'" (click)="setActiveTab('tab4')">
+                Notification Center
+              </div>
+              <button class="expand-btn" (click)="handleExpand('tab4')">...</button>
+              <button class="add-btn" (click)="handleAdd('tab4')">+</button>
+            </div>
+
+            <div class="tab-container">
+              <div class="tab" [class.active]="activateTab === 'tab5'" (click)="setActiveTab('tab5')">
+                Feedback | Iteration
+              </div>
+              <button class="expand-btn" (click)="handleExpand('tab5')">...</button>
+              <button class="add-btn" (click)="handleAdd('tab5')">+</button>
+            </div>
+          </div>
+        </nav>
+        <!-- End of New Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2 inner-sidebar">
+              <!-- Inner Sidebar Content -->
+              <ul class="nav mt-4 flex-column">
+                <li class="nav-item" *ngIf="activateTab === 'tab1'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'riskAssessment' }"
+                    (click)="setInnerTab('riskAssessment')"
+                    >Risk Assessment</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab1'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'opportunities' }"
+                    (click)="setInnerTab('opportunities')"
+                    >Opportunities</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab1'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'threats' }"
+                    (click)="setInnerTab('threats')"
+                    >Threats</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab2'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'integrationDetails' }"
+                    (click)="setInnerTab('integrationDetails')"
+                    >Integration Details</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab3'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'aiOverview' }"
+                    (click)="setInnerTab('aiOverview')"
+                    >AI Overview</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab4'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'notifications' }"
+                    (click)="setInnerTab('notifications')"
+                    >Notifications</a
+                  >
+                </li>
+                <li class="nav-item" *ngIf="activateTab === 'tab5'">
+                  <a
+                    class="nav-link"
+                    [ngClass]="{ active: innerTab === 'reportSummary' }"
+                    (click)="setInnerTab('reportSummary')"
+                    >Report Summary</a
+                  >
+                </li>
+                <!-- Add more inner content items as needed -->
+              </ul>
+            </div>
+
+            <div class="col-md">
+              <div class="content-area mt-4">
+                <!-- Tab Content -->
+                <div id="tab1" [ngClass]="{ active: activateTab === 'tab1' }">
+                  <div *ngIf="innerTab === 'riskAssessment'">
+                    <risk-assessment></risk-assessment>
+                  </div>
+                  <div *ngIf="innerTab === 'opportunities'">
+                    <opportunities></opportunities>
+                  </div>
+                  <div *ngIf="innerTab === 'threats'">
+                    <threats></threats>
+                  </div>
+                </div>
+                <div
+                  id="tab2"
+                  class="tab-content"
+                  [ngClass]="{ active: activateTab === 'tab2' }"
+                >
+                  <div *ngIf="innerTab === 'integrationDetails'" class="integration-grid">
+                    <div class="integration-card" *ngFor="let integration of activeIntegrations">
+                      <div class="image-wrapper">
+                        <img [src]="'assets/login-page/' + integration.image" [alt]="integration.name">
+                      </div>
+                      <div class="integration-name">{{integration.name}}</div>
+                      <button class="options-btn" (click)="toggleIntegrationOptions(integration, $event)">...</button>
+                      <div class="options-menu" *ngIf="integration.showOptions" (click)="$event.stopPropagation()">
+                        <div class="option-item">Status</div>
+                        <div class="option-item" (click)="removeIntegration(integration)">Remove</div>
+                        <div class="option-item">Settings</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="tab3"
+                  class="tab-content"
+                  [ngClass]="{ active: activateTab === 'tab3' }"
+                >
+                  <div *ngIf="innerTab === 'aiOverview'">
+                    <img 
+                      src="assets/login-page/Current AI-Workflow.jpg" 
+                      style="
+                        max-width: 100%;
+                        max-height: 100vh;
+                        display: flex;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        object-fit: contain;
+                        padding: 20px;
+                      "
+                    >
+                  </div>
+                </div>
+                <div
+                  id="tab4"
+                  class="tab-content"
+                  [ngClass]="{ active: activateTab === 'tab4' }"
+                >
+                  <div *ngIf="innerTab === 'notifications'">Notifications</div>
+                </div>
+                <div
+                  id="tab5"
+                  class="tab-content"
+                  [ngClass]="{ active: activateTab === 'tab5' }"
+                >
+                  <div *ngIf="innerTab === 'reportSummary'">Report Summary coming soon...</div>
+                </div>
+                <!-- Add more tab contents as needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Page Content -->
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-light">
+          <div class="container">
+            <div class="d-flex justify-content-between small">
+              <div class="text-muted">Copyright &copy; JELLYSPACE 2024</div>
+              <div>
+                <a href="#">Privacy Policy</a> &middot;
+                <a href="#">Terms & Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="scripts.js"></script>
+
+    <!-- Integration Modal -->
+    <div class="modal fade" id="integrationModal" tabindex="-1" aria-labelledby="integrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="integrationModalLabel">Data source</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted mb-4">Please select your data source (or) integration to add</p>
+            <div class="container-fluid px-0">
+              <div class="row row-cols-5">
+                <div class="col" *ngFor="let source of dataSources">
+                  <div class="integration-item" 
+                       [class.selected]="selectedSource === source"
+                       (click)="selectDataSource(source)">
+                    <div class="image-wrapper">
+                      <img [src]="'assets/login-page/' + source.image" 
+                           [alt]="source.name">
+                    </div>
+                    <div class="small">{{source.name}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="addIntegration(selectedSource)">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keep only this notification div at the bottom of the body -->
+    <div class="notification" *ngIf="showNotification">
+      Added
+    </div>
+  </body>
+</html>

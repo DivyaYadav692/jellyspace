@@ -1,0 +1,26 @@
+.w-100 {
+    text-align: center;
+}
+
+.signup-wrap {
+    width: 100%;
+}
+
+@media (max-width: 991.98px) {
+    .signup-wrap {
+        width: 100%;
+    }
+}
+
+h5 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.5px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+h5 span {
+    background: #fff;
+    padding: 0 10px;
+}

@@ -1,0 +1,1136 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>JELLYSPACE 2 - Home</title>
+
+    <!-- Custom fonts for this template -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/src/app/WowDAO/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link
+      href="/src/app/WowDAO/vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fc; /* Light background for the entire page */
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; /* Full height of the viewport */
+        width: 250px; /* Sidebar width */
+        background-color: #ffffff; /* White background for the sidebar */
+        color: black; /* Dark gray text color for readability */
+        overflow-y: auto;
+        z-index: 100;
+        border-right: 1px solid #e3e6f0; /* Light gray border for separation */
+      }
+
+      .sidebar .nav-link {
+        color: #000000; /* Dark gray text color for normal state */
+        padding: 10px 15px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .sidebar .nav-link.active {
+        background-color: #e9ecef; /* Very light gray for active tab */
+        color: #000000; /* Dark gray text for active tab */
+        font-weight: bold;
+      }
+
+      .sidebar .nav-link:hover {
+        background-color: #f1f3f5; /* Slightly lighter gray for hover state */
+        color: #333333; /* Dark gray text for hover state */
+      }
+
+      .sidebar .nav-link i {
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      .sidebar .sidebar-brand {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 1.2rem;
+        color: #000000; /* Dark gray color for brand text */
+      }
+
+      .sidebar .sidebar-brand .sidebar-brand-icon {
+        font-size: 1.5rem;
+        color: #000000; /* Dark gray color for brand icon */
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      .sidebar .sidebar-divider {
+        border-color: #e3e6f0; /* Light gray for divider */
+      }
+
+      .sidebar .sidebar-brand-text {
+        font-weight: bold;
+        color: #000000; /* Dark gray color for brand text */
+      }
+
+      #content-wrapper {
+        margin-left: 250px; /* Align with sidebar width */
+        margin-top: 56px; /* Adjust based on the topbar height */
+        padding: 20px;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 250px; /* Align with sidebar width */
+        width: calc(100% - 250px); /* Adjust based on sidebar width */
+        background-color: #ffffff; /* White background for topbar */
+        border-bottom: 1px solid #e3e6f0; /* Light gray border for separation */
+        z-index: 101;
+      }
+
+      .footer {
+        background-color: #ffffff; /* White background for the footer */
+        position: relative;
+        bottom: 0;
+        width: calc(100% - 250px); /* Adjust based on sidebar width */
+        margin-left: 250px; /* Align with sidebar width */
+        padding: 10px 20px;
+        border-top: 1px solid #e3e6f0; /* Light gray border for separation */
+      }
+
+      .footer .text-muted {
+        color: #6c757d; /* Muted gray text color */
+      }
+
+      .footer a {
+        color: #6c757d; /* Muted gray text color for links */
+      }
+
+      .footer a:hover {
+        color: #343a40; /* Darker gray on hover for better visibility */
+      }
+      .form-control {
+        min-width: 200px;
+      }
+/* Base button styles */
+.btn {
+  padding: 0.375rem 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* Custom button specific styles */
+.btn-custom {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover state */
+.btn-custom:hover {
+  background-color: black !important; /* Using !important to ensure hover state takes precedence */
+  color: white !important;
+  border-color: black;
+}
+
+/* Active state - when dropdown is open */
+.btn-custom.active {
+  background-color: black !important;
+  color: white !important;
+  border-color: black;
+}
+
+/* Primary button styles */
+.btn-primary {
+  min-width: 40px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+/* Black button styles */
+.btn-black {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn-black:hover {
+  background-color: black !important;
+  color: white;
+}
+
+/* Generate report button styles */
+.btn-generate-report {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.btn-generate-report:hover {
+  background-color: #e9ecef; /* Very light gray for active tab */
+  color: white;
+}
+
+/* Icon button hover state */
+.btn-icon:hover {
+  border: 1px solid grey;
+}
+
+/* Search bar specific overrides */
+.search-bar .btn-primary {
+  background-color: black;
+  color: white;
+}
+
+/* Icon colors */
+.btn-primary i,
+.btn-black i {
+  color: white;
+}      
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .submenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-top: 0;
+  /* Remove display: none to allow for [class.show] binding */
+}
+
+.dropdown-submenu .submenu.show {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* Add z-index to ensure menus appear above other content */
+.dropdown-menu {
+  z-index: 1000;
+}
+
+.submenu {
+  z-index: 1001;
+}
+
+.submenu {
+  min-width: 320px;
+  padding: 8px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  color: #000;
+  margin-top: 3px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.dropdown-content {
+  flex: 1;
+}
+
+.dropdown-content .title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.dropdown-content .description {
+  display: block;
+  color: #6c757d;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.view-more {
+  color: #0a87f5;
+  font-size: 13px;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.dropdown-divider {
+  margin: 8px 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.submenu-header {
+  padding: 12px 24px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.hide-charts {
+  background: none;
+  border: none;
+  color: #007bff;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Chart icon specific styles */
+img.dropdown-icon {
+  width: 16px;  /* Reduced width */
+  height: 16px; /* Reduced height */
+  margin-right: 8px; /* Adjust spacing between icon and text */
+  vertical-align: middle;
+  object-fit: contain;
+}
+    </style>
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="d-flex">
+      <!-- Sidebar -->
+      <nav
+        id="sidebar"
+        class="sidebar bg-gradient-primary text-white d-flex flex-column vh-100 p-3"
+      >
+        <a
+          class="sidebar-brand d-flex align-items-center mb-4 text-white text-decoration-none"
+          href="home"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-space-shuttle"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">JELLYSPACE</div>
+        </a>
+        <hr class="sidebar-divider my-2 text-white" />
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-black active" href="home">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="inventory">
+              <i class="fas fa-box"></i> Inventory
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="demand">
+              <i class="fas fa-chart-line"></i> Demand
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="insights">
+              <i class="fas fa-chart-bar"></i> ROT-Insights
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="forecasting">
+              <i class="fas fa-chart-pie"></i> Forecasting
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="management">
+              <i class="fas fa-cogs"></i> Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="quality">
+              <i class="fas fa-tachometer-alt"></i> Quality
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="logistics">
+              <i class="fas fa-truck"></i> Logistics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="maintenance">
+              <i class="fas fa-tools"></i> Maintenance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="reports">
+              <i class="fas fa-file-alt"></i> Reports
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar border-bottom">
+          <button class="btn btn-primary d-md-none" id="sidebarToggleTop">
+            <i class="fas fa-bars"></i>
+          </button>
+          <!-- Add this section above the search bar in the Topbar -->
+          <div class="d-flex align-items-center me-3">
+            <div class="dropdown" #createDropdown>
+              <button class="btn me-2 btn-custom" 
+                      [class.active]="isDropdownOpen" 
+                      (click)="toggleDropdown()">
+                Create
+              </button>
+              
+              <div class="dropdown-menu" [class.show]="isDropdownOpen">
+                <div class="dropdown-submenu">
+                  <button class="dropdown-item" (click)="showChartOptions($event)" #chartButton>
+                    <img src="assets/Chart.png" alt="Chart" class="dropdown-icon"> 
+                    Chart 
+                    <i class="bi bi-chevron-right float-end"></i>
+                  </button>
+                  
+                  <!-- Secondary dropdown for Chart options -->
+                  <!-- analytics-options.component.html -->
+                  <div class="dropdown-menu submenu" [class.show]="isChartMenuVisible">
+                    <button class="dropdown-item" (click)="onChartOptionClick('Segmentation')">
+                      <i class="fas fa-chart-line dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Segmentation</div>
+                        <small class="description">Understand user behavior by counting and filtering events</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('Funnel')">
+                      <i class="fas fa-filter dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Funnel</div>
+                        <small class="description">Understand conversion and drop-off for key events</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('DataTable')">
+                      <i class="fas fa-table dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Data Table</div>
+                        <small class="description">Compare and break down events and metrics in a single view</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('Retention')">
+                      <i class="fas fa-chart-area dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Retention</div>
+                        <small class="description">Analyze how often users return to your product</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('UserSessions')">
+                      <i class="fas fa-users dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">User Sessions</div>
+                        <small class="description">Understand user behavior by counting and filtering sessions</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('Journeys')">
+                      <i class="fas fa-route dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Journeys</div>
+                        <small class="description">Analyze how users flow through your product</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('ExperimentResults')">
+                      <i class="fas fa-flask dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">Experiment Results</div>
+                        <small class="description">Find statistically significant outcomes of an A/B test</small>
+                      </div>
+                    </button>
+                    
+                    <button class="dropdown-item" (click)="onChartOptionClick('ViewChartTemplates')">
+                      <i class="fas fa-chart-bar dropdown-icon"></i>
+                      <div class="dropdown-content">
+                        <div class="title">View Chart Templates</div>
+                        <small class="description">Leverage preconfigured charts for key insights</small>
+                      </div>
+                    </button>
+                    
+                    <div class="dropdown-divider"></div>
+                    
+                    <!-- View more button -->
+                    <button class="dropdown-item view-more" (click)="toggleAdditionalCharts($event)">
+                      {{ showAdditionalCharts ? 'Hide' : 'View' }} additional chart types 
+                      <i class="fas" [ngClass]="showAdditionalCharts ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                    </button>
+
+                    <!-- Separate dropdown for additional charts -->
+                    <div class="dropdown-menu additional-submenu" [class.show]="showAdditionalCharts">
+                      <div class="submenu-header">
+                        <button class="hide-charts" (click)="toggleAdditionalCharts($event)">
+                          Hide additional chart types <i class="fas fa-chevron-up"></i>
+                        </button>
+                      </div>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('UserComposition')">
+                        <i class="fas fa-clock dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">User Composition</div>
+                          <small class="description">See the breakdown of active users by a user property</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('EngagementMatrix')">
+                        <i class="fas fa-th dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Engagement Matrix</div>
+                          <small class="description">Understand the overall engagement of features in your product by breadth and frequency</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('Personas')">
+                        <i class="fas fa-users dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Personas</div>
+                          <small class="description">Determine clusters of users by grouping those that behave in a similar way</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('Stickiness')">
+                        <i class="fas fa-magnet dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Stickiness</div>
+                          <small class="description">Measure how often a user performs an event in a weekly or monthly interval so that you can understand which...</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('Compass')">
+                        <i class="fas fa-compass dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Compass</div>
+                          <small class="description">Find thresholds of user behavior that predict long-term retention and ultimately lead to growth for your...</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('Lifecycle')">
+                        <i class="fas fa-sync dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Lifecycle</div>
+                          <small class="description">Break down your user base by New, Current, Resurrected, and Dormant Users</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('RevenueLTV')">
+                        <i class="fas fa-dollar-sign dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Revenue LTV</div>
+                          <small class="description">Learn how well you are monetizing your users</small>
+                        </div>
+                      </button>
+
+                      <button class="dropdown-item" (click)="onChartOptionClick('ImpactAnalysis')">
+                        <i class="fas fa-chart-line dropdown-icon"></i>
+                        <div class="dropdown-content">
+                          <div class="title">Impact Analysis</div>
+                          <small class="description">Understand how first-time engagement with one feature affects the rate of another behavior</small>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button ngbDropdownItem (click)="onOptionClick('Dashboard')">
+                  <img src="assets/Dashboard.png" alt="Dashboard" class="dropdown-icon"> Dashboard <i class="bi bi-chevron-right float-end"></i>
+                </button>
+                <button ngbDropdownItem (click)="onOptionClick('Quotient')">
+                  <img src="assets/Quotient.png" alt="Quotient" class="dropdown-icon"> Quotient
+                </button>
+                <button ngbDropdownItem (click)="onOptionClick('Hive')">
+                  <img src="assets/Hive.png" alt="Hive" class="dropdown-icon"> Hive
+                </button>
+                <button ngbDropdownItem (click)="onOptionClick('Genesis')">
+                  <img src="assets/Genesis.png" alt="Genesis" class="dropdown-icon"> Genesis <i class="bi bi-chevron-right float-end"></i>
+                </button>
+              </div>
+            </div>
+            <button class="btn me-2 btn-custom" 
+                    [ngClass]="{'active': isActive('workflows')}" 
+                    (click)="navigateToWorkflows()">Workflows</button>
+            <button class="btn btn-custom" 
+                    [ngClass]="{'active': isActive('experiments')}" 
+                    (click)="navigateToExperiments()">Experiments</button>
+          </div>
+          <!-- Search bar section -->
+          <form class="d-flex ms-auto my-2 my-md-0 search-bar">
+            <input
+              type="text"
+              class="form-control me-2"
+              placeholder="Search for..."
+              aria-label="Search"
+            />
+            <button class="btn btn-black" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <nav class="navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link icon-link" href="#" title="Help">
+                  <img src="assets/Help.png" alt="Help" width="24" height="24">
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link icon-link" href="#" title="Notifications">
+                  <img src="assets/Notifications.png" alt="Notifications" width="24" height="24">
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link icon-link" href="#" title="Settings">
+                  <img src="assets/Settings.png" alt="Settings" width="24" height="24">
+                </a>
+              </li>
+            </ul>
+          </nav>
+             <!-- <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+              </a> -->
+              <div
+                class="profile-card d-flex align-items-center"
+                style="margin-left: auto"
+              >
+                <img
+                  [src]="image"
+                  (error)="setDefault()"
+                  alt="user"
+                  class="rounded-circle"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                  "
+                  (click)="viewProfileSCM()"
+                />
+                <div
+                  class="d-flex flex-column"
+                  style="cursor: pointer"
+                  (click)="viewProfileSCM()"
+                >
+                  <span
+                    class="font-medium mb-0"
+                    style="font-size: 14px; font-weight: bold"
+                  >
+                    {{ fname }} {{ lname }}
+                  </span>
+                  <span class="text-muted fs-6" style="font-size: 12px">
+                    {{ email }}
+                  </span>
+                </div>
+                <!-- <button
+                  class="btn btn-primary ms-2"
+                  id="pills-home-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-home"
+                  aria-selected="true"
+                  (click)="viewProfile1()"
+                >
+                  View Company Profile
+                </button> -->
+              </div>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="userDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </nav>
+        <!-- End of Topbar -->
+
+        <!-- Main Content -->
+        <div id="content" class="p-4">
+          <!-- Page Heading -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center">
+              <h1 class="h3 mb-0 me-3">Home</h1>
+              <div class="d-flex">
+                <a [routerLink]="['/supply-chain-kpis']" class="btn btn-icon">
+                  <img src="assets/Supply Chain KPIs.png" alt="Supply Chain KPIs" width="25" height="25">
+                  <span> Supply Chain KPIs</span>
+                </a>
+                <a href="#" class="btn btn-icon" (click)="onDashboardTemplatesClick()">
+                  <img src="assets/Dashboard Templates.png" alt="Dashboard Templates" width="25" height="25">
+                  <span>  Dashboard Templates</span>
+                </a> 
+                <a href="#" class="btn btn-icon" (click)="onCreateChartClick()">
+                  <img src="assets/Create Chart.png" alt="Create Chart" width="25" height="25">
+                  <span> Create Chart</span>
+                </a>  
+              </div> 
+            </div>
+            <a href="#" class="btn btn-generate-report btn-sm" style="font-weight: bold;">
+              <i class="fas fa-download"></i> Generate Report
+            </a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div class="text-primary text-uppercase mb-1">
+                        Earnings (Monthly)
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold">$40,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div class="text-success text-uppercase mb-1">
+                        Earnings (Annual)
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold">$215,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily Performance Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div class="text-info text-uppercase mb-1">
+                        Daily Performance
+                      </div>
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 font-weight-bold">69%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress">
+                            <div
+                              class="progress-bar bg-info"
+                              role="progressbar"
+                              style="width: 69%"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cost Reduction Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div class="text-warning text-uppercase mb-1">
+                        Cost Reduction
+                      </div>
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 font-weight-bold">35%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress">
+                            <div
+                              class="progress-bar bg-warning"
+                              role="progressbar"
+                              style="width: 35%"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Earnings Overview
+                  </h6>
+                  <div class="dropdown no-arrow">
+                    <a
+                      class="dropdown-toggle"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i
+                        class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
+                      ></i>
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-container">
+                    <canvas
+                      id="myChart"
+                      width="100%"
+                      height="400"
+                      #mychart
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Revenue Sources
+                  </h6>
+                  <div class="dropdown no-arrow">
+                    <a
+                      class="dropdown-toggle"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i
+                        class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
+                      ></i>
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-container">
+                    <donut-chart></donut-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Operations</h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">
+                    Profile updated<span class="float-right">20%</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 20%"
+                      aria-valuenow="20"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                    Asset tracking<span class="float-right">40%</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 40%"
+                      aria-valuenow="40"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                    Potential users engaged<span class="float-right">60%</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 60%"
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                    Project accomplishment of building Robotic arms for NASAs
+                    OSAM-1 program<span class="float-right">80%</span>
+                  </h4>
+                  <div class="progress mb-4">
+                    <div
+                      class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: 80%"
+                      aria-valuenow="80"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                  <h4 class="small font-weight-bold">
+                    Assembly of Laser communication equipment<span
+                      class="float-right"
+                      >Complete!</span
+                    >
+                  </h4>
+                  <div class="progress">
+                    <div
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 100%"
+                      aria-valuenow="100"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+              <!-- Illustrations -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Marketplace</h6>
+                </div>
+                <div class="card-body">
+                  <img
+                    class="img-fluid px-2 px-sm-4 mt-3 mb-4"
+                    style="width: 13rem"
+                    src="../img/network.png"
+                    alt="..."
+                  />
+                  <p class="m-2 font-weight-bold text-primary">
+                    Connect with verified Potential Suppliers and Manufacturers
+                    &rarr;
+                  </p>
+                  <p class="m-2 font-weight-bold text-primary">
+                    CMMC (Cybersecurity Maturity Model Certification) &rarr;
+                  </p>
+                  <p class="m-2 font-weight-bold text-primary">
+                    ITAR (International Traffic in Arms Regulations) &rarr;
+                  </p>
+                  <p class="m-2 font-weight-bold text-primary">
+                    ENISA (European Union Agency for Cybersecurity) &rarr;
+                  </p>
+                  <p class="m-2 font-weight-bold text-primary">
+                    FedRAMP (Federal Risk and Authorization Management Program)
+                    &rarr;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Area Chart Example
+      var ctx = document.getElementById("myAreaChart");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "Earnings",
+              data: [0, 10000, 5000, 8000, 12000, 15000],
+              backgroundColor: "rgba(78, 115, 223, 0.2)",
+              borderColor: "rgba(78, 115, 223, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              beginAtZero: true,
+            },
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      // Pie Chart Example
+      var ctx2 = document.getElementById("myPieChart");
+      new Chart(ctx2, {
+        type: "pie",
+        data: {
+          labels: ["Direct", "Referral", "Social"],
+          datasets: [
+            {
+              data: [55, 30, 15],
+              backgroundColor: ["#1cc88a", "#36b9cc", "#f6c23e"],
+              hoverOffset: 4,
+            },
+          ],
+        },
+      });
+    </script>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-muted">Copyright &copy; JELLYSPACE 2024</div>
+          <div>
+            <a href="#" class="text-decoration-none text-muted"
+              >Privacy Policy</a
+            >
+            &middot;
+            <a href="#" class="text-decoration-none text-muted"
+              >Terms & Conditions</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+  </body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>JELLYSPACE 2 - Home</title>
+
+    <!-- Custom fonts for this template -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/src/app/WowDAO/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link
+      href="/src/app/WowDAO/vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fc; /* Light background for the entire page */
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; /* Full height of the viewport */
+        width: 250px; /* Sidebar width */
+        background-color: #ffffff; /* White background for the sidebar */
+        color: #333333; /* Dark gray text color for readability */
+        overflow-y: auto;
+        z-index: 100;
+        border-right: 1px solid #e3e6f0; /* Light gray border for separation */
+      }
+
+      .sidebar .nav-link {
+        color: #333333; /* Dark gray text color for normal state */
+        padding: 10px 15px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .sidebar .nav-link.active {
+        background-color: #e9ecef; /* Very light gray for active tab */
+        color: #333333; /* Dark gray text for active tab */
+        font-weight: bold;
+      }
+
+      .sidebar .nav-link:hover {
+        background-color: #f1f3f5; /* Slightly lighter gray for hover state */
+        color: #333333; /* Dark gray text for hover state */
+      }
+
+      .sidebar .nav-link i {
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      .sidebar .sidebar-brand {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 1.2rem;
+        color: #333333; /* Dark gray color for brand text */
+      }
+
+      .sidebar .sidebar-brand .sidebar-brand-icon {
+        font-size: 1.5rem;
+        color: #333333; /* Dark gray color for brand icon */
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      .sidebar .sidebar-divider {
+        border-color: #e3e6f0; /* Light gray for divider */
+      }
+
+      .sidebar .sidebar-brand-text {
+        font-weight: bold;
+        color: #333333; /* Dark gray color for brand text */
+      }
+
+      #content-wrapper {
+        margin-left: 250px; /* Align with sidebar width */
+        margin-top: 56px; /* Adjust based on the topbar height */
+        padding: 20px;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 250px; /* Align with sidebar width */
+        width: calc(100% - 250px); /* Adjust based on sidebar width */
+        background-color: #ffffff; /* White background for topbar */
+        border-bottom: 1px solid #e3e6f0; /* Light gray border for separation */
+        z-index: 101;
+      }
+
+      .footer {
+        background-color: #ffffff; /* White background for the footer */
+        position: relative;
+        bottom: 0;
+        width: calc(100% - 250px); /* Adjust based on sidebar width */
+        margin-left: 250px; /* Align with sidebar width */
+        padding: 10px 20px;
+        border-top: 1px solid #e3e6f0; /* Light gray border for separation */
+      }
+
+      .footer .text-muted {
+        color: #6c757d; /* Muted gray text color */
+      }
+
+      .footer a {
+        color: #6c757d; /* Muted gray text color for links */
+      }
+
+      .footer a:hover {
+        color: #343a40; /* Darker gray on hover for better visibility */
+      }
+    </style>
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper" class="d-flex">
+      <!-- Sidebar -->
+      <nav
+        id="sidebar"
+        class="sidebar bg-gradient-primary text-white d-flex flex-column vh-100 p-3"
+      >
+        <a
+          class="sidebar-brand d-flex align-items-center mb-4 text-white text-decoration-none"
+          href="home"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-space-shuttle"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">JELLYSPACE</div>
+        </a>
+        <hr class="sidebar-divider my-2 text-white" />
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-black" href="home">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="inventory">
+              <i class="fas fa-box"></i> Inventory
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="demand">
+              <i class="fas fa-chart-line"></i> Demand
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="insights">
+              <i class="fas fa-chart-bar"></i> ROT-Insights
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="forecasting">
+              <i class="fas fa-chart-pie"></i> Forecasting
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="management">
+              <i class="fas fa-cogs"></i> Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="quality">
+              <i class="fas fa-tachometer-alt"></i> Quality
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="logistics">
+              <i class="fas fa-truck"></i> Logistics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black active" href="maintenance">
+              <i class="fas fa-tools"></i> Maintenance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="reports">
+              <i class="fas fa-file-alt"></i> Reports
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="flex-grow-1 d-flex flex-column">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light topbar border-bottom">
+          <button class="btn btn-primary d-md-none" id="sidebarToggleTop">
+            <i class="fas fa-bars"></i>
+          </button>
+          <form class="d-flex ms-auto me-3 my-2 my-md-0">
+            <input
+              type="text"
+              class="form-control me-2"
+              placeholder="Search for..."
+            />
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <!-- <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user"></i>
+            </a> -->
+              <div
+                class="profile-card d-flex align-items-center"
+                style="margin-left: auto"
+              >
+                <img
+                  [src]="image"
+                  (error)="setDefault()"
+                  alt="user"
+                  class="rounded-circle"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                  "
+                  (click)="viewProfile()"
+                />
+                <div
+                  class="d-flex flex-column"
+                  style="cursor: pointer"
+                  (click)="viewProfile()"
+                >
+                  <span
+                    class="font-medium mb-0"
+                    style="font-size: 14px; font-weight: bold"
+                  >
+                    {{ fname }} {{ lname }}
+                  </span>
+                  <span class="text-muted fs-6" style="font-size: 12px">
+                    {{ email }}
+                  </span>
+                </div>
+                <!-- <button
+                class="btn btn-primary ms-2"
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+                (click)="viewProfile1()"
+              >
+                View Company Profile
+              </button> -->
+              </div>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="userDropdown"
+              >
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Main Content -->
+        <div id="content" class="p-4">
+          <!-- Page Heading -->
+          <div class="d-flex justify-content-between mb-4">
+            <h1 class="h3 mb-0">Inventory</h1>
+          </div>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table
+                  class="table table-bordered"
+                  id="dataTable"
+                  width="100%"
+                  cellspacing="0"
+                >
+                  <thead>
+                    <tr>
+                      <th>Company</th>
+                      <th>Production</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Company</th>
+                      <th>Production</th>
+                      <th>Location</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td><a href="predictions">Starlink</a></td>
+                      <td>Nano and Micro Satellite Buses</td>
+                      <td>USA</td>
+                    </tr>
+                    <tr>
+                      <td><a href="predictions">Orbital Machines AS</a></td>
+                      <td>
+                        Electric propellant pumps for launch vehicles and
+                        spacecraft
+                      </td>
+                      <td>Norway and Germany</td>
+                    </tr>
+                    <tr>
+                      <td><a href="predictions">Endurosat</a></td>
+                      <td>
+                        Supplier of Reaction wheels, Momentum wheels, Electric
+                        thrusters, Chemical thrusters, Solar sails,<br />
+                        Gyroscope, Star trackers, Sun sensors, Earth sensors,
+                        Magnetorquers, Trackers and sensors.
+                      </td>
+                      <td>USA, Italy</td>
+                    </tr>
+                    <tr>
+                      <td><a href="predictions">Comat</a></td>
+                      <td>
+                        Space Equipment mechanism expert, from design to MAIT
+                        (Manufacturing, Assembly, Integration, Test).<br />
+                        SmallSat off-the-shelf solutions including ADCS
+                        (reaction wheels range), SADM, deployable structure and
+                        electric propulsion (Plasma Jet Pack)
+                      </td>
+                      <td>France</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="predictions"
+                          >Astro- und Feinwerktechnik Adlershof GmbH</a
+                        >
+                      </td>
+                      <td>
+                        Design, Manufacturing, Assembly, Integration and
+                        Verification of small satellite buses (TET-1, launched
+                        July 2012) and components.<br />
+                        Attitude control components (reaction wheels, gyro
+                        system, GPS receiver, magnetometer) Supplier of space
+                        systems and ISS payload NightPod
+                      </td>
+                      <td>Germany</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="predictions">Kongsberg Defence & Aerospace</a>
+                      </td>
+                      <td>
+                        Kongsberg Adaptive Rotational Mechanism Assembly [KARMA]
+                        in configuration as Solar Array Drive Mechanism (SADM),
+                        used on Rosetta (spacecraft), Mars Express, Venus
+                        Express, Sentinel 1, Sentinel 3 and BepiColombo MTM.<br />
+                        Drive electronics for Sentinel 1 and BepiColombo MTM.
+                        Booster attachment struts, including separation
+                        function, for Ariane 5.
+                      </td>
+                      <td>Norway</td>
+                    </tr>
+                    <tr>
+                      <td><a href="predictions">Clyde Space</a></td>
+                      <td>
+                        Power System Electronics, Batteries, Solar Panels,
+                        Attitude Control Systems
+                      </td>
+                      <td>UK</td>
+                    </tr>
+                    <tr>
+                      <td><a href="predictions">Solar MEMS Technologies</a></td>
+                      <td>Sun Sensors for Satellites</td>
+                      <td>Spain</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="predictions">Howco Additive Manufacturing</a>
+                      </td>
+                      <td>
+                        3D Printing Aerospace Components in In718 and Titanium
+                      </td>
+                      <td>Houston, Texas, United States</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <div class="d-flex justify-content-between small">
+          <div class="text-muted">Copyright &copy; JELLYSPACE 2024</div>
+          <div>
+            <a href="#">Privacy Policy</a> &middot;
+            <a href="#">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+  </body>
+</html>

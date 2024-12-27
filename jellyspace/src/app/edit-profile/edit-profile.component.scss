@@ -1,0 +1,155 @@
+/* Global Styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9f9; /* Light grey background */
+  color: #333; /* Dark grey text color */
+  overflow-x: hidden; /* Hide horizontal overflow on the body */
+}
+
+/* Container */
+.container {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflow on both axes */
+
+  .sidebar {
+    width: 340px; /* Fixed width for better layout control */
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-right: 1px solid #d3d3d3; /* Light grey border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+
+    h2 {
+      color: #000000; /* Black for the title */
+      margin-bottom: 20px; /* Space below the title */
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 20px; /* Increased padding for better click area */
+      color: #333; /* Dark grey text */
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: #f0f0f0; /* Light grey on hover */
+        color: #000; /* Black text on hover */
+      }
+
+      &.active {
+        background-color: #d3d3d3; /* Light grey for active section */
+        color: #000; /* Black text for active section */
+      }
+    }
+
+    .separator {
+      height: 1px;
+      background-color: #d3d3d3; /* Light grey separator */
+      margin: 20px 0; /* Increased margin for better separation */
+    }
+
+    .required-asterisk {
+      color: red;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #ffffff; /* White background for contrast */
+    border-bottom: 1px solid #d3d3d3; /* Light grey border */
+    padding: 10px 20px;
+  }
+
+  .main-content {
+    margin-left: 250px; /* Adjusted for the sidebar width */
+    padding: 20px;
+    width: calc(100% - 200px); /* Full width minus the sidebar */
+    background-color: #ffffff; /* White background */
+    height: 100%;
+    overflow-y: auto; /* Vertical scroll if content overflows */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+
+    ::-webkit-scrollbar {
+      width: 12px; /* Width of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f0f0f0; /* Light grey background of the track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d3d3d3; /* Light grey scrollbar thumb */
+      border-radius: 6px; /* Rounded corners */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b0b0b0; /* Darker grey on hover */
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 20px; /* Increased margin for better spacing */
+
+  label {
+    display: block;
+    margin-bottom: 8px; /* Increased margin for better spacing */
+    font-weight: 600;
+    color: #000; /* Black text */
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 12px; /* Increased padding for better input area */
+    border: 1px solid #d3d3d3; /* Light grey border */
+    border-radius: 6px; /* Slightly rounded corners */
+    color: #333; /* Dark grey text */
+    background-color: #ffffff; /* White background */
+  }
+}
+
+button.save-button {
+  background-color: #000; /* Black button */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 12px 24px; /* Increased padding for better button size */
+  border-radius: 6px; /* Slightly rounded corners */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #333; /* Darker black on hover */
+  }
+}
+
+.close-button {
+  background-color: transparent;
+  color: #000; /* Black text */
+  border: none;
+  padding: 12px 24px; /* Increased padding for better button size */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ff0000; /* Red text on hover */
+  }
+}
