@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# Change to the application directory
-cd /home/ubuntu/jellyspace
+# Find and kill the running http-server process (if any)
+kill $(lsof -t -i:80)
 
-# Stop the application (example for pm2)
-echo "Stopping application..."
+# Alternatively, if you used a different method to start the app, stop the appropriate process
+# Example for Node.js application:
+# pm2 stop <your-app-name>
 
-# If using pm2
-# pm2 stop "jellyspace"
-
-# For a simple Node.js app or process (if not using pm2)
-# pkill -f "node app.js"
-
-# For Python Flask app (if you used `flask run`):
-# pkill -f "flask run"
+# You can add more commands here to clean up or restart processes if needed
