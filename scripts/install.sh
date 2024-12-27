@@ -1,16 +1,12 @@
 #!/bin/bash
 
-# Change to the application directory
-cd /home/ubuntu/jellyspace
+# Navigate to the app directory (assuming this is where the package.json is located)
+cd /home/ubuntu/jellyspace/jellyspace
 
-# Install necessary dependencies (example for Node.js)
-echo "Installing application dependencies..."
-# For Node.js application
-# npm install
+# Install application dependencies
+npm install --legacy-peer-deps
 
-# For Python application (uncomment if using Python)
-# sudo apt-get install -y python3-pip
-# pip3 install -r requirements.txt
+# Build the Angular project for production (optional: if you want to build the project here)
+ng build --configuration production
 
-# Example: Start your app or perform any other install steps as required
-echo "Installation completed."
+# You can add any additional setup steps here, such as setting environment variables, etc.
