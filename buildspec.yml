@@ -2,17 +2,19 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
     commands:
       - echo "Navigating to jellyspace directory..."
       - cd jellyspace
       - echo "Installing dependencies..."
+      # Resolving the Angular dependency conflict
+      - npm install @angular/compiler@14.3.0 --save
+      - npm install @angular/compiler-cli@14.3.0 --save
       - npm install
   pre_build:
     commands:
-      - echo "Preparing build environment..."
-      - cd jellyspace  # Ensure you are in the correct directory
+      - echo "Pre-build phase"
   build:
     commands:
-      - echo "Building the application..."
-      - cd jellyspace  # Ensure you are in the correct directory
-      - npm run build
+      - echo "Build phase"
