@@ -1,0 +1,27 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /                # Source location in your GitHub repo
+    destination: /home/ubuntu/jellyspace  # Destination path on EC2 instance (create this directory or use your own)
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh  # Custom script before installation (optional)
+      timeout: 300
+      runas: ubuntu
+
+  AfterInstall:
+    - location: scripts/install.sh       # Installation script to run after the files are copied
+      timeout: 300
+      runas: ubuntu
+
+  ApplicationStart:
+    - location: scripts/start.sh         # Start script to launch the application
+      timeout: 300
+      runas: ubuntu
+
+  ApplicationStop:
+    - location: scripts/stop.sh          # Stop script to stop the application
+      timeout: 300
+      runas: ubuntu
