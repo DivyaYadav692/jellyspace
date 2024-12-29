@@ -18,7 +18,7 @@ jobs:
           echo "${{ secrets.EC2_PEM_KEY }}" | base64 -d > MyDefaultKey.pem
           chmod 600 MyDefaultKey.pem
 
-      - name: Build React app
+      - name: Build Application
         run: |
           cd jellyspace
           npm cache clean --force
@@ -31,7 +31,7 @@ jobs:
           EC2_USER: ubuntu
         run: |          
           # Copy the built frontend to the EC2 instance
-          scp -i MyDefaultKey.pem -r frontend/build/* $EC2_USER@$EC2_HOST:/home/$EC2_USER/skillnaav-fullstack/frontend/build
+          scp -i MyDefaultKey.pem -r jellyspace/build/* $EC2_USER@$EC2_HOST:/home/$EC2_USER/skillnaav-fullstack/jellyspace/build
 
       - name: Configure and restart services on EC2        
         env:
